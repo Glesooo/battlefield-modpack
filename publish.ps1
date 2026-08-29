@@ -42,7 +42,14 @@ if (-not (Test-Path $packwiz)) {
 }
 
 # ---------------------------------------------------------------- asset bucket
+# Redirecting a native command's stderr while $ErrorActionPreference = "Stop" is set turns its
+# normal "release not found" message into a terminating error instead of just a non-zero exit
+# code - drop to "Continue" for this one check so the expected-to-fail-on-first-run case
+# actually reaches the $LASTEXITCODE check below.
+$prevEAP = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
 gh release view $AssetTag --repo $Repo *> $null
+$ErrorActionPreference = $prevEAP
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Creating release '$AssetTag' to hold binary files..."
     gh release create $AssetTag --repo $Repo --title "Pack files" `
