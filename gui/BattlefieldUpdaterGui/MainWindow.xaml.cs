@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -22,6 +23,10 @@ public partial class MainWindow : Window
 
     private Process? _process;
     private bool _finishedOk;
+    // "Сменить папку" stays clickable while an update runs, so without this a second run could
+    // start on top of the first: _process would be overwritten, the original java process left
+    // orphaned still writing into the old folder, and both runs fighting over the same UI.
+    private bool _running;
 
     public MainWindow()
     {
@@ -71,7 +76,45 @@ public partial class MainWindow : Window
         {
             Title = "Папка minecraft сборки M.A.C.E (с mods/config/saves)",
         };
-        return dialog.ShowDialog() == true ? dialog.FolderName : null;
+        if (dialog.ShowDialog() != true) return null;
+        return ConfirmGameFolder(dialog.FolderName);
+    }
+
+    /// <summary>
+    /// Picking the wrong folder installs a hundred mods somewhere harmless-looking and the game
+    /// simply never sees them - a silent failure that looks exactly like a successful update.
+    /// The usual slip is choosing the instance root (which merely *contains* "minecraft"), so
+    /// offer that redirect outright; anything else unrecognisable only gets a confirmation,
+    /// since a brand-new empty folder is a perfectly valid first install.
+    /// </summary>
+    private static string? ConfirmGameFolder(string folder)
+    {
+        if (LooksLikeGameFolder(folder)) return folder;
+
+        string nested = Path.Combine(folder, "minecraft");
+        if (LooksLikeGameFolder(nested))
+        {
+            var useNested = MessageBox.Show(
+                $"Похоже, сама сборка лежит в подпапке:\n{nested}\n\nИспользовать её?",
+                "M.A.C.E Updater", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (useNested == MessageBoxResult.Yes) return nested;
+        }
+
+        var proceed = MessageBox.Show(
+            $"В этой папке нет mods/config/saves:\n{folder}\n\n" +
+            "Если это новая установка — всё в порядке. Если ты обновляешь существующую сборку, " +
+            "скорее всего выбрана не та папка, и моды не попадут в игру.\n\nВсё равно продолжить?",
+            "M.A.C.E Updater", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+        return proceed == MessageBoxResult.Yes ? folder : null;
+    }
+
+    private static bool LooksLikeGameFolder(string folder)
+    {
+        if (!Directory.Exists(folder)) return false;
+        return Directory.Exists(Path.Combine(folder, "mods"))
+            || Directory.Exists(Path.Combine(folder, "config"))
+            || Directory.Exists(Path.Combine(folder, "saves"))
+            || File.Exists(Path.Combine(folder, "options.txt"));
     }
 
     private async void ChangeFolder_Click(object sender, RoutedEventArgs e)
@@ -86,6 +129,7 @@ public partial class MainWindow : Window
 
     private void SetStep(int index, bool error = false)
     {
+        if (!error) _currentStep = index;
         var borders = new[] { Step1Border, Step2Border, Step3Border, Step4Border };
         var icons = new[] { Step1Icon, Step2Icon, Step3Icon, Step4Icon };
         for (int i = 0; i < borders.Length; i++)
@@ -121,6 +165,22 @@ public partial class MainWindow : Window
 
     private async Task RunUpdateAsync(string instancePath)
     {
+        if (_running) return;
+        _running = true;
+        ChangeFolderButton.IsEnabled = false;
+        try
+        {
+            await RunUpdateCoreAsync(instancePath);
+        }
+        finally
+        {
+            _running = false;
+            ChangeFolderButton.IsEnabled = true;
+        }
+    }
+
+    private async Task RunUpdateCoreAsync(string instancePath)
+    {
         CancelButton.Visibility = Visibility.Visible;
         ActionButton.IsEnabled = false;
         ActionButton.Content = "...";
@@ -139,7 +199,10 @@ public partial class MainWindow : Window
         // bundled runtime (PrismLauncher, the official launcher, TLauncher, CurseForge, ...),
         // which is never on PATH even though Minecraft itself runs fine. See JavaLocator for the
         // full fallback chain - this is exactly the failure a player hit with the old .bat updater.
-        string? javaExe = JavaLocator.Find(instancePath);
+        // Off the UI thread: the search runs `java -version` (up to 5s each) and walks whole
+        // runtime folders, which would otherwise freeze the window into a "not responding" state
+        // for exactly the players who are hardest to help - the ones without Java on PATH.
+        string? javaExe = await Task.Run(() => JavaLocator.Find(instancePath));
         if (javaExe == null)
         {
             ShowError("Java не найдена на этом компьютере.",
@@ -148,14 +211,22 @@ public partial class MainWindow : Window
         }
 
         string bootstrapPath = Path.Combine(instancePath, "battlefield-installer-bootstrap.jar");
-        if (!File.Exists(bootstrapPath))
+        // A jar left half-written by a killed run or a dropped connection stays on disk forever
+        // and java then fails on it with an error no player can act on. Anything implausibly
+        // small isn't the real jar, so re-fetch instead of trusting mere existence.
+        bool haveBootstrap = File.Exists(bootstrapPath) && new FileInfo(bootstrapPath).Length > 20_000;
+        if (!haveBootstrap)
         {
             ProgressLabel.Text = "Скачивание апдейтера...";
             try
             {
                 using var http = new HttpClient();
                 byte[] data = await http.GetByteArrayAsync(BootstrapUrl);
-                await File.WriteAllBytesAsync(bootstrapPath, data);
+                // Write to a temp name first, then swap in: a crash mid-write can never leave a
+                // truncated jar sitting at the real path.
+                string tmp = bootstrapPath + ".part";
+                await File.WriteAllBytesAsync(tmp, data);
+                File.Move(tmp, bootstrapPath, overwrite: true);
             }
             catch (Exception ex)
             {
@@ -225,7 +296,13 @@ public partial class MainWindow : Window
             return;
         }
 
-        if (_process.ExitCode == 0)
+        // Exit code alone is not enough. packwiz-installer reports a per-file download or hash
+        // failure as a logged exception and then asks whether to carry on - so a run can end
+        // with files missing or corrupt while still looking like a success. Treating any error
+        // line as a failure is what stops a broken install from being announced as "Готово!".
+        var problems = lastLines.Where(IsProblemLine).Distinct().Take(5).ToList();
+
+        if (_process.ExitCode == 0 && problems.Count == 0)
         {
             _finishedOk = true;
             SetStep(3);
@@ -242,10 +319,39 @@ public partial class MainWindow : Window
         }
         else
         {
-            string details = string.Join(Environment.NewLine, lastLines);
-            ShowError($"Апдейтер сообщил о проблеме (код {_process.ExitCode}).", details);
+            // Lead with what actually went wrong; keep the raw tail underneath so a screenshot
+            // is still enough to diagnose it without asking the player to scroll.
+            string headline = problems.Count > 0
+                ? "Часть файлов не скачалась — сборка обновлена не полностью."
+                : $"Апдейтер сообщил о проблеме (код {_process.ExitCode}).";
+
+            var text = new StringBuilder();
+            if (problems.Count > 0)
+            {
+                text.AppendLine("Что произошло:");
+                foreach (string p in problems) text.AppendLine("  • " + p);
+                text.AppendLine();
+                text.AppendLine("Запусти обновление ещё раз — оно продолжит с того же места.");
+                text.AppendLine();
+            }
+            text.AppendLine("Технические подробности:");
+            text.Append(string.Join(Environment.NewLine, lastLines));
+
+            ShowError(headline, text.ToString());
         }
     }
+
+    /// <summary>
+    /// Lines that mean the pack did not fully install. "Hash invalid!" is the one that bit real
+    /// players: every affected file is left missing or stale, but it is only ever logged - the
+    /// run can still finish and exit cleanly.
+    /// </summary>
+    private static bool IsProblemLine(string line) =>
+        line.Contains("Hash invalid", StringComparison.OrdinalIgnoreCase)
+        || line.Contains("Failed to download", StringComparison.OrdinalIgnoreCase)
+        || line.Contains("cancelled", StringComparison.OrdinalIgnoreCase)
+        || line.Contains("Exception", StringComparison.Ordinal)
+        || line.Contains("Error:", StringComparison.OrdinalIgnoreCase);
 
     private void HandleLine(string? line, List<string> lastLines)
     {
@@ -280,9 +386,14 @@ public partial class MainWindow : Window
         });
     }
 
+    // Marks whichever step is actually in progress, instead of always blaming "Установка" - the
+    // first error a player reported this way pointed at step 3 when nothing had been installed
+    // yet, which sent the whole investigation down the wrong path.
+    private int _currentStep;
+
     private void ShowError(string title, string details)
     {
-        SetStep(2, error: true);
+        SetStep(_currentStep, error: true);
         TitleText.Text = title;
         SubtitleText.Text = "Попробуй ещё раз или обратись к автору сборки";
         CurrentFileText.Text = details;

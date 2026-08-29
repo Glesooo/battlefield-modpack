@@ -44,10 +44,20 @@ if "!INSTANCE!"=="" (
 
 echo Modpack folder: !INSTANCE!
 
+rem Only checks PATH. Many launchers (PrismLauncher, the official launcher, TLauncher,
+rem CurseForge) ship a private JRE that Minecraft uses happily while PATH stays empty, so this
+rem check can fail on a machine where the game runs fine. Reimplementing the full search in
+rem batch is not worth it - the GUI updater already does it properly, so point there instead.
 where java >nul 2>nul
 if errorlevel 1 (
     echo.
-    echo Java not found on this computer. Install Java ^(Minecraft needs it anyway^) and run this updater again.
+    echo Java was not found on PATH.
+    echo.
+    echo If Minecraft itself runs on this computer, your launcher has its own Java and this
+    echo simple updater cannot see it. Use the GUI updater instead - it finds Java automatically:
+    echo   https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/BattlefieldUpdater.exe
+    echo.
+    echo Otherwise install Java and run this updater again.
     pause
     exit /b 1
 )
@@ -66,6 +76,18 @@ if not exist "battlefield-installer-bootstrap.jar" (
 
 echo Checking for updates...
 java -jar "battlefield-installer-bootstrap.jar" "%PACK_URL%"
+
+rem Without this the script printed "Done." no matter what happened, so a failed update looked
+rem exactly like a successful one. Scroll up on a failure: the real reason (usually a download
+rem that did not complete) is in the output above.
+if errorlevel 1 (
+    echo.
+    echo UPDATE FAILED - the modpack is NOT fully up to date.
+    echo Look at the messages above for the reason, then run this updater again.
+    echo Re-running is safe: it continues from where it stopped.
+    pause
+    exit /b 1
+)
 
 echo.
 echo Done.

@@ -37,8 +37,12 @@ $ErrorActionPreference = "Stop"
 $packwiz = "$env:USERPROFILE\go\bin\packwiz.exe"
 $distRoot = $PSScriptRoot
 
-if (-not (Test-Path $packwiz)) {
+if (-not (Test-Path -LiteralPath $packwiz)) {
     throw "packwiz.exe not found at $packwiz - see ModpackDist/README.md."
+}
+
+if (-not (Test-Path -LiteralPath $InstancePath)) {
+    throw "Instance folder not found: $InstancePath - publishing from here would wipe config/ out of the pack."
 }
 
 # ---------------------------------------------------------------- asset bucket
@@ -92,8 +96,21 @@ function Sync-BinaryFolder {
     # stale-entry sweep at the bottom, silently dropping them out of the pack.
     $liveNames = @($liveFiles | ForEach-Object { (Get-SafeName $_) })
 
-    $tracked = @(Get-ChildItem $trackedDir -Filter *.toml -ErrorAction SilentlyContinue | ForEach-Object {
-        $toml = Get-Content $_.FullName -Raw
+    # Two different files can sanitize to one published name ("mod+1.jar" and "mod_1.jar" both
+    # become "mod_1.jar"). That would upload one over the other and overwrite one metafile with
+    # the other's, silently dropping a mod from the pack - so refuse to publish instead of
+    # guessing which one was meant. Very reachable here: the pack briefly contained exactly such
+    # pairs after an updater run wrote sanitized copies alongside the originals.
+    $collisions = @($liveFiles | Group-Object { Get-SafeName $_ } | Where-Object { $_.Count -gt 1 })
+    if ($collisions.Count -gt 0) {
+        $detail = ($collisions | ForEach-Object {
+            "  $($_.Name) <- " + (($_.Group | ForEach-Object { $_.Name }) -join ' , ')
+        }) -join [Environment]::NewLine
+        throw "Different files in $LiveDir publish under the same name - rename or remove one of each pair:$([Environment]::NewLine)$detail"
+    }
+
+    $tracked = @(Get-ChildItem -LiteralPath $trackedDir -Filter *.toml -ErrorAction SilentlyContinue | ForEach-Object {
+        $toml = Get-Content -LiteralPath $_.FullName -Raw
         # Capture the filename BEFORE running the second -match: $Matches is a single automatic
         # variable that every -match overwrites, so reading $Matches[1] after the hash match
         # yields the hash, not the filename. That silently turned every Filename into a hash
@@ -189,7 +206,7 @@ function Sync-RawFolder {
                                                # this share a folder with Sync-BinaryFolder's
                                                # .toml pointers (tacz/ holds both)
     )
-    if (-not (Test-Path $SrcDir)) { return }
+    if (-not (Test-Path -LiteralPath $SrcDir)) { return }
     New-Item -ItemType Directory -Path $DstDir -Force | Out-Null
 
     # Clear stale content first so removals on the source side propagate, but never touch
@@ -225,6 +242,7 @@ Push-Location $distRoot
 if ($LASTEXITCODE -ne 0) { Pop-Location; throw "packwiz refresh failed" }
 
 git add -A
+if ($LASTEXITCODE -ne 0) { Pop-Location; throw "git add failed (exit $LASTEXITCODE)" }
 $pending = git status --porcelain
 if (-not $pending) {
     Write-Host "Nothing changed - nothing to publish."
@@ -232,9 +250,25 @@ if (-not $pending) {
     return
 }
 
+# A native command's non-zero exit does NOT stop the script even under
+# $ErrorActionPreference = "Stop" - only PowerShell's own cmdlets honour that. Without these
+# explicit checks a failed push (expired auth, no network, someone else pushed first) still
+# printed "Published", so the pack silently stayed on the old version while everyone was told
+# to update.
 git commit -m "Update $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+if ($LASTEXITCODE -ne 0) { Pop-Location; throw "git commit failed (exit $LASTEXITCODE) - nothing was published." }
+
 git push
+if ($LASTEXITCODE -ne 0) { Pop-Location; throw "git push failed (exit $LASTEXITCODE) - the commit exists locally but players will NOT see it. Fix the error and re-run." }
+
+# Confirm the remote really moved to what we just committed, rather than trusting exit codes
+# alone - the push output goes to stderr and is easy to misread as failure (or success).
+$localHead = (git rev-parse HEAD).Trim()
+$remoteHead = ((git ls-remote origin HEAD) -split '\s+')[0]
 Pop-Location
+if ($localHead -ne $remoteHead) {
+    throw "Push reported success but GitHub is on $remoteHead while this commit is $localHead - players would get the old pack."
+}
 
 Write-Host ""
-Write-Host "Published. Players just need to run update.bat."
+Write-Host "Published and verified on GitHub ($($localHead.Substring(0,7))). Players just need to run the updater."
