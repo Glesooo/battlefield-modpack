@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <AssemblyName>BattlefieldUpdater</AssemblyName>
-    <ApplicationTitle>Battlefield Updater</ApplicationTitle>
+    <ApplicationTitle>M.A.C.E Updater</ApplicationTitle>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <SelfContained>true</SelfContained>
     <PublishSingleFile>true</PublishSingleFile>

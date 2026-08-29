@@ -64,12 +64,12 @@ public partial class MainWindow : Window
     private string? PickFolder()
     {
         MessageBox.Show(
-            "Выбери папку 'minecraft' сборки Battlefield (в ней лежат папки mods, config, saves).",
-            "Battlefield Updater", MessageBoxButton.OK, MessageBoxImage.Information);
+            "Выбери папку 'minecraft' сборки M.A.C.E (в ней лежат папки mods, config, saves).",
+            "M.A.C.E Updater", MessageBoxButton.OK, MessageBoxImage.Information);
 
         var dialog = new Microsoft.Win32.OpenFolderDialog
         {
-            Title = "Папка minecraft сборки Battlefield (с mods/config/saves)",
+            Title = "Папка minecraft сборки M.A.C.E (с mods/config/saves)",
         };
         return dialog.ShowDialog() == true ? dialog.FolderName : null;
     }
@@ -135,7 +135,12 @@ public partial class MainWindow : Window
         ProgressLabel.Text = "Подключение...";
         SetStep(0);
 
-        if (!IsJavaAvailable())
+        // Not just `where java` - plenty of players have Java only through their launcher's own
+        // bundled runtime (PrismLauncher, the official launcher, TLauncher, CurseForge, ...),
+        // which is never on PATH even though Minecraft itself runs fine. See JavaLocator for the
+        // full fallback chain - this is exactly the failure a player hit with the old .bat updater.
+        string? javaExe = JavaLocator.Find(instancePath);
+        if (javaExe == null)
         {
             ShowError("Java не найдена на этом компьютере.",
                 "Установи Java (она и так нужна для Minecraft) и запусти апдейтер снова.");
@@ -166,8 +171,13 @@ public partial class MainWindow : Window
 
         var psi = new ProcessStartInfo
         {
-            FileName = "java",
-            ArgumentList = { "-jar", bootstrapPath, PackUrl },
+            FileName = javaExe,
+            // --no-gui (packwiz-installer's own flag) stops it opening its own Swing window -
+            // without it, packwiz-installer defaults to a GUI whenever the display isn't
+            // headless, which would pop a second, differently-styled Java window on top of this
+            // one. -jar's arg (the bootstrap jar) still gets this flag forwarded through to the
+            // real installer it downloads, since that's the bootstrap's whole job.
+            ArgumentList = { "-jar", bootstrapPath, PackUrl, "--no-gui" },
             WorkingDirectory = instancePath,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
@@ -187,11 +197,27 @@ public partial class MainWindow : Window
             _process.Start();
             _process.BeginOutputReadLine();
             _process.BeginErrorReadLine();
-            // packwiz-installer can prompt for a confirmation on stdin in some versions; feeding
-            // a newline immediately means "accept default" instead of hanging forever with no
-            // console attached for the player to type into (CreateNoWindow hides it).
-            await _process.StandardInput.WriteLineAsync();
+
+            // The CLI ui (forced above via --no-gui) can still ask for a confirm-to-continue on
+            // stdin - with no console attached for a player to type into, that would hang
+            // forever. Answering Enter on a timer rather than once up front avoids a race
+            // against exactly when (or whether) a prompt shows up.
+            using var stdinCts = new CancellationTokenSource();
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    while (!stdinCts.IsCancellationRequested)
+                    {
+                        await _process.StandardInput.WriteLineAsync();
+                        await Task.Delay(500, stdinCts.Token);
+                    }
+                }
+                catch { /* process exited or stdin closed - nothing left to answer */ }
+            }, stdinCts.Token);
+
             await _process.WaitForExitAsync();
+            stdinCts.Cancel();
         }
         catch (Exception ex)
         {
@@ -252,27 +278,6 @@ public partial class MainWindow : Window
                 ProgressLabel.Text = "Завершение...";
             }
         });
-    }
-
-    private static bool IsJavaAvailable()
-    {
-        try
-        {
-            var psi = new ProcessStartInfo("java", "-version")
-            {
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                CreateNoWindow = true,
-            };
-            using var p = Process.Start(psi);
-            p?.WaitForExit(5000);
-            return p != null && p.ExitCode == 0;
-        }
-        catch
-        {
-            return false;
-        }
     }
 
     private void ShowError(string title, string details)

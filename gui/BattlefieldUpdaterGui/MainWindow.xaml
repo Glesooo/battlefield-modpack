@@ -1,7 +1,7 @@
 <Window x:Class="BattlefieldUpdaterGui.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Battlefield Updater"
+        Title="M.A.C.E Updater"
         Width="960" Height="600"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -25,7 +25,7 @@
                 <StackPanel Orientation="Horizontal" Margin="20,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="🌸" FontSize="16" FontFamily="Segoe UI Emoji" Margin="0,0,10,0"
                                VerticalAlignment="Center" />
-                    <TextBlock Text="BATTLEFIELD" FontWeight="Bold" FontSize="13"
+                    <TextBlock Text="M.A.C.E" FontWeight="Bold" FontSize="13"
                                Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"
                                Margin="0,0,8,0" />
                     <TextBlock Text="UPDATE INSTALLER" FontSize="10" Foreground="{StaticResource TextFaintBrush}"
@@ -110,7 +110,7 @@
                     <StackPanel Margin="36,32,36,0" VerticalAlignment="Top">
                         <TextBlock x:Name="TitleText" Text="Проверка обновлений..." FontSize="26" FontWeight="Bold"
                                    Foreground="{StaticResource TextPrimaryBrush}" />
-                        <TextBlock x:Name="SubtitleText" Text="Ищем изменения в сборке Battlefield" FontSize="13"
+                        <TextBlock x:Name="SubtitleText" Text="Ищем изменения в сборке M.A.C.E" FontSize="13"
                                    Foreground="{StaticResource TextDimBrush}" Margin="0,8,0,0" />
                     </StackPanel>
 
