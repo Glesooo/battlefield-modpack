@@ -94,10 +94,16 @@ function Sync-BinaryFolder {
 
     $tracked = @(Get-ChildItem $trackedDir -Filter *.toml -ErrorAction SilentlyContinue | ForEach-Object {
         $toml = Get-Content $_.FullName -Raw
-        if ($toml -match 'filename\s*=\s*"([^"]+)"') {
-            $hash = $null
-            if ($toml -match 'hash\s*=\s*"([0-9a-fA-F]+)"') { $hash = $Matches[1] }
-            [PSCustomObject]@{ Meta = $_.FullName; Filename = $Matches[1]; Hash = $hash }
+        # Capture the filename BEFORE running the second -match: $Matches is a single automatic
+        # variable that every -match overwrites, so reading $Matches[1] after the hash match
+        # yields the hash, not the filename. That silently turned every Filename into a hash
+        # string, so nothing ever matched a live file - which made the stale sweep below treat
+        # every existing metafile as orphaned and delete it.
+        $nameMatch = [regex]::Match($toml, 'filename\s*=\s*"([^"]+)"')
+        if ($nameMatch.Success) {
+            $hashMatch = [regex]::Match($toml, 'hash\s*=\s*"([0-9a-fA-F]+)"')
+            $hash = if ($hashMatch.Success) { $hashMatch.Groups[1].Value } else { $null }
+            [PSCustomObject]@{ Meta = $_.FullName; Filename = $nameMatch.Groups[1].Value; Hash = $hash }
         }
     })
 
