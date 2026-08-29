@@ -1,14 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = "BattlefieldUpdater.exe"
-hash = "92e260e368dc8f6022d2cda4d1242856e1cc5076c0744780a07d76be71658a4f"
-
-[[files]]
-file = "README.md"
-hash = "42222eb80bac54cb8bf708909e11113b8d072d0f09792d9b774f29245956fced"
-
-[[files]]
 file = "config/MouseTweaks.cfg"
 hash = "4069ce1a439d8c37453c1b1e9f2037e0942674c7e48723a39b37eab245792ad4"
 
@@ -123,10 +115,6 @@ hash = "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
 [[files]]
 file = "config/explosionoverhaul/GlassBlacklist.json"
 hash = "f78e3dc6590c2838db14377251cdc814fe69a1e3eafadcbc8ef5f0061abcffe0"
-
-[[files]]
-file = "config/explosionoverhaul/README.md"
-hash = "43a6695ac6c203507d4f8a831f45a901b3301f5b0005962b6895ab43aabc7686"
 
 [[files]]
 file = "config/explosionoverhaul/explosionoverhaul-client.toml"
@@ -1332,14 +1320,6 @@ metafile = true
 [[files]]
 file = "packwiz-installer-bootstrap.jar"
 hash = "a8fbb24dc604278e97f4688e82d3d91a318b98efc08d5dbfcbcbcab6443d116c"
-
-[[files]]
-file = "packwiz-installer.jar"
-hash = "c9f646908d340d84773948a9a7d98bc1dae250d35e1016dc6e2b8459760b5598"
-
-[[files]]
-file = "publish.ps1"
-hash = "2367bb61bbb279ff6c101340868faec252d301ae2b44d5e2f344c59e538dc29b"
 
 [[files]]
 file = "tacz/.export-state.json"
@@ -28926,10 +28906,6 @@ file = "tacz/tacz_default_gun/gunpack.meta.json"
 hash = "5419a196ae5d34b22b9209369cd70147ac889ed45facb46e527f35ad7633f8d7"
 
 [[files]]
-file = "tacz/xiaoxue_wt/README.md"
-hash = "d532fdd83665c5a50082ed15ca79a0e356e6c4d33ad9d3e7c270d8dcdebe5571"
-
-[[files]]
 file = "tacz/xiaoxue_wt/README_en.md"
 hash = "a10ef8d85dc26d618b1e75070717f067f0c526103c8d0ac67f5754c1f5797b30"
 
@@ -30360,7 +30336,3 @@ hash = "3bc328b0b1f6fa5305e9b963d4d17b80d3217f775d70087cb291c4c2d05b4350"
 [[files]]
 file = "tacz/xiaoxue_wt/gunpack.meta.json"
 hash = "82890f468f35761d10324482c608d2c113dc7e7ce3e73f2b6dea97bd4864737e"
-
-[[files]]
-file = "update.ps1"
-hash = "66d3fb64f7ea3e6e188114ddf3d37003fec78cd803b66cf864c0b90344141953"

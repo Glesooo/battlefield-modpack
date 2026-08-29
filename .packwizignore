@@ -1,0 +1,10 @@
+# Tooling that lives in this repo but must NOT be installed into a player's minecraft folder.
+.git/**
+.gitattributes
+.gitignore
+.packwizignore
+README.md
+publish.ps1
+update.ps1
+BattlefieldUpdater.exe
+packwiz-installer.jar
