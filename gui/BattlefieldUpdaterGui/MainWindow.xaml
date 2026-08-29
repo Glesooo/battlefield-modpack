@@ -1,0 +1,156 @@
+<Window x:Class="BattlefieldUpdaterGui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Battlefield Updater"
+        Width="960" Height="600"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgDeepBrush}"
+        FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Custom title bar -->
+        <Border Grid.Row="0" Background="{StaticResource BgDeepBrush}"
+                MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="20,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Text="🌸" FontSize="16" FontFamily="Segoe UI Emoji" Margin="0,0,10,0"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="BATTLEFIELD" FontWeight="Bold" FontSize="13"
+                               Foreground="{StaticResource TextPrimaryBrush}" VerticalAlignment="Center"
+                               Margin="0,0,8,0" />
+                    <TextBlock Text="UPDATE INSTALLER" FontSize="10" Foreground="{StaticResource TextFaintBrush}"
+                               VerticalAlignment="Center" Margin="0,2,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="—" Style="{StaticResource ChromeButton}" Click="Minimize_Click" />
+                    <Button Content="✕" Style="{StaticResource ChromeButton}" Click="Close_Click" Margin="0,0,10,0" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Grid.Row="0" VerticalAlignment="Bottom" Height="1" Background="{StaticResource BorderBrush1}" />
+
+        <!-- Body -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Left: step indicator -->
+            <Grid Grid.Column="0" Background="{StaticResource BgDeepBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Margin="20,24,20,0">
+                    <Border x:Name="Step1Border" CornerRadius="8" Padding="12,10" Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="Step1Icon" Text="①" FontSize="14" Width="22"
+                                       VerticalAlignment="Center" />
+                            <TextBlock x:Name="Step1Text" Text="Проверка" FontSize="13" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <Border x:Name="Step2Border" CornerRadius="8" Padding="12,10" Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="Step2Icon" Text="②" FontSize="14" Width="22"
+                                       VerticalAlignment="Center" />
+                            <TextBlock x:Name="Step2Text" Text="Загрузка" FontSize="13" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <Border x:Name="Step3Border" CornerRadius="8" Padding="12,10" Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="Step3Icon" Text="③" FontSize="14" Width="22"
+                                       VerticalAlignment="Center" />
+                            <TextBlock x:Name="Step3Text" Text="Установка" FontSize="13" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                    <Border x:Name="Step4Border" CornerRadius="8" Padding="12,10">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="Step4Icon" Text="④" FontSize="14" Width="22"
+                                       VerticalAlignment="Center" />
+                            <TextBlock x:Name="Step4Text" Text="Готово" FontSize="13" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <Button Grid.Row="1" Content="⚙  Сменить папку" Style="{StaticResource GhostButton}"
+                        Margin="20,0,20,24" Click="ChangeFolder_Click" />
+            </Grid>
+
+            <!-- Right: background art + status + progress -->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" ClipToBounds="True">
+                    <Image Source="Assets/background.png" Stretch="UniformToFill" />
+                    <Border>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#B00B0710" Offset="0" />
+                                <GradientStop Color="#600B0710" Offset="0.35" />
+                                <GradientStop Color="#E00B0710" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+
+                    <StackPanel Margin="36,32,36,0" VerticalAlignment="Top">
+                        <TextBlock x:Name="TitleText" Text="Проверка обновлений..." FontSize="26" FontWeight="Bold"
+                                   Foreground="{StaticResource TextPrimaryBrush}" />
+                        <TextBlock x:Name="SubtitleText" Text="Ищем изменения в сборке Battlefield" FontSize="13"
+                                   Foreground="{StaticResource TextDimBrush}" Margin="0,8,0,0" />
+                    </StackPanel>
+
+                    <Border Margin="36,0,36,0" VerticalAlignment="Bottom" Padding="0,0,0,16">
+                        <TextBlock x:Name="CurrentFileText" Text="" FontSize="12"
+                                   Foreground="{StaticResource TextDimBrush}" TextTrimming="CharacterEllipsis" />
+                    </Border>
+                </Grid>
+
+                <!-- Bottom progress card -->
+                <Border Grid.Row="1" Background="{StaticResource PanelBrush}" Margin="24,0,24,24" Padding="24,18"
+                        CornerRadius="14" BorderBrush="{StaticResource BorderBrush1}" BorderThickness="1">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ProgressLabel" Text="Подключение..." FontSize="13"
+                                       Foreground="{StaticResource TextPrimaryBrush}" />
+                            <TextBlock x:Name="ProgressPercentText" Grid.Column="1" Text="" FontSize="14"
+                                       FontWeight="Bold" Foreground="{StaticResource AccentBrightBrush}" />
+                        </Grid>
+                        <ProgressBar x:Name="MainProgressBar" Style="{StaticResource AccentProgressBar}"
+                                     Margin="0,10,0,14" Minimum="0" Maximum="100" Value="0" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="CancelButton" Content="Отмена" Style="{StaticResource SecondaryButton}"
+                                        Click="Cancel_Click" Margin="0,0,10,0" />
+                            </StackPanel>
+                            <Button x:Name="ActionButton" Grid.Column="1" Content="Готово"
+                                    Style="{StaticResource PrimaryButton}" Click="Action_Click" />
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

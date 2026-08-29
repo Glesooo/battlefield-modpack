@@ -2,3 +2,9 @@ Thumbs.db
 .DS_Store
 packwiz-installer-bootstrap.jar
 packwiz-installer.jar
+
+# GUI updater (gui/) - build artifacts and the published exe itself. The exe is NOT committed
+# here at all - it's ~156MB (self-contained .NET), too big for git and for a Discord upload
+# limit; it's uploaded as a GitHub Release asset instead (see README "GUI-апдейтер").
+gui/**/bin/
+gui/**/obj/

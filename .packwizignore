@@ -6,7 +6,11 @@
 README.md
 publish.ps1
 update.ps1
+update.bat
 BattlefieldUpdater.exe
 packwiz-installer.jar
 packwiz-installer-bootstrap.jar
 *.pw.toml.bak
+# GUI updater source (.NET project) - never part of the pack itself, the built exe is a
+# GitHub Release asset instead (see README).
+gui/**

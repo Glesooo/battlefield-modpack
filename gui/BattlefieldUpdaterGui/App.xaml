@@ -1,0 +1,167 @@
+<Application x:Class="BattlefieldUpdaterGui.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BattlefieldUpdaterGui"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Palette lifted from the sakura/pagoda reference mockup. -->
+            <Color x:Key="BgDeepColor">#0B0710</Color>
+            <SolidColorBrush x:Key="BgDeepBrush" Color="{StaticResource BgDeepColor}" />
+            <SolidColorBrush x:Key="PanelBrush" Color="#141019" Opacity="0.92" />
+            <SolidColorBrush x:Key="PanelSoftBrush" Color="#1B1522" Opacity="0.85" />
+            <SolidColorBrush x:Key="BorderBrush1" Color="#FFFFFF" Opacity="0.08" />
+            <SolidColorBrush x:Key="AccentBrush" Color="#F0629E" />
+            <SolidColorBrush x:Key="AccentBrightBrush" Color="#FF8AC0" />
+            <SolidColorBrush x:Key="AccentDimBrush" Color="#7A3F5C" />
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="#F3EDF2" />
+            <SolidColorBrush x:Key="TextDimBrush" Color="#A79AB0" />
+            <SolidColorBrush x:Key="TextFaintBrush" Color="#6E6478" />
+            <SolidColorBrush x:Key="ErrorBrush" Color="#E0576B" />
+
+            <LinearGradientBrush x:Key="AccentGradient" StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#D9497F" Offset="0" />
+                <GradientStop Color="#F281B4" Offset="1" />
+            </LinearGradientBrush>
+
+            <!-- Titlebar chrome buttons: plain glyph, brightens on hover. -->
+            <Style x:Key="ChromeButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{StaticResource TextDimBrush}" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Width" Value="36" />
+                <Setter Property="Height" Value="32" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="6">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#22FFFFFF" />
+                        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!-- Primary action button: filled gradient pill, matches the reference's "Пауза" button. -->
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource AccentGradient}" />
+                <Setter Property="Foreground" Value="#20101A" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Padding" Value="22,10" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bg" Background="{TemplateBinding Background}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Margin="{TemplateBinding Padding}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bg" Property="Opacity" Value="0.88" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="Bg" Property="Background" Value="#3A3040" />
+                                    <Setter Property="Foreground" Value="{StaticResource TextFaintBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Secondary/outline button: matches the reference's "Отмена" button. -->
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Padding" Value="22,10" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush1}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bg" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Margin="{TemplateBinding Padding}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bg" Property="Background" Value="#14FFFFFF" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Ghost button for "change folder" - text-only, dim, brightens on hover. -->
+            <Style x:Key="GhostButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{StaticResource TextDimBrush}" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="Padding" Value="14,10" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush1}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bg" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8">
+                                <ContentPresenter Margin="{TemplateBinding Padding}"
+                                                  VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bg" Property="Background" Value="#14FFFFFF" />
+                                    <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Progress bar: rounded track, gradient fill - the reference's download bar. -->
+            <Style x:Key="AccentProgressBar" TargetType="ProgressBar">
+                <Setter Property="Height" Value="10" />
+                <Setter Property="Background" Value="#2A2333" />
+                <Setter Property="Foreground" Value="{StaticResource AccentGradient}" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ProgressBar">
+                            <Border CornerRadius="5" Background="{TemplateBinding Background}">
+                                <Grid ClipToBounds="True">
+                                    <Border x:Name="PART_Track" CornerRadius="5" />
+                                    <Border x:Name="PART_Indicator" CornerRadius="5"
+                                            Background="{TemplateBinding Foreground}"
+                                            HorizontalAlignment="Left" />
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
