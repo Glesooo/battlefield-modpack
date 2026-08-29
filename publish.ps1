@@ -87,7 +87,13 @@ function Sync-BinaryFolder {
     })
 
     foreach ($f in $liveFiles) {
-        $localHash = (Get-FileHash $f.FullName -Algorithm SHA256).Hash
+        # -LiteralPath everywhere a real (possibly bracket/backtick-containing) filename is
+        # used: PowerShell's own -Path parameters wildcard-expand by default, so e.g.
+        # "...[1.20-1.20.5].jar" gets read as a character-class glob and silently matches
+        # nothing - the exact bug this project already hit once with Test-Path (see
+        # Libs/README.md history). Every cmdlet below is pinned to -LiteralPath/-Destination
+        # rather than relying on positional binding picking the literal-safe parameter.
+        $localHash = (Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash
         $existing = $tracked | Where-Object { $_.Filename -eq $f.Name } | Select-Object -First 1
 
         if ($existing -and $existing.Hash -and ($existing.Hash -ieq $localHash)) {
@@ -103,17 +109,17 @@ function Sync-BinaryFolder {
         $safeName = ($f.BaseName -replace '[^a-zA-Z0-9._-]', '_')
         $safeFileName = "$safeName$($f.Extension)"
         $tempCopy = Join-Path ([System.IO.Path]::GetTempPath()) $safeFileName
-        Copy-Item $f.FullName $tempCopy -Force
+        Copy-Item -LiteralPath $f.FullName -Destination $tempCopy -Force
 
         Write-Host "Uploading $($f.Name) (as $safeFileName) ..."
         try {
             gh release upload $AssetTag $tempCopy --repo $Repo --clobber
             if ($LASTEXITCODE -ne 0) { throw "gh release upload failed for $($f.Name)" }
         } finally {
-            Remove-Item $tempCopy -Force -ErrorAction SilentlyContinue
+            Remove-Item -LiteralPath $tempCopy -Force -ErrorAction SilentlyContinue
         }
 
-        if ($existing) { Remove-Item $existing.Meta -Force }
+        if ($existing) { Remove-Item -LiteralPath $existing.Meta -Force }
 
         $url = "https://github.com/$Repo/releases/download/$AssetTag/" + [uri]::EscapeDataString($safeFileName)
 
@@ -126,7 +132,7 @@ function Sync-BinaryFolder {
     foreach ($t in $tracked) {
         if ($liveNames -notcontains $t.Filename) {
             Write-Host "Removing $($t.Filename) (no longer present) ..."
-            Remove-Item $t.Meta -Force
+            Remove-Item -LiteralPath $t.Meta -Force
         }
     }
 }
@@ -157,17 +163,18 @@ function Sync-RawFolder {
     New-Item -ItemType Directory -Path $DstDir -Force | Out-Null
 
     # Clear stale content first so removals on the source side propagate, but never touch
-    # files owned by Sync-BinaryFolder.
-    Get-ChildItem $DstDir -Force | ForEach-Object {
+    # files owned by Sync-BinaryFolder. -LiteralPath throughout - see the comment in
+    # Sync-BinaryFolder on why (real filenames here aren't guaranteed glob-safe either).
+    Get-ChildItem -LiteralPath $DstDir -Force | ForEach-Object {
         if ($PreserveExtensions -contains $_.Extension) { return }
-        Remove-Item $_.FullName -Recurse -Force
+        Remove-Item -LiteralPath $_.FullName -Recurse -Force
     }
 
-    Get-ChildItem $SrcDir -Force | ForEach-Object {
+    Get-ChildItem -LiteralPath $SrcDir -Force | ForEach-Object {
         if ($_.PSIsContainer) {
-            Copy-Item $_.FullName -Destination $DstDir -Recurse -Force
+            Copy-Item -LiteralPath $_.FullName -Destination $DstDir -Recurse -Force
         } elseif ($ExcludeExtensions -notcontains $_.Extension) {
-            Copy-Item $_.FullName -Destination $DstDir -Force
+            Copy-Item -LiteralPath $_.FullName -Destination $DstDir -Force
         }
     }
 }
