@@ -94,20 +94,31 @@ function Sync-BinaryFolder {
             continue # unchanged
         }
 
-        Write-Host "Uploading $($f.Name) ..."
-        gh release upload $AssetTag $f.FullName --repo $Repo --clobber
-        if ($LASTEXITCODE -ne 0) { throw "gh release upload failed for $($f.Name)" }
+        # Filesystem-safe name for BOTH the uploaded asset and the metadata file - several
+        # jar/zip names in this pack have characters (backtick, brackets, +, spaces) that trip
+        # up either `gh release upload`'s own glob expansion (square brackets = a wildcard
+        # character class to it, so it just doesn't find the file) or packwiz's slug generator.
+        # Uploading a same-content temp copy under the sanitized name sidesteps both, rather
+        # than fighting each tool's own quoting/escaping rules.
+        $safeName = ($f.BaseName -replace '[^a-zA-Z0-9._-]', '_')
+        $safeFileName = "$safeName$($f.Extension)"
+        $tempCopy = Join-Path ([System.IO.Path]::GetTempPath()) $safeFileName
+        Copy-Item $f.FullName $tempCopy -Force
+
+        Write-Host "Uploading $($f.Name) (as $safeFileName) ..."
+        try {
+            gh release upload $AssetTag $tempCopy --repo $Repo --clobber
+            if ($LASTEXITCODE -ne 0) { throw "gh release upload failed for $($f.Name)" }
+        } finally {
+            Remove-Item $tempCopy -Force -ErrorAction SilentlyContinue
+        }
 
         if ($existing) { Remove-Item $existing.Meta -Force }
 
-        # Filesystem-safe metadata filename - several jar/zip names in this pack have
-        # characters (backtick, brackets, +, spaces) that would otherwise trip up packwiz's
-        # own slug generator.
-        $safeName = ($f.BaseName -replace '[^a-zA-Z0-9._-]', '_')
-        $url = "https://github.com/$Repo/releases/download/$AssetTag/" + [uri]::EscapeDataString($f.Name)
+        $url = "https://github.com/$Repo/releases/download/$AssetTag/" + [uri]::EscapeDataString($safeFileName)
 
         Push-Location $distRoot
-        & $packwiz url add $f.BaseName $url --meta-folder $MetaFolder --meta-name "$safeName.toml" -y
+        & $packwiz url add $f.BaseName $url --meta-folder $MetaFolder --meta-name $safeName -y
         Pop-Location
         if ($LASTEXITCODE -ne 0) { throw "packwiz url add failed for $($f.Name)" }
     }
