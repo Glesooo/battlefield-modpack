@@ -1,0 +1,8 @@
+name = "jsconf-1.1.1"
+filename = "jsconf-1.1.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/jsconf-1.1.1.jar"
+hash-format = "sha256"
+hash = "0719430e0404f55c8bebc2dff7a82416d8081eb9dc2944fda9575e71513144bd"

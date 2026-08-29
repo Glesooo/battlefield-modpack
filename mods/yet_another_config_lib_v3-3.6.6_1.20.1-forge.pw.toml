@@ -1,0 +1,8 @@
+name = "yet_another_config_lib_v3-3.6.6+1.20.1-forge"
+filename = "yet_another_config_lib_v3-3.6.6_1.20.1-forge.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/yet_another_config_lib_v3-3.6.6_1.20.1-forge.jar"
+hash-format = "sha256"
+hash = "bd05da3d9df29b914165583f1c6dfd918a138996447ff32c0418329824027a8f"

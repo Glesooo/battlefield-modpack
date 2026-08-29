@@ -1,0 +1,43 @@
+{
+  "tooltip": "xiaoxuekinfe.lr.melee.diamond_axe.desc",
+  "name": "xiaoxuekinfe.lr.melee.diamond_axe.name",
+  "type": "lrtactical:normal",
+  "base_item": "lrtactical:melee",
+  "data": {
+    "draw_time": 20,
+    "put_away_time": 0,
+    "attributes": {
+      "generic.attack_damage": 11,
+      "minecraft:generic.movement_speed": {
+        "amount": 0.05,
+        "operation": "percent"
+      }
+    },
+    "attack": {
+      "attack_left": {
+        "factor": 1,
+        "knockback": 0.25,
+        "cooldown": 8,
+        "delay": 2.8,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 4,
+          "max_angle": 110,
+          "exclude_self": true
+        }
+      },
+      "attack_right": {
+        "factor": 1.5,
+        "knockback": 0.3,
+        "cooldown": 17,
+        "delay": 8,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 4,
+          "max_angle": 50,
+          "exclude_self": true
+        }
+      }
+    }
+  }
+}

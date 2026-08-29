@@ -1,0 +1,8 @@
+name = "[Tacz1.1.7+]CIBR_GunsPack_v0.3_1.1.7"
+filename = "_Tacz1.1.7__CIBR_GunsPack_v0.3_1.1.7.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/_Tacz1.1.7__CIBR_GunsPack_v0.3_1.1.7.zip"
+hash-format = "sha256"
+hash = "40797ee6fc734de14e3065e80f85a61efa67207af9914d24084b3b680a8aba60"

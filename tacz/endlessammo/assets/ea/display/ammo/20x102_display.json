@@ -1,0 +1,20 @@
+{
+  "slot": "ea:ammo/slot/20x102",
+  "tracer_color": "#FF4732",
+  "shell": {
+    "model": "tacz:shell/50bmg_shell",
+    "texture": "tacz:shell/50bmg_shell"
+  },
+  "particle": {
+    "name": "mycelium",
+    "delta": [
+      0,
+      0,
+      0
+    ],
+    "speed": 0.0,
+    "life_time": 50,
+    "count": 75
+  }
+}
+    

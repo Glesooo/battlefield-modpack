@@ -1,0 +1,186 @@
+
+[fpv]
+
+	[fpv.controller]
+		#Enable joystick/gamepad input for FPV drone control. Keep disabled if you use only keyboard and mouse.
+		enabled = false
+		#If the device is recognized as a GLFW 'gamepad', use standard gamepad mapping; otherwise use raw joystick axes mapping.
+		preferGamepadMapping = true
+		#GLFW joystick id (0..15). Use -1 for auto-detect.
+		#Range: -1 ~ 15
+		joystickId = -1
+		#Deadzone for pitch/roll/yaw (0..0.5).
+		#Range: 0.0 ~ 0.5
+		deadzone = 0.08
+		#Throttle smoothing per tick (0 = instant, 1 = very slow).
+		#Range: 0.0 ~ 1.0
+		throttleSlew = 0.25
+		#Gamepad throttle source. LEFT_STICK_Y mimics FPV Mode 2; RIGHT_TRIGGER mimics common game controls.
+		#Allowed Values: LEFT_STICK_Y, RIGHT_TRIGGER
+		gamepadThrottleMode = "RIGHT_TRIGGER"
+
+	[fpv.rawMapping]
+		#Raw joystick axis index for roll.
+		#Range: 0 ~ 31
+		rollAxis = 0
+		#Raw joystick axis index for pitch.
+		#Range: 0 ~ 31
+		pitchAxis = 1
+		#Raw joystick axis index for yaw.
+		#Range: 0 ~ 31
+		yawAxis = 3
+		#Raw joystick axis index for throttle.
+		#Range: 0 ~ 31
+		throttleAxis = 2
+		#Invert roll axis.
+		invertRoll = false
+		#Invert pitch axis (typical when pushing stick up gives negative values).
+		invertPitch = true
+		#Invert yaw axis (to match default keyboard mapping where positive yaw means 'left').
+		invertYaw = true
+		#Invert throttle axis before mapping [-1..1] -> [0..1].
+		invertThrottle = true
+		#Raw joystick button index used for arm/disarm toggle.
+		#Range: 0 ~ 63
+		armButton = 0
+
+	[fpv.camera]
+		#Force first person camera while controlling FPV drone.
+		forceFirstPerson = true
+		#Force custom FOV while controlling FPV drone.
+		forceFov = true
+		#FPV camera FOV when forceFov is enabled.
+		#Range: 30 ~ 170
+		fov = 110
+		#Mouse sensitivity multiplier for FPV pitch and roll control.
+		#Range: 0.001 ~ 0.1
+		mouseSensitivity = 0.015
+		#Enable mouse look input while controlling FPV drone.
+		mouseLookEnabled = true
+		#When controller is present, controller pitch/roll/yaw override keyboard and mouse.
+		controllerPriority = true
+		#Send release packet when pause menu is opened.
+		releaseOnPause = true
+		#Suppress hotbar keys while camera is attached to FPV drone.
+		suppressSpectatorHotbarKeys = true
+		#Enable FPV post processing shader effects.
+		postShaderEnabled = true
+		#Time scale multiplier for FPV post shader animation.
+		#Range: 0.0 ~ 1.0
+		postShaderTimeScale = 0.02
+		#Draw custom FPV HUD overlay.
+		hudEnabled = true
+		#Hide vanilla HUD while controlling FPV drone.
+		hideVanillaHud = true
+		#Hide hand rendering while controlling FPV drone.
+		hideHand = true
+
+	[fpv.render]
+		#Additional FPV render distance cap in blocks when frustum fallback is used.
+		#Range: 64 ~ 10000
+		renderDistanceCap = 256
+
+	[fpv.audio]
+		#Use local FPV entity audio with Doppler, low-pass filtering, and interior sound while controlling.
+		useLocalEntityAudio = true
+		#Maximum distance in blocks at which local FPV engine sound can be heard. Set to 0 for no limit.
+		#Range: 0.0 ~ 5000.0
+		soundMaxDistance = 250.0
+
+[shahed]
+
+	[shahed.render]
+		#Additional Shahed render distance cap in blocks when frustum fallback is used.
+		#Range: 64 ~ 10000
+		renderDistanceCap = 2000
+		#Enable client side Shahed ghost rendering outside normal entity tracking.
+		ghostRenderEnabled = true
+		#Maximum distance in blocks to draw Shahed ghost render.
+		#Range: 128.0 ~ 20000.0
+		ghostRenderRange = 10000.0
+		#How long to keep ghost state without updates.
+		#Range: 1 ~ 1200
+		ghostTimeoutTicks = 60
+		#Render Shahed ghost with full brightness.
+		ghostRenderFullBright = true
+
+	[shahed.audio]
+		#Use local Shahed entity audio system on client. Disable to use only remote audio packets.
+		useLocalEntityAudio = true
+		#Local Shahed engine activity threshold.
+		#Range: 0.0 ~ 1.0
+		localAudioActiveThreshold = 0.02
+		#Maximum distance in blocks at which local Shahed engine sound can be heard. Set to 0 for no limit.
+		#Range: 0.0 ~ 5000.0
+		soundMaxDistance = 1000.0
+
+	[shahed.monitor]
+		#How long status packets are considered fresh in Shahed monitor UI.
+		#Range: 100 ~ 30000
+		statusFreshnessMs = 2000
+		#Interval in ticks between Shahed monitor control packets.
+		#Range: 1 ~ 20
+		controlIntervalTicks = 1
+		#Maximum control distance from player to Shahed in blocks.
+		#Range: 128.0 ~ 20000.0
+		controlMaxDistance = 10000.0
+		#Distance in blocks at which monitor distance noise reaches maximum.
+		#Range: 128.0 ~ 20000.0
+		noiseMaxDistance = 10000.0
+		#Maximum opacity contributed by distance based monitor noise.
+		#Range: 0.0 ~ 1.0
+		noiseMaxOpacity = 0.5
+		#Maximum jammer radius in blocks.
+		#Range: 32.0 ~ 5000.0
+		jammerMaxRadius = 600.0
+		#Jammer radius in blocks where effect is full strength.
+		#Range: 0.0 ~ 5000.0
+		jammerFullStrengthRadius = 300.0
+		#Remaining jammer strength at max radius.
+		#Range: 0.0 ~ 1.0
+		jammerEdgeStrength = 0.01
+		#Thrust delta step applied each control tick.
+		#Range: 0.0 ~ 1.0
+		thrustDeltaStep = 0.02
+		#Enable monitor camera shake from thrust and dive speed.
+		cameraShakeEnabled = true
+		#Engine shake multiplier.
+		#Range: 0.0 ~ 10.0
+		engineShakeScale = 1.2
+		#Vertical speed threshold for dive shake in m/s.
+		#Range: 0.0 ~ 200.0
+		diveSpeedThreshold = 15.0
+		#Vertical speed range over threshold used to ramp dive shake.
+		#Range: 0.01 ~ 200.0
+		diveSpeedRange = 40.0
+		#Dive shake multiplier.
+		#Range: 0.0 ~ 10.0
+		diveShakeScale = 2.5
+		#Draw mini drone preview in monitor overlay.
+		previewEnabled = true
+		#Draw center reticle in monitor overlay.
+		reticleEnabled = true
+
+[droneAudio]
+	#Enable remote drone audio packets.
+	remoteEnabled = true
+	#Mute remote FPV audio when the FPV entity is locally loaded to avoid duplicates.
+	muteRemoteFpvWhenLoaded = true
+	#Mute remote Shahed audio when the Shahed entity is locally loaded.
+	muteRemoteShahedWhenLoaded = true
+	#Volume scale multiplier for remote drone audio packets.
+	#Range: 0.0 ~ 4.0
+	remoteVolumeScale = 1.0
+	#Ticks after last remote loop update before sound stops.
+	#Range: 1 ~ 600
+	loopTimeoutTicks = 40
+	#Smoothing factor for remote loop volume.
+	#Range: 0.0 ~ 1.0
+	loopVolumeLerp = 0.35
+	#Smoothing factor for remote loop pitch.
+	#Range: 0.0 ~ 1.0
+	loopPitchLerp = 0.25
+	#Stop remote loop when volume is below epsilon and target is zero.
+	#Range: 0.0 ~ 1.0
+	stopVolumeEpsilon = 0.001
+

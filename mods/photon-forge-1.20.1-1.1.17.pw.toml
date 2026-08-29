@@ -1,0 +1,8 @@
+name = "photon-forge-1.20.1-1.1.17"
+filename = "photon-forge-1.20.1-1.1.17.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/photon-forge-1.20.1-1.1.17.jar"
+hash-format = "sha256"
+hash = "3bd09a759744e9e3b3e7315eaafa9dcd27945ef13331148e8b8169950560e5fb"

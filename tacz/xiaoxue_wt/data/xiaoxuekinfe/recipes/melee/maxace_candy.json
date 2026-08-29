@@ -1,0 +1,33 @@
+{
+  "type": "tacz:gun_smith_table_crafting",
+  "materials": [
+    {
+      "item": {
+        "tag": "forge:ingots/iron"
+      },
+      "count": 16
+    },
+    {
+      "item": {
+        "tag": "forge:ingots/gold"
+      },
+      "count": 8
+    },
+    {
+      "item": {
+        "tag": "forge:dyes/pink"
+      },
+      "count": 2
+    },
+    {
+      "item": {
+        "tag": "forge:dyes/light_blue"
+      },
+      "count": 1
+    }
+  ],
+  "result": {
+    "type": "lr_melee",
+    "id": "xiaoxuekinfe:maxace_candy"
+  }
+}

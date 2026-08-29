@@ -1,0 +1,35 @@
+
+[render]
+	#Disable rendering of weapons in other player's hands (except your own)
+	DisableOtherPlayersWeaponRender = false
+	#Disable rendering of your own bullets/projectiles
+	DisableOwnBulletRender = false
+	#Disable rendering of other player's bullets/projectiles (including tracers)
+	DisableOtherPlayersBulletRender = false
+	#Disable rendering of attachments/modules on other player's weapons
+	DisableOtherPlayersAttachmentsRender = true
+	#Disable rendering of 3D ejected shell casings
+	DisableShellRender = false
+	#Maximum number of ejected shells in memory (default 32, max 128)
+	#Range: 0 ~ 128
+	MaxShellQueueSize = 32
+	#Maximum distance in blocks to spawn bullet trail particles (0 to disable particle culling)
+	#Range: 0.0 ~ 256.0
+	ParticleCullingDistance = 48.0
+	#Maximum lifetime in ticks for bullet hole decal particles (default 100 ticks = 5s, 0 to keep default)
+	#Range: 0 ~ 1200
+	BulletHoleMaxLifetime = 100
+	#Maximum active bullet hole decal particles on screen (default 32, 0 to disable limit)
+	#Range: 0 ~ 500
+	MaxBulletHoleCount = 32
+
+[gui]
+	#Disable Gun HUD overlay (ammo count, fire mode, etc.)
+	DisableGunHudOverlay = false
+	#Disable Heat Bar overlay
+	DisableHeatBarOverlay = false
+	#Disable Kill Amount overlay
+	DisableKillAmountOverlay = true
+	#Disable Interact Key text overlay
+	DisableInteractKeyOverlay = true
+

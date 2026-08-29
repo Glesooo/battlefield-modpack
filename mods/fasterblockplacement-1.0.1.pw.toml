@@ -1,0 +1,8 @@
+name = "fasterblockplacement-1.0.1"
+filename = "fasterblockplacement-1.0.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/fasterblockplacement-1.0.1.jar"
+hash-format = "sha256"
+hash = "0cab53c657b7c317903f165560e320bbab164faf0b036c1dcd43259dee558de0"

@@ -1,0 +1,8 @@
+name = "leaningornot-1.20.1-0.3.5-BETA"
+filename = "leaningornot-1.20.1-0.3.5-BETA.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/leaningornot-1.20.1-0.3.5-BETA.jar"
+hash-format = "sha256"
+hash = "f777f326921a68b70025fd19f367f6e9d1526aa32b6a8225334dcf575000d058"

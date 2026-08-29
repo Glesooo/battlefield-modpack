@@ -1,0 +1,8 @@
+name = "Gunfire Overhaul-0.1.6-a"
+filename = "Gunfire_Overhaul-0.1.6-a.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Gunfire_Overhaul-0.1.6-a.jar"
+hash-format = "sha256"
+hash = "dab997ea3593b110f8220abd4a90038e0a431cac5900a6ec60f6f2212fca9aa6"

@@ -1,0 +1,16 @@
+{
+  "nvgDurationTicks": 6000,
+  "thermalDurationTicks": 9000,
+  "hydroDurationTicks": 6000,
+  "biometricDurationTicks": 4500,
+  "modularDurationTicks": 6000,
+  "nvgColorTheme": 0,
+  "extraBatteryItems": [
+    "minecraft:iron_ingot|0.1",
+    "minecraft:copper_ingot|0.25"
+  ],
+  "showCoordinates": true,
+  "showSaturation": true,
+  "showOxygenCounter": true,
+  "showLowDurabilityWarning": true
+}

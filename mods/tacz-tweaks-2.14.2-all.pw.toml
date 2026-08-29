@@ -1,0 +1,8 @@
+name = "tacz-tweaks-2.14.2-all"
+filename = "tacz-tweaks-2.14.2-all.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/tacz-tweaks-2.14.2-all.jar"
+hash-format = "sha256"
+hash = "e0a9aeea1b764910fa4201391089759e338002c89a19a98b296f1c9f27fd836f"

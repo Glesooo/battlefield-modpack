@@ -1,0 +1,8 @@
+name = "RFP v1.0.8"
+filename = "RFP_v1.0.8.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/RFP_v1.0.8.zip"
+hash-format = "sha256"
+hash = "359c83622da3baf6f15daddc98e96778ca91d6a7cf099aa82e40cd448e061196"

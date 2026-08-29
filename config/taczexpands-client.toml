@@ -1,0 +1,18 @@
+
+["Visual Settings"]
+	#Enable custom rendering functions
+	enableRenderFunc = true
+	#Enable advanced rendering functions by default (attachment: advanced_rendering)
+	enableAdvancedRenderingByDefault = false
+	#Ammo HUD Fadeout Delay (ms)
+	#Range: > -2147483648
+	hudAmmoFadeOut = 0
+	#Enable advanced beam rendering function
+	enableAdvancedBeamRendering = true
+	#Show overheat bar by default (gun: show_overheat_bar)
+	showOverheatBarByDefault = true
+
+["Other Settings"]
+	#Show compatibility message on join
+	enableModsCompatibilityCheck = true
+

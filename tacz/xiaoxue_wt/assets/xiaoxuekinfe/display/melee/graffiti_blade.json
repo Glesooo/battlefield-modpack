@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/graffiti_blade_geo",
+  "animation": "xiaoxuekinfe:melee/graffiti_blade",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/graffiti_blade_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/graffiti_blade",
+  "slot_texture": "xiaoxuekinfe:melee/slot/graffiti_blade"
+}

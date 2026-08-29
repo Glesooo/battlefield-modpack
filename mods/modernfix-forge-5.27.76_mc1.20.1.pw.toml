@@ -1,0 +1,8 @@
+name = "modernfix-forge-5.27.76+mc1.20.1"
+filename = "modernfix-forge-5.27.76_mc1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/modernfix-forge-5.27.76_mc1.20.1.jar"
+hash-format = "sha256"
+hash = "5128b3b54440a1c8a80ca4d1aa608b29ee1763a29ede73117d9bab74976e8b4c"

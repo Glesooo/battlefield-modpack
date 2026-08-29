@@ -1,0 +1,12 @@
+#TaczCreativeSupplement Common Configuration
+#Used by dedicated servers where CLIENT config is not available.
+#On single-player / LAN, CLIENT config takes priority over this.
+#Enable or disable the attachment supplement feature on the server.
+enableCreativeSupplement = true
+#Which game mode(s) the feature applies to on the server.
+#CREATIVE = Creative mode only (default)
+#SURVIVAL = Survival mode only
+#BOTH = Both Creative and Survival modes
+#Allowed Values: CREATIVE, SURVIVAL, BOTH
+gameMode = "CREATIVE"
+

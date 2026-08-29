@@ -1,0 +1,46 @@
+#Toggle the TacticalDustFX mod on or off.
+enabled = true
+#Block resource locations that should spawn dust on projectile impact.
+triggerBlocks = ["minecraft:stone", "minecraft:sand", "minecraft:red_sand", "minecraft:dirt", "minecraft:gravel"]
+#Base particle count for dust impacts.
+#Range: 1 ~ 100
+particleCount = 5
+#Base lifetime (in ticks) for dust particles when outdoors.
+#Range: 10 ~ 200
+particleLifetimeTicks = 10
+#Initial particle speed in blocks per tick.
+#Range: 0.05 ~ 0.5
+particleSpeed = 0.5
+#Multiplier applied to particle properties when the impact happens indoors.
+#Range: 1.0 ~ 3.0
+indoorMultiplier = 2.0
+#Multiplier applied to particle properties when the impact happens outdoors.
+#Range: 0.5 ~ 2.0
+outdoorMultiplier = 1.0
+#Enable wind calculations that influence dust particles.
+windEnabled = true
+#Reduce visual fidelity for better performance (disables wind, sounds, layered dust).
+performanceMode = true
+#Enable layered dust accumulation on impacted surfaces.
+layeredDust = true
+#Lifetime in ticks for layered dust overlays (if enabled).
+#Range: 100 ~ 12000
+dustLayerTime = 120
+#Threshold FPS value under which the effect throttles itself.
+#Range: 10 ~ 120
+lowFpsThreshold = 30
+#Maximum number of TacticalDustFX particles allowed per chunk.
+#Range: 10 ~ 1000
+maxParticlesPerChunk = 30
+#Fraction of projectile events skipped when FPS drops below the threshold.
+#Range: 0.0 ~ 1.0
+lowFpsSkipRate = 0.5
+#Enable spark particles for metal blocks.
+sparksEnabled = true
+#Base spark particle count for metal impacts.
+#Range: 1 ~ 50
+sparkCount = 10
+#Base lifetime (in ticks) for spark particles.
+#Range: 5 ~ 30
+sparkLifetimeTicks = 10
+

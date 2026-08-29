@@ -1,0 +1,8 @@
+name = "invnaut-1.0-SNAPSHOT"
+filename = "invnaut-1.0-SNAPSHOT.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/invnaut-1.0-SNAPSHOT.jar"
+hash-format = "sha256"
+hash = "d2f4899c65225626282ba9acf7419c1f4f112ed250048a916eff1588e9fa454b"

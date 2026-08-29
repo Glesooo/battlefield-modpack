@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/baseball_bat_dagger_geo",
+  "animation": "xiaoxuekinfe:melee/baseball_bat_dagger",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/baseball_bat_dagger_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/baseball_bat_dagger",
+  "slot_texture": "xiaoxuekinfe:melee/slot/baseball_bat_dagger"
+}

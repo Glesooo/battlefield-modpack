@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/dagger_gold_geo",
+  "animation": "xiaoxuekinfe:melee/dagger_gold",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/dagger_gold_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/dagger_gold",
+  "slot_texture": "xiaoxuekinfe:melee/slot/dagger_gold"
+}

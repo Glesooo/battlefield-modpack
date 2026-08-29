@@ -1,0 +1,21 @@
+{
+  "type": "tacz:gun_smith_table_crafting",
+  "materials": [
+    {
+      "item": {
+        "tag": "forge:ingots/iron"
+      },
+      "count": 8
+    },
+    {
+      "item": {
+        "tag": "forge:dyes/yellow"
+      },
+      "count": 3
+    }
+  ],
+  "result": {
+    "type": "lr_melee",
+    "id": "xiaoxuekinfe:dingshuji"
+  }
+}

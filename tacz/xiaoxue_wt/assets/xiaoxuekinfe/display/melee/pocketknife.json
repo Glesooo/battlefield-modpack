@@ -1,0 +1,26 @@
+{
+  "model": "xiaoxuekinfe:melee/pocketknife_geo",
+  "animation": "xiaoxuekinfe:melee/pocketknife",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/pocketknife_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/pocketknife",
+  "slot_texture": "xiaoxuekinfe:melee/slot/pocketknife",
+  "transforms": {
+    "thirdperson_righthand": {
+      "rotation": [0, 90, 0],
+      "translation": [0, 5, 0.75],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, -90, 0],
+      "translation": [0, 5, 0.75],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "ground": {
+      "translation": [0, 9.75, 0],
+      "scale": [0.6, 0.6, 0.6]
+    },
+    "fixed": {
+      "translation": [0, 8, 0]
+    }
+  }
+}

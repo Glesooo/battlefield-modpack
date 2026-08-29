@@ -1,0 +1,25 @@
+
+[animation]
+	#Master toggle for chunk loading animations.
+	enabled = true
+	#How long each chunk's animation lasts, in milliseconds.
+	#Range: 1 ~ 5000
+	animationDurationMs = 250
+	#Initial X offset (in blocks) from which a freshly built chunk slides into place.
+	#Range: -64.0 ~ 64.0
+	startOffsetX = 0.0
+	#Initial Y offset (in blocks) from which a freshly built chunk slides into place. Negative values rise from below; positive values drop from above.
+	#Range: -64.0 ~ 64.0
+	startOffsetY = -16.0
+	#Initial Z offset (in blocks) from which a freshly built chunk slides into place.
+	#Range: -64.0 ~ 64.0
+	startOffsetZ = 0.0
+	#Easing curve applied to the animation progress. CUBIC_OUT is the default.
+	#Allowed Values: LINEAR, QUAD_OUT, CUBIC_OUT, QUART_OUT, QUINT_OUT, SINE_OUT, EXPO_OUT, CIRC_OUT, BACK_OUT, BOUNCE_OUT
+	easing = "CUBIC_OUT"
+	#If true, chunks within 'playerRadius' blocks of the player do not animate.
+	disableAroundPlayer = false
+	#Radius (in blocks) around the player within which animation is suppressed when 'disableAroundPlayer' is true.
+	#Range: 0 ~ 512
+	playerRadius = 64
+

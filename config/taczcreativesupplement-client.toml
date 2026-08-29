@@ -1,0 +1,10 @@
+#TaczCreativeSupplement Client Configuration
+#Enable or disable the attachment supplement feature entirely.
+enableCreativeSupplement = true
+#Which game mode(s) the feature applies to.
+#CREATIVE = Creative mode only (default)
+#SURVIVAL = Survival mode only
+#BOTH = Both Creative and Survival modes
+#Allowed Values: CREATIVE, SURVIVAL, BOTH
+gameMode = "CREATIVE"
+

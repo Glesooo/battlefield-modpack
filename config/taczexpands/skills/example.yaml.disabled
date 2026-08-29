@@ -1,0 +1,562 @@
+Name: "example"
+Lore: "test"
+Guns:
+- "tacz:ak47"
+Attachments:
+- "tacz:attachment"
+Trigger: "ON_ACTION_1"
+Flags:
+  TriggerProbability: 100
+  CooldownGroup: null
+  Cooldown: 0
+  KeepCheckTimes: 0
+  BypassFirstConditionCheck: false
+  Frequency: 0
+  RepeatTimes: 0
+  RepeatDelay: 0
+  ConditionExpression: "ALL_TRUE"
+  ReverseTriggerConditions:
+  - "NEED_TRIGGER_ONCE"
+  UseRegex: false
+  StrictSourceMode: true
+Conditions:
+- !<TargetIsPlayer>
+  is: true
+- !<TargetIsEntities>
+  entities:
+  - "minecraft:zombie"
+- !<SelfStandsOn>
+  blocks:
+  - "minecraft:dirt"
+  - "#minecraft:door"
+- !<HitBlockType>
+  blocks:
+  - "minecraft:dirt"
+  - "#minecraft:door"
+- !<Weather>
+  weathers:
+  - "thunder"
+  - "rain"
+  - "none"
+- !<Biome>
+  biomes:
+  - "minecraft:.*"
+  useRegex: true
+- !<Time>
+  range: "0.."
+- !<HasItem>
+  items:
+  - item: "minecraft:dirt"
+    count: 1
+    nbt: []
+- !<HasEffect>
+  effects:
+  - effect: "minecraft:saturation"
+    timeRange: "0.."
+- !<HasItem>
+  items:
+  - item: "minecraft:dirt"
+    count: 1
+    nbt: []
+- !<BulletFlyingTime>
+  range: "0.."
+- !<Variables>
+  variables:
+  - name: null
+    range: null
+    expression: null
+  selector: null
+- !<AmmoType>
+  types:
+  - "tacz:.*"
+  useRegex: true
+- !<IsBraced>
+  is: true
+- !<SignalState>
+  signal: "name"
+  range: "0.."
+- !<WorldType>
+  names: []
+  types: []
+  useRegex: false
+- !<HasAttachment>
+  attachments:
+  - "tacz:.*"
+  useRegex: true
+- !<EntityInRange>
+  types:
+  - "minecraft:.*"
+  range: 16.0
+  tags: null
+  useRegex: true
+- !<DamageType>
+  types:
+  - "minecraft:.*"
+  useRegex: true
+- !<HasPermission>
+  node: "taczexpands.test"
+- !<Chain>
+  conditions: []
+  from: null
+- !<ArmorType>
+  slot: 0
+  types:
+  - "minecraft:.*"
+  useRegex: true
+- !<AmmoCount>
+  range: "0.."
+- !<HasMod>
+  modId: "tacz"
+  range: "[1.0, )"
+  useRegex: false
+- !<IsChangeAttachment>
+  prev: "tacz:empty"
+  now: null
+  useRegex: false
+- !<HasNBT>
+  path: "GunId"
+  data: "tacz:example"
+  pathIsExpression: false
+  dataIsExpression: false
+Actions:
+- !<RunCommand>
+  command: "say 1"
+  commands: []
+  succeeded: null
+  failed: null
+  permission: 4
+  selector: null
+  args: null
+  delay: null
+- !<Modify>
+  params:
+  - name: "HP"
+    action: "set"
+    selector: null
+    expression:
+      expression: "20.0"
+      variables: {}
+      instant: false
+      cacheOnGet: false
+      target: null
+      self: null
+    entities: null
+  delay: null
+- !<Animation>
+  action: null
+  track: 0
+  name: ""
+  to: ""
+  blending: true
+  playMode: "once_stop"
+  transitionTime: 0.0
+  selector: null
+  volatile: null
+  delay: null
+- !<ParticleEmitter>
+  type: "minecraft:dust"
+  extraData: " "
+  mode: "BALL"
+  selector: null
+  x: ""
+  y: ""
+  z: ""
+  radius: 5.0
+  maxNum: 50
+  duration: 20
+  startDelay: 0
+  blockSight: true
+  gravity: 0.0
+  args: null
+  delay: null
+- !<Summon>
+  type: "minecraft:zombie"
+  selector: null
+  x: ""
+  y: ""
+  z: ""
+  nbt: "{}"
+  args: null
+  setOwner: true
+  delay: null
+- !<Effect>
+  action: "give"
+  type: null
+  selector: null
+  level: 0
+  time: 0
+  showParticle: true
+  showUI: true
+  showIcon: true
+  delay: null
+- !<FlashEmitter>
+  duration: 100
+  fadeIn: 4
+  fadeOut: 20
+  strength: 100
+  selector: null
+  delay: null
+- !<SudoAction>
+  action: "Inspect"
+  signal: 0
+  selector: null
+  delay: null
+- !<CancelAction>
+  action: "Sprint"
+  duration: 1
+  status: null
+  identifier: null
+  remove: false
+  selector: null
+  delay: null
+- !<CancelSkill>
+  skillName: "skill"
+  duration: 0
+  runRemainingTasks: false
+  selector: null
+  delay: null
+- !<RenderUtil>
+  name: "name"
+  visible: true
+  volatile: null
+  selector: null
+  delay: null
+- !<InvalidateCache>
+  name: null
+  selector: null
+  delay: null
+- !<CustomDisplay>
+  modelID: ""
+  textureID: ""
+  life: 40
+  animationID: ""
+  animationName: ""
+  animationDelay: 0
+  x: null
+  y: null
+  z: null
+  yaw: null
+  pitch: null
+  dimensionWidth: null
+  dimensionHeight: null
+  maxHealth: null
+  onDeath: null
+  deathAnimationName: null
+  entityName: null
+  immuneTable: null
+  immuneExceptPlayer: false
+  viewers: null
+  ambientSound: null
+  ambientSoundInterval: 70
+  selector: null
+  delay: null
+- !<Sound>
+  action: "play"
+  group: "default"
+  name: "tacz:dummy"
+  sourceType: "PLAYERS"
+  distance: 128
+  volume: 1.0
+  minVolume: 0.0
+  pitch: 1.0
+  useAudienceSource: false
+  sourceX: null
+  sourceY: null
+  sourceZ: null
+  mono: false
+  selector: null
+  delay: null
+- !<Message>
+  type: "chat"
+  message: ""
+  fadeIn: 0
+  stay: 20
+  fadeOut: 0
+  isRawJsonText: false
+  isExpression: false
+  selector: null
+  delay: null
+- !<Timer>
+  timeExpression:
+    expression: "0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  recalculateEveryTick: false
+  action:
+    actions: []
+    from: null
+    repeat: 0
+    repeatDelay: 0
+    delay: null
+  selector: null
+  delay: null
+- !<TriggerSignal>
+  signal: "name"
+  duration: 20
+  delay: null
+- !<SetLockingTarget>
+  fromRawSimpleMode: false
+  fromSimpleMode: false
+  target: null
+  selector: null
+  delay: null
+- !<SetLockingPos>
+  clear: false
+  fromSimpleMode: false
+  posX: "VarTargetPos[0]"
+  posY: "VarTargetPos[1]"
+  posZ: "VarTargetPos[2]"
+  selector: null
+  delay: null
+- !<Hurt>
+  type: "minecraft:damagetype"
+  modifier: "value"
+  amount:
+    expression: "1.0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  cooldownGroup: null
+  cooldown: 0
+  indirectFrom: null
+  directFrom: null
+  selector: null
+  delay: null
+- !<Ignite>
+  time: 5
+  extraDamage: 0.0
+  selector: null
+  delay: null
+- !<Frostbite>
+  time: 5
+  cancelWalk: true
+  cancelJump: true
+  cancelRotation: true
+  showOverlay: true
+  selector: null
+  delay: null
+- !<Chain>
+  actions: []
+  from: null
+  repeat: 0
+  repeatDelay: 0
+  delay: null
+- !<Branch>
+  chainCondition:
+    conditions: []
+    from: null
+  succeeded: null
+  failed: null
+  delay: null
+- !<ForceFire>
+  mode: "shoot"
+  triggerAnimation: true
+  selector: null
+  delay: null
+- !<Shake>
+  stop: false
+  amplitudeYRot: 0.0
+  amplitudeXRot: 0.0
+  durationMillis: 20
+  frequencyHz: 0.5
+  randomness: 0.1
+  dynamicPhaseOffset: true
+  phaseOffsetYRot: null
+  phaseOffsetXRot: null
+  selector: null
+  delay: null
+- !<ForceRotation>
+  yaw: 0.0
+  pitch: 0.0
+  relative: false
+  selector: null
+  delay: null
+- !<SetAmmoType>
+  index: null
+  ammoType: "tacz:9mm"
+  selector: null
+  delay: null
+- !<GenerateBullet>
+  gunId: "tacz:ak47"
+  shooter: null
+  x: ""
+  y: ""
+  z: ""
+  yaw: ""
+  pitch: ""
+  inaccuracy: ""
+  isTracer: false
+  bypassSpawnTrigger: false
+  soundDistance: 32
+  silenceSound: false
+  setLockingTarget: false
+  missileTarget: null
+  isTV: false
+  args: null
+  delay: null
+- !<MythicMobsSkill>
+  name: "skill"
+  caster: null
+  parameters: null
+  args: null
+  delay: null
+- !<SetAttachment>
+  slot: "grip"
+  id: "example:grip_id"
+  remove: false
+  enforce: false
+  selector: null
+  delay: null
+- !<SetTexture>
+  id: "example:textures/gun.png"
+  selector: null
+  delay: null
+- !<SetCamera>
+  paths: []
+  lockMove: true
+  lockRotate: true
+  selector: null
+  delay: null
+- !<NBTEdit>
+  action: "merge"
+  path: "{}"
+  pathIsExpression: false
+  index: 0
+  data: "{\"example\": \"data\"}"
+  dataIsExpression: false
+  unsafeModifySelf: false
+  selector: null
+  delay: null
+- !<NBTEdit>
+  action: "set"
+  path: "GunId"
+  pathIsExpression: false
+  index: 0
+  data: "\"tacz:example_gun\""
+  dataIsExpression: false
+  unsafeModifySelf: false
+  selector: null
+  delay: null
+- !<NBTEdit>
+  action: "remove"
+  path: "AttachmentSCOPE.tag"
+  pathIsExpression: false
+  index: 0
+  data: ""
+  dataIsExpression: false
+  unsafeModifySelf: false
+  selector: null
+  delay: null
+- !<NBTEdit>
+  action: "insert"
+  path: "BlockEntityTag.Items"
+  pathIsExpression: false
+  index: 0
+  data: "{\"Slot\": 0, \"id\": \"minecraft:diamond\", \"Count\": 1}"
+  dataIsExpression: false
+  unsafeModifySelf: false
+  selector: null
+  delay: null
+- !<Dash>
+  mode: "ground_follow"
+  yaw:
+    expression: "Pos[3]"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  pitch:
+    expression: "Pos[4]"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  speed:
+    expression: "2.0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  drag:
+    expression: "0.95"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  applyEnvironmentModifiers: true
+  impactDamage:
+    expression: "1.0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  selfImpactDamage:
+    expression: "1.0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  damageType: "minecraft:in_wall"
+  selector: null
+  delay: null
+- !<SetHUD>
+  identifier: null
+  renderSpace: "screen"
+  alignment: "center"
+  x:
+    expression: "0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  y:
+    expression: "0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  z:
+    expression: "0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  scale:
+    expression: "1.0"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  text: null
+  imagePath: null
+  imageWidth: 256
+  imageHeight: 256
+  remove: false
+  selector: null
+  delay: null
+- !<DisableItem>
+  time:
+    expression: "100"
+    variables: {}
+    instant: false
+    cacheOnGet: false
+    target: null
+    self: null
+  selector: null
+  delay: null
+ReverseActions: null

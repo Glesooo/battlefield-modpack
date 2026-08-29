@@ -1,0 +1,8 @@
+name = "snassets_particles-1.0.1"
+filename = "snassets_particles-1.0.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/snassets_particles-1.0.1.jar"
+hash-format = "sha256"
+hash = "4b43ef096628cfdd33884180ca4d70d69d0077b742c854368d4e5803e8ae6dca"

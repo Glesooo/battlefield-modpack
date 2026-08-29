@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "positionMainX": 0.158,
+  "positionMainY": -0.085,
+  "positionMainZ": -0.12,
+  "rotationMainX": 0.0,
+  "rotationMainY": 0.0,
+  "rotationMainZ": 0.0,
+  "rotationOffX": 0.0,
+  "rotationOffY": 0.0,
+  "rotationOffZ": 0.0,
+  "enabledArm": false,
+  "rotationArmX": 0.0,
+  "rotationArmY": 0.0,
+  "rotationArmZ": 0.0,
+  "positionArmX": 0.0,
+  "positionArmY": 0.0,
+  "positionArmZ": 0.0,
+  "enabledSpecial": false,
+  "nohands": false,
+  "hand1f": false,
+  "nearPlane": 0.05
+}

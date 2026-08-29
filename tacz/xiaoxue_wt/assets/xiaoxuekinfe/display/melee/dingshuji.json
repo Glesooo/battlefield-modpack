@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/dingshuji_geo",
+  "animation": "xiaoxuekinfe:melee/dingshuji",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/dingshuji_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/dingshuji",
+  "slot_texture": "xiaoxuekinfe:melee/slot/dingshuji"
+}

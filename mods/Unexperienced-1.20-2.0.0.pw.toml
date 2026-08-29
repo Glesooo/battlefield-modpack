@@ -1,0 +1,8 @@
+name = "Unexperienced-1.20-2.0.0"
+filename = "Unexperienced-1.20-2.0.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Unexperienced-1.20-2.0.0.jar"
+hash-format = "sha256"
+hash = "27e7dea9a7ac98c762a398e49934e5796fe90c82f99ce482d12e1ef1dfa61a39"

@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/werewolf_geo",
+  "animation": "xiaoxuekinfe:melee/werewolf",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/werewolf_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/werewolf",
+  "slot_texture": "xiaoxuekinfe:melee/slot/werewolf"
+}

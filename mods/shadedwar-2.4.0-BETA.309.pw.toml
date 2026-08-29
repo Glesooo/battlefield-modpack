@@ -1,0 +1,8 @@
+name = "shadedwar-2.4.0-BETA.309"
+filename = "shadedwar-2.4.0-BETA.309.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/shadedwar-2.4.0-BETA.309.jar"
+hash-format = "sha256"
+hash = "911106254e8e1689abf9b4e5ebd1f67a3d98c0e981b3558d6741785258419bba"

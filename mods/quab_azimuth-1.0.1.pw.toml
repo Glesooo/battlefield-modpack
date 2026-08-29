@@ -1,0 +1,8 @@
+name = "quab_azimuth-1.0.1"
+filename = "quab_azimuth-1.0.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/quab_azimuth-1.0.1.jar"
+hash-format = "sha256"
+hash = "f64e810e3c4644509b06171f411acfc2d4c4de772ec9d09def2bf7e51e9a2b94"

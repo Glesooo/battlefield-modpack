@@ -1,0 +1,8 @@
+name = "suppressionmod-1.1.1"
+filename = "suppressionmod-1.1.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/suppressionmod-1.1.1.jar"
+hash-format = "sha256"
+hash = "a300cce97ca128b5e97954f9fdb269f7de3b3478243e655279371e276fcb0896"

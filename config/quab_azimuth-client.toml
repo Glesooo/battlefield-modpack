@@ -1,0 +1,18 @@
+
+["Azimuth HUD"]
+	#Width of the compass bar in pixels.
+	#Range: 100 ~ 1000
+	barWidth = 320
+	#Height of the compass bar in pixels.
+	#Range: 4 ~ 60
+	barHeight = 13
+	#Vertical position of the compass bar from the top of the screen, in pixels.
+	#Range: 0 ~ 400
+	barY = 4
+	#How many degrees are visible on each side of the current facing direction.
+	#Range: 15 ~ 180
+	halfRange = 90
+	#Spacing between minor tick marks, in degrees.
+	#Range: 1 ~ 90
+	tickStep = 10
+

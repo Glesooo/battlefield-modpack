@@ -1,0 +1,21 @@
+{
+  "type": "tacz:gun_smith_table_crafting",
+  "materials": [
+    {
+      "item": {
+        "item": "minecraft:netherite_sword"
+      },
+      "count": 1
+    },
+    {
+      "item": {
+        "tag": "minecraft:iron_sword"
+      },
+      "count": 1
+    }
+  ],
+  "result": {
+    "type": "lr_melee",
+    "id": "xiaoxuekinfe:ironnether_sword"
+  }
+}

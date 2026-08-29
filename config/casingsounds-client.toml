@@ -1,0 +1,68 @@
+
+[sound]
+	#Casing sound volume
+	#Range: 0.0 ~ 2.0
+	volume = 0.8
+	#Ticks between the shot and the casing hitting the ground (20 = 1s)
+	#Range: 0 ~ 40
+	delay_ticks = 8
+	#Sound category for ammo not listed below: small, pistol, rifle, or none
+	fallback_sound = "rifle"
+	#Ammo ids (path only, no namespace) using the small (.22-class) casing sound
+	small_ammo = ["22wmr", ".22wmr", "22lr", ".22lr", "17hmr", "22hornet", "27kolibri", "46x30", "57x28", "556x30", "58x21", "4.73x33mm", "6x35mm", "75fk", "32acp", "8x22", "30mauser", "7.65x20mm"]
+	#Ammo ids using the pistol (9mm-class) casing sound
+	pistol_ammo = ["9mm", "9x18", "9x19", "9x21", "762x25", "357mag", "357sig", "380auto", "40sw", "44magnum", "44special", "45acp", "acp45", "454casull", "50ae", "50gi", "500", "500mag", "10mm", "366tkm", "train_9mm"]
+	#Ammo ids using the rifle (.30-06-class) casing sound
+	rifle_ammo = ["30_06", "308", "300blk", "300winmag", "3030win", "338", "338arc", "338norma", "545x39", "556x45", "58x42", "68x51fury", "68tvcm", "6.8tvcm", "762x39", "762x51", "762x54", "792x57", "792x33", "86blk", "9x39", "9x39mm", "65creedmoor", "65x50", "65x48", "6arc", "224valkyrie", "458socom", "458winmag", "458hamr", "50beowulf", "366magnum", "408cheytac", ".408ct", "416barrett", "50bmg", "127x55", "127x108", "12.7x55", "12.7x108mm", "145x114", "14.5x114mm", "20x102", "950jdj", ".600ne", "602x41", "80", "8mm", "train_556x45"]
+	#Ammo ids that never play a casing sound (plastic hulls, caseless, launchers). They still eject a 3D shell if the gun pack defines one.
+	silent_ammo = ["12g", "12g_db", "12g_fl", "10g", "20g", "4g", "410bore", "18.4", "slug", "boomstickshot", "bean_bag", "40mm", "daffas_40mm", "35mm", "35x32mm", "30x29vog", "120mm", "23mm", "rpg_rocket", "68pepperball", "nails", "laser", "water", "elektrikal", "battery", "bannana", "can_blanks", "avada", "error"]
+
+[shell]
+	#Eject a physical 3D shell casing that falls to the ground and lies there. Uses the gun pack's own shell model for that caliber; purely cosmetic, cannot be picked up.
+	drop_shell = true
+	#How long a landed shell stays visible, in seconds
+	#Range: 1 ~ 300
+	shell_lifetime_seconds = 15
+	#Maximum shells rendered at once; the oldest is dropped past this
+	#Range: 8 ~ 2048
+	max_shells = 192
+	#Size multiplier for the shell model. Raise/lower this if shells look too big or too small.
+	#Range: 0.05 ~ 10.0
+	shell_scale = 1.0
+	#Do not draw a still-flying shell closer than this many blocks to the camera.
+	#The gun pack's firing animation already ejects a shell in front of your face; this keeps
+	#ours out of view until it has flown clear. Landed shells always draw, whatever the distance.
+	#Range: 0.0 ~ 8.0
+	hide_within = 0.9
+	#Pitch a shell settles at once it lands, degrees. 0 lays it on its side;
+	#90 stands it on end. Change this if landed shells look wrong for your gun pack's models.
+	#Range: -180.0 ~ 180.0
+	shell_rest_pitch = 0.0
+	#Random wobble either side of shell_rest_pitch, degrees, so landed shells are not all identical
+	#Range: 0.0 ~ 90.0
+	shell_rest_random = 12.0
+	#Ejection speed of the shell (blocks per tick). Higher throws brass further from the shooter.
+	#Range: 0.0 ~ 3.0
+	eject_speed = 0.2
+	#Ejection direction weight to the shooter's right (negative = left)
+	#Range: -3.0 ~ 3.0
+	eject_right = 1.0
+	#Ejection direction weight upward
+	#Range: -3.0 ~ 3.0
+	eject_up = 0.4
+	#Ejection direction weight forward
+	#Range: -3.0 ~ 3.0
+	eject_forward = 0.05
+	#Random spread added to the ejection direction
+	#Range: 0.0 ~ 2.0
+	eject_random = 0.4
+	#Shell spawn offset forward from the eyes (blocks)
+	#Range: -2.0 ~ 2.0
+	spawn_forward = 0.15
+	#Shell spawn offset to the right of the eyes (blocks)
+	#Range: -2.0 ~ 2.0
+	spawn_side = 0.35
+	#Shell spawn offset up from the eyes (blocks, negative = below eye level)
+	#Range: -2.0 ~ 2.0
+	spawn_up = -0.15
+

@@ -1,0 +1,8 @@
+name = "fcp-1.2.1"
+filename = "fcp-1.2.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/fcp-1.2.1.jar"
+hash-format = "sha256"
+hash = "bf28ec2b31f3ffe18b7af0622d761775b99fab884882fcdb59c99ba77857c424"

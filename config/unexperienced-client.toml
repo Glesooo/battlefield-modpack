@@ -1,0 +1,9 @@
+
+[general]
+	#Should the exp bar be hidden?
+	hideBar = true
+	#Items that when held show the xp bar, when hideBar is true.
+	showBarItems = ["minecraft:experience_bottle"]
+	#Blocks that when hovered over show the xp bar, when hideBar is true.
+	showBarBlocks = ["minecraft:enchanting_table", "minecraft:anvil", "minecraft:grindstone"]
+

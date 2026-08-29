@@ -1,0 +1,7 @@
+{
+    "name": "maxstuff.gun.m1_garand.name",
+    "display": "maxstuff:m1_garand_display",
+    "data": "maxstuff:m1_garand_data",
+    "type": "rifle",
+    "sort": 2
+}

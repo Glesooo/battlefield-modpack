@@ -1,0 +1,9 @@
+{
+  "slot": "ea:ammo/slot/58x21",
+  "shell": {
+    "model": "tacz:shell/762x25_shell",
+    "texture": "tacz:shell/762x25_shell"
+  },
+  "tracer_color": "#ff775c"
+}
+    

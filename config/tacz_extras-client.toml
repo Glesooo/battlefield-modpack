@@ -1,0 +1,9 @@
+
+[controls]
+	#Automatically leave ADS when a reload begins.
+	reload_cancels_aim = false
+
+[debug]
+	#Do not render TACZ's headshot debug box when reduced debug information is enabled.
+	hide_head_hitbox_with_reduced_debug_info = true
+

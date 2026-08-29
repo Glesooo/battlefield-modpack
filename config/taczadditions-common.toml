@@ -1,0 +1,182 @@
+
+#TacZ Additions - Common Config
+#On a server these values are the server's: they are sent to each player on login
+#and override that player's own file until they disconnect.
+[common]
+	#If true, recoil recovery is enabled (Default in TaCZ). Disable to make recoil harder to control.
+	enableRecoilRecovery = true
+	#If false, muzzle flash will not be sent to clients.
+	enableMuzzleFlash = true
+	#Gun IDs that must not produce muzzle-flash light. This is enforced by the server.
+	#Use TaCZ gun IDs such as "tacz:ak47". Invalid resource locations are rejected.
+	muzzleFlashWeaponBlacklist = ["example:gun_id"]
+	#Gun IDs that TaCZ should always treat as silenced.
+	#Use this for integrated suppressors that do not expose TaCZ's silence modifier.
+	#This enables the gun's silenced sound and reduced muzzle-flash light.
+	#Guns without a silenced sound keep using their normal shot sound.
+	#Example: "tacz:example_integrally_suppressed_gun".
+	silencedGunIds = ["example:gun_id"]
+	#Optional per-gun muzzle-flash colors.
+	#Requires the Colorful Lighting: Sodium/Embeddium Edition mod on the client.
+	#Format: "gun_id=#RRGGBB". Example: "tacz:ak47=#FF8A33".
+	coloredMuzzleFlashGunColors = ["example:gun_id=#FF8A33"]
+	#Maximum ray trace distance for laser dot in blocks.
+	#Range: 1.0 ~ 500.0
+	laserDotMaxDistance = 100.0
+	#If true, the laser passes through blocks you can walk through, such as tall grass and flowers.
+	#Their selection box is far wider than the visible model, so the dot would otherwise
+	#hang in the empty gaps around the plant.
+	laserPassThroughNonCollidingBlocks = true
+	#Blocks the laser passes straight through instead of stopping on.
+	#Accepts block IDs such as "minecraft:glass" and block tags prefixed with "#",
+	#for example "#forge:glass".
+	laserPassThroughBlocks = ["#forge:glass", "#forge:glass_panes"]
+	#Blocks that always stop the laser, overriding both settings above.
+	#Defaults cover snow, which has no collision at one layer, and powder snow,
+	#which has none at all, so the laser would otherwise pass through solid-looking snow.
+	#Accepts block IDs and "#"-prefixed block tags.
+	laserBlockingBlocks = ["minecraft:snow", "minecraft:powder_snow"]
+	#Allow players to toggle equipped laser attachments with a keybind. If false, lasers are always on.
+	enableLaserToggle = true
+	#If true, guns firing above the RPM threshold will use light blocks instead of dynamic lights for more accurate muzzle flash timing.
+	forceBlockLightForFastGuns = true
+	#Guns firing at or above this RPM will use light blocks for muzzle flash when forceBlockLightForFastGuns is enabled.
+	#Range: 1 ~ 6000
+	fastGunRpmThreshold = 600
+	#Vertical recoil multiplier for pistols. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilPistolVertical = 1.0
+	#Vertical recoil multiplier for rifles. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilRifleVertical = 1.0
+	#Vertical recoil multiplier for snipers. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilSniperVertical = 1.0
+	#Vertical recoil multiplier for SMGs. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilSMGVertical = 1.0
+	#Vertical recoil multiplier for shotguns. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilShotgunVertical = 1.0
+	#Vertical recoil multiplier for RPGs. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilRPGVertical = 1.0
+	#Vertical recoil multiplier for MGs. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilMGVertical = 1.0
+	#Horizontal recoil multiplier for pistols. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilPistolHorizontal = 1.0
+	#Horizontal recoil multiplier for rifles. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilRifleHorizontal = 1.0
+	#Horizontal recoil multiplier for snipers. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilSniperHorizontal = 1.0
+	#Horizontal recoil multiplier for SMGs. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilSMGHorizontal = 1.0
+	#Horizontal recoil multiplier for shotguns. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilShotgunHorizontal = 1.0
+	#Horizontal recoil multiplier for RPGs. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilRPGHorizontal = 1.0
+	#Horizontal recoil multiplier for MGs. Negative values invert the recoil direction.
+	#Range: -10.0 ~ 10.0
+	recoilMGHorizontal = 1.0
+
+	[common.gunTuck]
+		#If true, the gun pitches up when close to a wall.
+		enableGunTuck = true
+		#Distance in blocks at which gun tuck begins. Drives both the visual tuck on
+		#clients and the bullet angle / fire block below, so every player uses this value.
+		#Range: 0.1 ~ 3.0
+		tuckDistance = 1.0
+		#Maximum pitch angle when fully tucked (degrees). Negative values invert the movement.
+		#Range: -90.0 ~ 90.0
+		maxAngle = 60.0
+		#Maximum Z pullback when fully tucked.
+		#Range: -5.0 ~ 5.0
+		maxTranslate = 1.0
+		#If true, bullets leave the barrel at an angle that follows the gun tuck.
+		tuckAffectsBulletAngle = true
+		#Pitch offset applied to bullets at full tuck (degrees, upward).
+		#Keep this equal to maxAngle above so shots follow the barrel players see.
+		#Negative values aim the shot downward instead.
+		#Range: -90.0 ~ 90.0
+		tuckBulletMaxAngle = 60.0
+		#If true, the gun cannot be fired once it is tucked past the threshold below.
+		blockFireWhenTucked = true
+		#Tuck amount (0 = not tucked, 1 = fully tucked) at which firing is blocked.
+		#1.0 is never reached in practice, so it effectively disables the block.
+		#Range: 0.05 ~ 1.0
+		tuckFireBlockThreshold = 0.5
+
+	[common.aiming]
+		#If true, jumping drops the player out of aim and aiming cannot be started mid-air.
+		#Ladders, water, vehicles, elytra flight and creative flight are not treated as airborne.
+		#With hold-to-aim the player re-aims automatically on landing if the key is still held.
+		disableAimingWhileAirborne = false
+
+	[common.variableZoom]
+		#Let scopes with several zoom levels be swept smoothly with the scroll wheel while aiming,
+		#instead of only toggling between the levels with the zoom key.
+		#Each authored level acts as a soft detent that briefly resists but can be scrolled past.
+		enabled = true
+		#While aiming a variable scope, the scroll wheel changes magnification instead of the hotbar slot.
+		#If false, magnification can only be changed with the zoom key.
+		#Fixed scopes, iron sights and hip fire always keep normal hotbar scrolling.
+		lockHotbarScroll = true
+		#Also apply variable zoom to guns whose scope is built into the gun rather than attached.
+		#TaCZ pins those to their first zoom level and its zoom key does nothing on them,
+		#so this makes integrated variable optics usable. Set false for stock TaCZ behaviour.
+		allowBuiltInScopes = true
+		#Upper limit on magnification, whatever a scope asks for. Raise it to disable the cap.
+		#Range: 1.0 ~ 100.0
+		maxMagnification = 50.0
+		#Scope IDs to always treat as one continuous range, merging every zoom level they define.
+		#Use this when a pack authors a real variable optic without marking its levels as one sight.
+		#Example: "tacz:scope_lpvo_1_6".
+		forceVariableScopes = ["example:scope_id"]
+		#Scope IDs to never sweep, keeping every zoom level a separate step.
+		#Use this for optics that switch between fixed settings rather than zooming, such as a 1x/4x switch.
+		#Example: "tacz:scope_elcan_4x".
+		forceFixedScopes = ["example:scope_id"]
+
+	[common.pipScope]
+		#Allow players to render scopes picture-in-picture, so the lens shows its own magnified
+		#image instead of the whole screen zooming in.
+		#Each player still picks the mode in their own client config; this only decides whether
+		#the server permits it at all. Set false to force every connected player back to the
+		#stock full-screen zoom.
+		enabled = true
+
+	[common.scopeSway]
+		#Enable subtle camera sway when aiming with high-magnification scopes (4x+)
+		enableScopeSway = true
+		#Maximum sway arc when scoped (degrees)
+		#Range: -1.0 ~ 1.0
+		strength = 0.01
+		#Seconds per full sway cycle
+		#Range: 1.0 ~ 120.0
+		speed = 40.2
+		#Minimum zoom level required before scope sway activates
+		#Range: 1.0 ~ 100.0
+		minZoom = 4.0
+		#Milliseconds to hold crouch to stabilize sway
+		#Range: 0.0 ~ 10000.0
+		crouchStabilizeTime = 3000.0
+		#Milliseconds of sporadic sway after stabilizing
+		#Range: 0.0 ~ 10000.0
+		crouchSporadicTime = 3000.0
+		#Milliseconds cooldown after sporadic phase before you can stabilize again
+		#Range: 0.0 ~ 20000.0
+		crouchCooldownTime = 8000.0
+		#Multiplier for sway strength during sporadic phase
+		#Range: -10.0 ~ 10.0
+		sporadicSwayStrength = 7.0
+		#Multiplier for sway speed during sporadic phase
+		#Range: 0.1 ~ 5.0
+		sporadicSwaySpeed = 0.3
+

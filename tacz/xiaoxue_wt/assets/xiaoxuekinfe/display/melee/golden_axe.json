@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/diamond_axe_geo",
+  "animation": "xiaoxuekinfe:melee/diamond_axe",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/diamond_axe_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/golden_axe",
+  "slot_texture": "xiaoxuekinfe:melee/slot/golden_axe"
+}

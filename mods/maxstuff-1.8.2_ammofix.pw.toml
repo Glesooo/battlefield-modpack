@@ -1,0 +1,8 @@
+name = "maxstuff-1.8.2_ammofix"
+filename = "maxstuff-1.8.2_ammofix.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/maxstuff-1.8.2_ammofix.jar"
+hash-format = "sha256"
+hash = "8f1d99b5d8901b382c76e00e146505cd155e25a102ad8ddb4a2ff57e1ceedbbe"

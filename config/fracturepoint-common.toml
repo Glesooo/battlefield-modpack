@@ -1,0 +1,20 @@
+#Extra helmets, from any mod, that can mount goggles and a battery (format: modid:item_name).
+#Fracture Point's own helmets are covered by the fracturepoint:can_have_goggles item tag;
+#this list is added on top of it, so a modded helmet listed here accepts goggles and a
+#battery, drains it, and drives the vision shaders exactly like one of ours. Goggles are
+#not rendered on modded helmets and they have no visor to raise.
+nvg_helmets = []
+#Enable faceplate overlay cutout for helmets with the faceplate tag
+enable_faceplate_overlay = false
+#Effects that are removed while Cure is active
+cure_canceled_effects = ["minecraft:poison", "minecraft:wither"]
+#Lift the light map to a minimum level while night or digital vision is active.
+#Goggles amplify existing light, so darkness mods like True Darkness that push light to
+#pure black leave nothing to amplify and the goggles look broken. This gives them a floor.
+#Thermal modes are not affected - they do not work off visible light.
+nvg_minimum_light = true
+#How much light that floor is, 0 (off) to 1 (fully lit). Raise it if a darkness mod
+#is still too dark through the goggles.
+#Range: 0.0 ~ 1.0
+nvg_minimum_light_level = 0.08
+

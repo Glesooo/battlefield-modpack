@@ -1,0 +1,8 @@
+name = "CAPS_Awim`s Tactical Equipment v3.0 1.20.1"
+filename = "CAPS_Awim_s_Tactical_Equipment_v3.0_1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/CAPS_Awim_s_Tactical_Equipment_v3.0_1.20.1.jar"
+hash-format = "sha256"
+hash = "870c1603f1d9c6ec2a942b1b701edb01faebc5c4c5bef6567bba1986d18643cf"

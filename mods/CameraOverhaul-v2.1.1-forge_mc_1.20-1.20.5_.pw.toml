@@ -1,0 +1,8 @@
+name = "CameraOverhaul-v2.1.1-forge+mc[1.20-1.20.5]"
+filename = "CameraOverhaul-v2.1.1-forge_mc_1.20-1.20.5_.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/CameraOverhaul-v2.1.1-forge_mc_1.20-1.20.5_.jar"
+hash-format = "sha256"
+hash = "af4f381a19c7ce39e019025955c2a9767b8b5c0d8b826d2975e60d9da466e492"

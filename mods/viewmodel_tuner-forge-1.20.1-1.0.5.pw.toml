@@ -1,0 +1,8 @@
+name = "viewmodel_tuner-forge-1.20.1-1.0.5"
+filename = "viewmodel_tuner-forge-1.20.1-1.0.5.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/viewmodel_tuner-forge-1.20.1-1.0.5.jar"
+hash-format = "sha256"
+hash = "f135d656568c541befd120923b33bfe4bb03fa6b6852c2d1a779041d50d5636d"

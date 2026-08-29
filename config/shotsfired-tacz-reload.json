@@ -1,0 +1,8 @@
+{
+  "TACZ_Reload": {
+    "tacz:db_long": {
+      "item": "minecraft:apple",
+      "chance": 50.0
+    }
+  }
+}

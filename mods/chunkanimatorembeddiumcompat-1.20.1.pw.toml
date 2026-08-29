@@ -1,0 +1,8 @@
+name = "chunkanimatorembeddiumcompat-1.20.1"
+filename = "chunkanimatorembeddiumcompat-1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/chunkanimatorembeddiumcompat-1.20.1.jar"
+hash-format = "sha256"
+hash = "040d609bfc81d663ebe05e8956fa3a10d5f68985f67576b47a40a7c74ce12568"

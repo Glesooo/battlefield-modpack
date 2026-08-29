@@ -1,0 +1,46 @@
+{
+  "tooltip": "xiaoxuekinfe.lr.melee.baseball_bat_dagger.desc",
+  "name": "xiaoxuekinfe.lr.melee.baseball_bat_dagger.name",
+  "type": "lrtactical:normal",
+  "base_item": "lrtactical:melee",
+  "data": {
+    "draw_time": 24,
+    "put_away_time": 14,
+    "max_durability": 0,
+    "enchantment_value": 15,
+    "attributes": {
+      "generic.attack_damage": 23,
+      "minecraft:generic.movement_speed": {
+        "amount": -0.1,
+        "operation": "percent"
+      }
+    },
+    "attack": {
+      "attack_left": {
+        "factor": 1,
+        "knockback": 1,
+        "cooldown": 16,
+        "delay": 7,
+        "durability_damage": 0,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 4,
+          "max_angle": 160,
+          "exclude_self": true
+        }
+      },
+      "attack_right": {
+        "factor": 3,
+        "knockback": 0.3,
+        "cooldown": 36,
+        "delay": 12,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 6,
+          "max_angle": 60,
+          "exclude_self": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+name = "FPV To Minecraft Beta-1.20.1-V1.1.8"
+filename = "FPV_To_Minecraft_Beta-1.20.1-V1.1.8.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/FPV_To_Minecraft_Beta-1.20.1-V1.1.8.jar"
+hash-format = "sha256"
+hash = "2e7e2bb7923232e79f4aee28513fff9f889c5ac2c2898ff80fe22d2ffd41ac61"

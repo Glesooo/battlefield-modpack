@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/shadowkiller_geo",
+  "animation": "xiaoxuekinfe:melee/shadowkiller",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/shadowkiller_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/shadowkiller",
+  "slot_texture": "xiaoxuekinfe:melee/slot/shadowkiller"
+}

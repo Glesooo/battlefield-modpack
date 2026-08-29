@@ -1,0 +1,8 @@
+name = "chatanimation-forge-1.3.0+mc1.20.1"
+filename = "chatanimation-forge-1.3.0_mc1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/chatanimation-forge-1.3.0_mc1.20.1.jar"
+hash-format = "sha256"
+hash = "5b5574687edf1e14a1cfcc34a68526148b098219c098d9030bebfcf458393b9c"

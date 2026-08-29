@@ -1,0 +1,7 @@
+{
+  "name": "maxstuff.attachment.scope_acog_canted.name",
+  "display": "maxstuff:scope_acog_canted_display",
+  "data": "maxstuff:scope_acog_canted_data",
+  "type": "scope",
+  "sort": 100
+}

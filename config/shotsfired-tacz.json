@@ -1,0 +1,16 @@
+{
+  "TACZ": {
+    "tacz:hk_mp5a5": {
+      "item": "minecraft:gold_ingot",
+      "chance": 50.0
+    },
+    "tacz:m700": {
+      "item": "minecraft:copper_ingot",
+      "chance": 50.0
+    },
+    "tacz:scar_l": {
+      "item": "minecraft:apple",
+      "chance": 50.0
+    }
+  }
+}

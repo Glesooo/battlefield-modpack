@@ -1,0 +1,8 @@
+name = "Suffuse-GunSmoke-Pack1.0.7--hotfix"
+filename = "Suffuse-GunSmoke-Pack1.0.7--hotfix.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Suffuse-GunSmoke-Pack1.0.7--hotfix.zip"
+hash-format = "sha256"
+hash = "db829e453f38ec5e91731b90ea48ea13b062e5bd936a12b27407cefba752e439"

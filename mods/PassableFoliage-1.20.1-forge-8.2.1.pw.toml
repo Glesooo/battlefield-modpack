@@ -1,0 +1,8 @@
+name = "PassableFoliage-1.20.1-forge-8.2.1"
+filename = "PassableFoliage-1.20.1-forge-8.2.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/PassableFoliage-1.20.1-forge-8.2.1.jar"
+hash-format = "sha256"
+hash = "15c215f1782c21f1ee1295eae3a5e96386eefc790247f5f32bd74893b967ec14"

@@ -1,0 +1,6 @@
+
+#LeaningOrNot client configuration settings
+[client]
+	#If true, lean key must be held; if false, lean key acts as a toggle.
+	holdLean = false
+

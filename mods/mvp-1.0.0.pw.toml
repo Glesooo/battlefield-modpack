@@ -1,0 +1,8 @@
+name = "mvp-1.0.0"
+filename = "mvp-1.0.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/mvp-1.0.0.jar"
+hash-format = "sha256"
+hash = "3ba14450668ca6eb0e36f92e7f410088d881bfb18e1bfa975f5ba27728e0fc9a"

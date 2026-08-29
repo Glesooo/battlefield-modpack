@@ -1,0 +1,94 @@
+
+#=== PartiCull V2 ===
+[Master]
+	#Global on/off
+	modEnabled = true
+	#Hard kill: no particles at all
+	disableAllParticles = false
+	#Verbose debug logging + stats every 10s
+	debugMode = false
+
+[Pipeline]
+	#Manual density dial (0.0-1.0). 1.0 = vanilla density.
+	#Range: 0.0 ~ 1.0
+	densityFactor = 1.0
+
+[DynamicFPS]
+	#FPS-reactive spawn reduction
+	enabled = true
+	#Target FPS - below this, reduction kicks in. Auto-detected on first launch.
+	#Range: 0 ~ 360
+	targetFps = 60
+	#Floor FPS - at this level, max reduction applies
+	#Range: 0 ~ 360
+	floorFps = 30
+	#Min spawn probability at floor FPS
+	#Range: 0.0 ~ 1.0
+	minProbability = 0.15
+	#EMA smoothing tau in ms (higher = smoother, slower)
+	#Range: 50 ~ 5000
+	fpsEmaTauMs = 450
+	#Max probability change per tick (slew limiter)
+	#Range: 0.001 ~ 1.0
+	probSlewPerTick = 0.04
+
+[Distance]
+	#Distance-based spawn reduction
+	enabled = true
+	#Near radius - full probability
+	#Range: 0.0 ~ 128.0
+	nearBlocks = 8.0
+	#Mid radius - reduced probability
+	#Range: 0.0 ~ 256.0
+	midBlocks = 24.0
+	#Far radius - heavy reduction
+	#Range: 0.0 ~ 512.0
+	farBlocks = 48.0
+	#Probability at mid boundary
+	#Range: 0.0 ~ 1.0
+	midProbability = 0.75
+	#Probability at far boundary
+	#Range: 0.0 ~ 1.0
+	farProbability = 0.3
+	#Apply distance to Critical-tier particles?
+	affectCritical = false
+
+[Tiers]
+	#Smart priority tier system
+	enabled = true
+	#Gamma for Critical (<1 = resistant to culling)
+	#Range: 0.01 ~ 5.0
+	gammaCritical = 0.45
+	#Gamma for Normal (1.0 = neutral)
+	#Range: 0.01 ~ 5.0
+	gammaNormal = 1.0
+	#Gamma for Cosmetic (>1 = culled aggressively)
+	#Range: 0.01 ~ 5.0
+	gammaCosmetic = 1.8
+
+[PerType]
+	#Per-particle-type spawn control
+	enabled = true
+	#Rules: 'modid:particle=probability'. Example: 'minecraft:smoke=0.3'
+	rules = []
+
+[Presets]
+	#Disable entity_effect / ambient_entity_effect
+	disablePotionParticles = false
+
+[AngleCulling]
+	#Cull particles behind the camera
+	enabled = true
+	#Extra margin beyond FOV (%). 20 = 20% wider cone.
+	#Range: 0.0 ~ 100.0
+	fovMarginPercent = 20.0
+	#Spawn probability for particles behind camera
+	#Range: 0.0 ~ 1.0
+	behindCameraProbability = 0.05
+
+[Compat]
+	#EMERGENCY: makes all mixins no-op (mod does nothing)
+	disableAllMixins = false
+	#Log every dropped particle (WARNING: extremely verbose)
+	logDrops = false
+

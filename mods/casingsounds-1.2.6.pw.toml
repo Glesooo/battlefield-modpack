@@ -1,0 +1,8 @@
+name = "casingsounds-1.2.6"
+filename = "casingsounds-1.2.6.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/casingsounds-1.2.6.jar"
+hash-format = "sha256"
+hash = "58bcc025cc4fe325c2fbb1aee097c68cc88fea09f7c6a1595bcf0508cac80eda"

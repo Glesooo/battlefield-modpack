@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/silencefd_geo",
+  "animation": "xiaoxuekinfe:melee/silencefd",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/silencefd_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/silencefd",
+  "slot_texture": "xiaoxuekinfe:melee/slot/silencefd"
+}

@@ -1,0 +1,11 @@
+
+[general]
+	#Should xp drops be disabled?
+	disableXP = true
+	#Should mob xp drops be given directly to the player?
+	directXP = false
+	#Can Bottles of enchanting be drunk to gain experience?
+	drinkBottles = true
+	#How many experience points to Bottles of Enchanting give if drunk?
+	bottleExperience = 7
+

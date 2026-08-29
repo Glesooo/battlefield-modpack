@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/ironnether_sword_geo",
+  "animation": "xiaoxuekinfe:melee/ironnether_sword",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/ironnether_sword_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/ironnether_sword",
+  "slot_texture": "xiaoxuekinfe:melee/slot/ironnether_sword"
+}

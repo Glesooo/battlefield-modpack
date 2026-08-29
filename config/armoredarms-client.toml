@@ -1,0 +1,22 @@
+#Disable rendering of arm wear with armor equipped
+disableArmWear = true
+#Enable rendering arm wear for vanilla armor model
+enableArmWearWithVanillaM = true
+#Blacklist of armor for rendering
+renderBlackList = []
+#List of armors that require arm wear render
+renderArmWearList = ["iceandfire:*", "botania:*"]
+#List of armors that no require arm wear render, takes precedence over renderArmWearList
+noRenderArmWearList = ["create:netherite_backtank"]
+#Vanilla armor model size
+vanillaArmorModelSize = 0.4
+#Use check by item
+useCheckByItem = false
+#Different sources can work differently, choose the one that works better
+#The higher the source is on the list, the higher its priority
+#Deleting a render source will prevent it from working
+#Changes are applied after restarting the game
+#[event] - Standard rendering source, сan always work
+#[mixin] - Additional rendering source, can work if mixins loader is installed
+renderSourcesPriority = ["event", "mixin"]
+

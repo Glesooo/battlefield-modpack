@@ -1,0 +1,8 @@
+name = "[TACZ1.1.8+Arcana]ClassicRCCRP 1.1.6_release_hotfix2"
+filename = "_TACZ1.1.8_Arcana_ClassicRCCRP_1.1.6_release_hotfix2.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/_TACZ1.1.8_Arcana_ClassicRCCRP_1.1.6_release_hotfix2.zip"
+hash-format = "sha256"
+hash = "73f06b995694e37fb849fff59e7825a3e0e22d1023483375cb3e52fb9a5a3ffb"

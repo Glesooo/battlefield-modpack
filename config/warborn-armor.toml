@@ -1,0 +1,37 @@
+
+#Armor values for gear defined by the fracturepoint index.
+#These are the base values every index entry starts from; an entry's own
+#'armor_modifier' is then added on top unless apply_index_modifiers is false.
+#This is a common config - a server and its clients should agree on it.
+[gear_armor]
+	#Base armor value for helmets
+	#Range: 0 ~ 100
+	helmet = 3
+	#Base armor value for chestplates
+	#Range: 0 ~ 100
+	chestplate = 8
+	#Base armor value for leggings
+	#Range: 0 ~ 100
+	leggings = 6
+	#Base armor value for boots
+	#Range: 0 ~ 100
+	boots = 3
+	#Armor value for shoulderpads
+	#Range: 0 ~ 100
+	shoulderpads = 4
+	#Armor value for uniforms
+	#Range: 0 ~ 100
+	uniforms = 1
+	#Armor value for headgear (masks, caps, and other soft head gear)
+	#Range: 0 ~ 100
+	headgear = 1
+	#Armor value for backpacks
+	#Range: 0 ~ 100
+	backpacks = 1
+	#Keep the per-item 'armor_modifier' from the fracturepoint index.
+	#Turn this off to give every item of a kind the exact base value above.
+	apply_index_modifiers = true
+	#Exact armor values for individual items, overriding everything above.
+	#Format: "modid:item_id=value", e.g. "fracturepoint:iz_machine_gunner_helmet_snow=5"
+	item_overrides = []
+

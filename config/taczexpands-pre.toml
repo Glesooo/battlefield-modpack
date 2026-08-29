@@ -1,0 +1,5 @@
+
+["Other Settings"]
+	#Replace the tacz default pack's default state machine lua script
+	enableDefaultStateMachineReplacement = false
+

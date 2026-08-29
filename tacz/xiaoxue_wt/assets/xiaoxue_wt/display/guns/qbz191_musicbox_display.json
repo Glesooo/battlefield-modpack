@@ -1,0 +1,131 @@
+{
+  "model": "xiaoxue_wt:gun/qbz191_musicbox_geo",
+  "texture": "xiaoxue_wt:gun/uv/qbz191_musicbox",
+  "iron_zoom": 1.2,
+  "zoom_model_fov": 45,
+  "ammo_count_style": "normal",
+  "damage_style": "per_projectile",
+  "show_crosshair": false,
+  "transform": {
+    "scale": {
+      "thirdperson": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "ground": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "fixed": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    }
+  },
+  "sounds": {
+    "shoot": "tacz:rpk/rpk_shoot",
+    "shoot_3p": "tacz:rpk/rpk_shoot_3p",
+    "draw": "tacz:rpk/rpk_draw",
+    "put_away": "tacz:rpk/rpk_put_away",
+    "silence": "tacz:rpk/rpk_silence",
+    "silence_3p": "tacz:rpk/rpk_silence_3p",
+    "dry_fire": "tacz:dry_fire",
+    "fire_select": "tacz:fire_select",
+    "head_hit": "ccrp:head_hit",
+    "flesh_hit": "ccrp:flesh_hit",
+    "kill": "ccrp:kill",
+    "melee_bayonet": "tacz:melee_bayonet/melee_bayonet_01",
+    "melee_push": "tacz:melee_stock/melee_stock_01",
+    "melee_stock": "tacz:melee_stock/melee_stock_02",
+    "inspect": "xiaoxue_wt:qbz191_musicbox/qbz191_musicbox_inspect"
+  },
+  "animation": "xiaoxue_wt:qbz191_musicbox",
+  "use_default_animation": "rifle",
+  "third_person_animation": "default",
+  "player_animator_3rd": "tacz:rifle_default.player_animation",
+  "hud": "xiaoxue_wt:gun/hud/qbz191_musicbox",
+  "slot": "xiaoxue_wt:gun/slot/qbz191_musicbox",
+  "lod": {
+    "model": "classicr:gun/lod/qbz191_renewed",
+    "texture": "classicr:gun/lod/qbz191_renewed"
+  },
+  "muzzle_flash": {
+    "texture": "tacz:flash/common_muzzle_flash",
+    "scale": 0.75
+  },
+  "ammo": {
+    "tracer_color": "#CD2626"
+  },
+  "shell": {
+    "initial_velocity": [
+      5,
+      2,
+      1
+    ],
+    "random_velocity": [
+      1,
+      1,
+      0.25
+    ],
+    "acceleration": [
+      0,
+      -10,
+      0
+    ],
+    "angular_velocity": [
+      360,
+      -1200,
+      90
+    ],
+    "living_time": 1
+  },
+  "text_show": {
+    "ammo_count_text_show_pos": {
+      "scale": 1,
+      "align": "center",
+      "shadow": false,
+      "color": "#FFFFFF",
+      "light": 15,
+      "text": "text_show.tacz.ak47.ammo_count"
+    }
+  },
+  "hotbar_show": {
+    "0": {
+      "pos": [
+        -1,
+        20,
+        3
+      ],
+      "rotate": [
+        -180,
+        0,
+        120
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "controllable": {
+    "semi": {
+      "low_frequency": 0.25,
+      "high_frequency": 0.5,
+      "time": 100
+    },
+    "auto": {
+      "low_frequency": 0.15,
+      "high_frequency": 0.25,
+      "time": 80
+    },
+    "burst": {
+      "low_frequency": 0.25,
+      "high_frequency": 0.5,
+      "time": 100
+    }
+  }
+}

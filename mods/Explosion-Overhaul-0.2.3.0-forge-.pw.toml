@@ -1,0 +1,8 @@
+name = "Explosion-Overhaul-0.2.3.0-forge-"
+filename = "Explosion-Overhaul-0.2.3.0-forge-.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Explosion-Overhaul-0.2.3.0-forge-.jar"
+hash-format = "sha256"
+hash = "feac2ed262604f01e74609acdeba83c9b0bbe2b602ba0da40196fb1041f2c64f"

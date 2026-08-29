@@ -1,0 +1,8 @@
+name = "Vanguard_Armament_v1.0.1_hotfix4"
+filename = "Vanguard_Armament_v1.0.1_hotfix4.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Vanguard_Armament_v1.0.1_hotfix4.zip"
+hash-format = "sha256"
+hash = "e80a9477e7d3b133a8cfbbd8505e65f5e1a25dab547d5cb7cf2c33ad734eb020"

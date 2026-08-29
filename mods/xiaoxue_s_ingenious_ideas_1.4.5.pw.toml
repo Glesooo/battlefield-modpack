@@ -1,0 +1,8 @@
+name = "xiaoxue's ingenious ideas 1.4.5"
+filename = "xiaoxue_s_ingenious_ideas_1.4.5.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/xiaoxue_s_ingenious_ideas_1.4.5.jar"
+hash-format = "sha256"
+hash = "20d5886d37c6336cb8f62727e4114b0cca39a2ccbb3dbb34752a0c17a94de414"

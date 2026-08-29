@@ -1,0 +1,8 @@
+name = "eclipsearmor-1.0.0"
+filename = "eclipsearmor-1.0.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/eclipsearmor-1.0.0.jar"
+hash-format = "sha256"
+hash = "6eeea7b62c91b8763ba30e09ad822e6ef5b896cc2b94f61071775071f5f29ade"

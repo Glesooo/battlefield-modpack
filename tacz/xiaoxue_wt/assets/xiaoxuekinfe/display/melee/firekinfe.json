@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/firekinfe_geo",
+  "animation": "xiaoxuekinfe:melee/firekinfe",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/firekinfe_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/firekinfe",
+  "slot_texture": "xiaoxuekinfe:melee/slot/firekinfe"
+}

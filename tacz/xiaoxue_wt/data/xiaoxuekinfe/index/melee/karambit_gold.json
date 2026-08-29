@@ -1,0 +1,43 @@
+{
+  "tooltip": "xiaoxuekinfe.lr.melee.karambit_gold.desc",
+  "name": "xiaoxuekinfe.lr.melee.karambit_gold.name",
+  "type": "lrtactical:normal",
+  "base_item": "lrtactical:melee",
+  "data": {
+    "draw_time": 16,
+    "put_away_time": 5,
+    "max_durability": 0,
+    "enchantment_value": 14,
+    "attributes": {
+      "generic.attack_damage": 7,
+      "minecraft:generic.movement_speed": {
+        "amount": 0.05,
+        "operation": "percent"
+      }
+    },
+    "attack": {
+      "attack_left": {
+        "factor": 1,
+        "knockback": 0.2,
+        "cooldown": 9,
+        "delay": 0,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 3.5,
+          "max_angle": 90,
+          "exclude_self": true
+        }
+      },
+      "attack_right": {
+        "factor": 1.5,
+        "knockback": 0.3,
+        "cooldown": 20,
+        "delay": 0,
+        "hitbox": {
+          "type": "ray",
+          "max_range": 3.5
+        }
+      }
+    }
+  }
+}

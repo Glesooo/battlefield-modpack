@@ -1,0 +1,8 @@
+name = "disablef5-1.2"
+filename = "disablef5-1.2.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/disablef5-1.2.jar"
+hash-format = "sha256"
+hash = "9c4893711db681d744da073314f1f975689de0a6bd11ac88baeaa56f7f7bb09a"

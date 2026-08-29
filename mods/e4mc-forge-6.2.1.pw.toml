@@ -1,0 +1,8 @@
+name = "e4mc-forge-6.2.1"
+filename = "e4mc-forge-6.2.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/e4mc-forge-6.2.1.jar"
+hash-format = "sha256"
+hash = "cc15b1fcd258782c72493392e6f4c6d16658f4f5a5c3a44eb4d44551004047ea"

@@ -1,0 +1,8 @@
+name = "Ra1k_gunpack_v2.0.4_phoenix"
+filename = "Ra1k_gunpack_v2.0.4_phoenix.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Ra1k_gunpack_v2.0.4_phoenix.zip"
+hash-format = "sha256"
+hash = "1cb426adccca9ee3c9fc733b8688dfa7e75a9e98e7d882e7cd3639de63dadf2c"

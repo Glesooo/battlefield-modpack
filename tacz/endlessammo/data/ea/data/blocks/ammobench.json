@@ -1,0 +1,62 @@
+{
+  "filter": "ea:ammobench",
+  "tabs": [
+    {
+      "id": "ea:pistol_ammo",
+      "name": "ea.pistol_ammo",
+      "icon": {
+        "item": "tacz:ammo",
+        "nbt": {
+          "AmmoId": "ea:380auto"
+        }
+      }
+    },
+    {
+      "id": "ea:rifle_ammo",
+      "name": "ea.rifle_ammo",
+      "icon": {
+        "item": "tacz:ammo",
+        "nbt": {
+          "AmmoId": "ea:68tvcm"
+        }
+      }
+    },
+    {
+      "id": "ea:large_ammo",
+      "name": "ea.large_ammo",
+      "icon": {
+        "item": "tacz:ammo",
+        "nbt": {
+          "AmmoId": "ea:127x55"
+        }
+      }
+    },
+    {
+      "id": "ea:shotgun_ammo",
+      "name": "ea.shotgun_ammo",
+      "icon": {
+        "item": "tacz:ammo",
+        "nbt": {
+          "AmmoId": "ea:4g"
+        }
+      }
+    },
+    {
+      "id": "ea:extras",
+      "name": "ea.extras",
+      "icon": {
+        "item": "tacz:ammo",
+        "nbt": {
+          "AmmoId": "ea:20x102"
+        }
+      }
+    },
+    {
+      "id": "ea:converter",
+      "name": "ea.converter",
+      "icon": {
+        "item": "minecraft:ender_pearl"
+      }
+    }
+  ]
+}

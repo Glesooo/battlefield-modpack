@@ -1,0 +1,33 @@
+{
+  "slot": "xiaoxue_wt:ammo/slot/8mm",
+  "model": "xiaoxue_wt:ammo/8mm",
+  "texture": "xiaoxue_wt:ammo/uv/8mm",
+  "entity": {
+    "model": "xiaoxue_wt:ammo_entity/8mm",
+    "texture": "xiaoxue_wt:ammo_entity/8mm"
+  },
+  "shell": {
+    "model": "xiaoxue_wt:shell/8mm_shell",
+    "texture": "xiaoxue_wt:shell/8mm_shell"
+  },
+  "tracer_color": "#FFFFFF",
+  "transform": {
+    "scale": {
+      "thirdperson": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "ground": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "fixed": [
+        1.5,
+        1.5,
+        1.5
+      ]
+    }
+  }
+}

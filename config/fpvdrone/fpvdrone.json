@@ -1,0 +1,90 @@
+{
+  // ═══════════════════════════════════════════════════════
+  // FPV Drone — General Config
+  // ═══════════════════════════════════════════════════════
+  // Отредактируйте значения и перезапустите игру для применения.
+  // Работает как на клиенте, так и на выделенном сервере.
+  // Значения сервера переопределяют настройки клиентов для всех игроков.
+
+  // ── Сигнал / Дистанция ──
+
+  // Глобальный множитель дальности связи ВСЕХ дронов (и дистанции
+  // заикания видео). 1.0 = как задано в data дрона; 2.0 = вдвое дальше; 0.5 = вдвое ближе.
+  // Сами характеристики антенны задаются per-drone в блоке "signal" в data.
+  // Range: 0.05 — 20.0
+  "signalRangeMultiplier": 1.5,
+
+  // Скорость реагирования уровня сигнала на изменения.
+  // Низкие значения = плавные кинематографичные переходы. Высокие = мгновенно.
+  // Range: 0.01 — 1.0
+  "signalSmoothing": 0.1,
+
+  // Количество последовательных кадров с нулевым сигналом до срабатывания
+  // failsafe. Выше = больше терпимость к кратковременным потерям связи.
+  // Range: 1 — 600
+  "zeroSignalFramesForDisconnect": 50,
+
+  // ── Зависание видео ──
+
+  // Насколько агрессивно заикается видео при ухудшении сигнала.
+  // Выше = больше застывших кадров на расстоянии. 0 = без зависаний.
+  // Range: 0.0 — 50.0
+  "freezeIntensity": 5.0,
+
+  // ── Failsafe ──
+
+  // Скорость снижения (блоков за такт) при потере сигнала.
+  // Дрон медленно опускается, пока не приземлится или не вернёт связь.
+  // Range: 0.0 — 10.0
+  "failsafeDescentRate": 0.5,
+
+  // Множитель горизонтальной скорости за такт при потере связи.
+  // 1.0 = без торможения. 0.0 = мгновенная остановка по горизонтали.
+  // Range: 0.0 — 1.0
+  "failsafeHorizontalDamping": 0.95,
+
+  // ── Взрыв ──
+
+  // Главный переключатель разрушения блоков взрывами.
+  // false = взрывы не ломают блоки. true = ломают, а СИЛА берётся из поля
+  // "blockPower" каждого снаряда/боевой части в data (0.5 = слабо, 1.0 = TNT, 2.0 = вдвое).
+  "explosionBreaksBlocks": false,
+
+  // ── Урон ──
+
+  // Если включено, дрон наносит урон при столкновении
+  // с существами (мобами и игроками).
+  "droneCollisionDamage": true,
+
+  // ── Дистанция видимости наблюдателя ──
+
+  // Дистанция отслеживания сущности дрона (в блоках). Управляет тем, как далеко
+  // наблюдатели могут видеть полёт дрона и его анимации.
+  // Только на стороне сервера — на клиенты не синхронизируется.
+  // Range: 64 — 2048
+  "droneObserverRange": 2048,
+
+  // ── Client Settings (camera, input, video — ignored on dedicated servers) ──
+
+  // Camera tilt angle in degrees
+  "defaultAngle": 25.0,
+
+  // Field of view in degrees
+  "fov": 120.0,
+
+  // Force keyboard+mouse input, ignore connected controller
+  "forceKbm": false,
+
+  // Show stick position overlay during flight
+  "stickOverlay": false,
+
+  // Fill the drone map from your loaded chunks as you explore (self-writing map)
+  "liveMapObservation": true,
+
+  // Tick explosion/detonation particles in parallel (multi-threaded) for less lag
+  // during a big burst. Self-disables for the session if a tick ever errors.
+  "parallelParticleTicking": true,
+
+  // Video resolution scale: RES_10, RES_15, RES_20, RES_25, RES_33, RES_50
+  "videoResolution": "RES_50"
+}

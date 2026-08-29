@@ -1,0 +1,56 @@
+{
+  "model": "maxstuff:gun/m1_garand_tac_geo",
+  "texture": "maxstuff:gun/uv/m1_garand_tac",
+  "lod": {
+    "model": "maxstuff:gun/m1_garand_tac_geo",
+    "texture": "maxstuff:gun/uv/m1_garand_tac"
+  },
+  "hud": "maxstuff:gun/hud/m1_garand_tac",
+  "slot": "maxstuff:gun/slot/m1_garand_tac",
+  "animation": "maxstuff:m1_garand",
+  "state_machine": "maxstuff:m1_garand_state_machine",
+  "use_default_animation": "rifle",
+  "third_person_animation": "default",
+  "transform": {
+    "scale": {
+      "thirdperson": [0.6, 0.6, 0.6],
+      "ground": [0.6, 0.6, 0.6],
+      "fixed": [1.2, 1.2, 1.2]
+    }
+  },
+  "muzzle_flash": {
+    "texture": "tacz:flash/common_muzzle_flash",
+    "scale": 0.75
+  },
+  "shell": {
+    "initial_velocity": [5, 2, 1],
+    "random_velocity": [1, 1, 0.25],
+    "acceleration": [0.0, -10, 0.0],
+    "angular_velocity": [360, -1200, 90],
+    "living_time": 1.0
+  },
+  "sounds": {
+    "shoot": "maxstuff:m1_garand/m1_garand_shoot",
+    "shoot_3p": "maxstuff:m1_garand/m1_garand_shoot",
+    "reload_empty": "maxstuff:m1_garand/m1_garand_reload_empty",
+    "reload_tactical": "maxstuff:m1_garand/m1_garand_reload_tactical",
+    "inspect": "maxstuff:m1_garand/m1_garand_inspect",
+    "inspect_empty": "maxstuff:m1_garand/m1_garand_inspect",
+    "draw": "maxstuff:m1_garand/m1_garand_draw",
+    "put_away": "tacz:mk14/mk14_put_away",
+    "silence": "maxstuff:m1_garand/m1_garand_silence",
+    "silence_3p": "maxstuff:m1_garand/m1_garand_silence"
+  },
+  "offhand_show": {
+    "pos": [1, 19, 4],
+    "rotate": [0, 0, 50],
+    "scale": [0.5, 0.5, 0.5]
+  },
+  "hotbar_show": {
+    "0": {
+      "pos": [-1, 19, 3],
+      "rotate": [-180, 0, 130],
+      "scale": [0.5, 0.5, 0.5]
+    }
+  }
+}

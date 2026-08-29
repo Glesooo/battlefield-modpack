@@ -1,0 +1,8 @@
+name = "mzrk-tacz-remoove-recipe-gun-v9"
+filename = "mzrk-tacz-remoove-recipe-gun-v9.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/mzrk-tacz-remoove-recipe-gun-v9.jar"
+hash-format = "sha256"
+hash = "3c7ff93152ca9fe9545a38de7bbc3ad118aeec692c278fe233d3fe4787580e18"

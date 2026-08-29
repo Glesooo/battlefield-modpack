@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:throwable/t11_geo",
+  "animation": "xiaoxuekinfe:throwable/t11",
+  "state_machine": "xiaoxuekinfe:throwable/state_machine/t11_state_machine",
+  "texture": "xiaoxuekinfe:throwable/texture/t11",
+  "slot_texture": "xiaoxuekinfe:throwable/slot/t11"
+}

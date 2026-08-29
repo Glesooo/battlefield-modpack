@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/malaysword_geo",
+  "animation": "xiaoxuekinfe:melee/malaysword",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/malaysword_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/malaysword",
+  "slot_texture": "xiaoxuekinfe:melee/slot/malaysword"
+}

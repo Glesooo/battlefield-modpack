@@ -1,0 +1,8 @@
+name = "tacz_presence-1.4"
+filename = "tacz_presence-1.4.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/tacz_presence-1.4.jar"
+hash-format = "sha256"
+hash = "2384bb4b3df41999c586aaf0d35ea33c477fad6a520985e78ba99d735823dea4"

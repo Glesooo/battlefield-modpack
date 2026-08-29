@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/treasure_kn_geo",
+  "animation": "xiaoxuekinfe:melee/treasure_kn",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/treasure_kn_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/treasure_kn",
+  "slot_texture": "xiaoxuekinfe:melee/slot/treasure_kn"
+}

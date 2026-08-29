@@ -1,0 +1,31 @@
+{
+  "tooltip": "xiaoxuekinfe.lr.throwable.t11.desc",
+  "name": "xiaoxuekinfe.lr.throwable.t11.name",
+  "type": "lrtactical:explode",
+  "base_item": "lrtactical:throwable",
+  "data": {
+    "prepare_time": 8,
+    "cookable": false,
+    "initial_speed": 1.1,
+    "cooldown": 0,
+    "cooldown_category": "lrtactical:grenade",
+    "put_away_time": 0,
+    "stack_size": 4,
+    "entity": {
+      "life_time": 75,
+      "gravity": 0.07,
+      "should_bounce": false,
+      "broke_on_ground": true,
+      "bounce_factor": 0.7,
+      "hit_damage": 40,
+      "tail_particles": "minecraft:smoke"
+    },
+    "explode": {
+      "radius": 5.5,
+      "damage": 60,
+      "destroy_blocks": false,
+      "screen_shake_time": 20,
+      "screen_shake_amplitude": 65
+    }
+  }
+}

@@ -1,0 +1,72 @@
+
+["Impact Smoke Settings"]
+	#Enable impact smoke?
+	smokeEnable = true
+	#Impact smoke render distance.
+	#STANDARD - 32 blocks (vanilla)
+	#MEDIUM_150 - 150 blocks
+	#LONG_256 - 256 blocks
+	#EXTREME_512 - 512 blocks
+	#Allowed Values: STANDARD, MEDIUM_150, LONG_256, EXTREME_512
+	smokeRenderDistance = "MEDIUM_150"
+	#Intensity of block color blending into smoke.
+	#0.0 = Gray smoke only (no block color influence)
+	#1.0 = Pure block color (smoke takes the exact color of the block)
+	#Range: 0.0 ~ 1.0
+	smokeColorBlend = 0.5
+	#The base amount of smoke particles spawned on impact.
+	#Range: 1 ~ 100
+	smokeAmount = 1
+	#The random additional amount of smoke particles spawned on impact.
+	#Range: 0 ~ 100
+	smokeRandAmount = 3
+	#The base lifetime of smoke particles in ticks.
+	#Range: 1 ~ 1000
+	smokeLifetime = 40
+	#The initial scale of smoke particles when they are spawned.
+	#Range: 0.01 ~ 50.0
+	smokeStartSize = 0.15
+	#The maximum scale smoke particles reach during their lifetime.
+	#Range: 0.01 ~ 50.0
+	smokeMaxSize = 4.5
+	#The strength of the wind affecting smoke particles.
+	#0.0 = No wind (smoke stays in place)
+	#1.0 = Strong wind (smoke moves rapidly)
+	#Range: 0.0 ~ 1.0
+	smokeWindStrength = 0.15
+
+["Debris Settings"]
+	#Enable block debris?
+	debrisEnable = true
+	#Base amount of debris per impact.
+	#Range: 1 ~ 100
+	debrisAmount = 3
+	#Random additional debris.
+	#Range: 0 ~ 100
+	debrisRandAmount = 4
+	#Maximum debris particles alive at once.
+	#Range: 10 ~ 10000
+	debrisMaxAmount = 150
+	#Base lifetime of debris in ticks.
+	#Range: 1 ~ 1000
+	debrisLifetime = 40
+	#Velocity multiplier for debris.
+	#Range: 0.1 ~ 5.0
+	debrisSpeedMultiplier = 0.4
+
+["Spark Settings"]
+	#Enable sparks?
+	sparkEnable = true
+	#Base amount of sparks.
+	#Range: 1 ~ 100
+	sparkAmount = 6
+	#Random additional sparks.
+	#Range: 0 ~ 100
+	sparkRandAmount = 3
+	#Base lifetime of sparks in ticks.
+	#Range: 1 ~ 1000
+	sparkLifetime = 35
+	#Scale of sparks.
+	#Range: 0.01 ~ 0.1
+	sparkSize = 0.01
+

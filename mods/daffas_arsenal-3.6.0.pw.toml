@@ -1,0 +1,8 @@
+name = "daffas_arsenal-3.6.0"
+filename = "daffas_arsenal-3.6.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/daffas_arsenal-3.6.0.jar"
+hash-format = "sha256"
+hash = "cf71cdd687a3511744cd500e42c4cdbf01d74e9e630102b3afd6e25e8a86d287"

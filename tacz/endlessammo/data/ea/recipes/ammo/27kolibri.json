@@ -1,0 +1,23 @@
+{
+  "materials": [
+    {
+      "item": {
+        "tag": "forge:ingots/copper"
+      },
+      "count": 8
+    },
+    {
+      "item": {
+        "tag": "forge:gunpowder"
+      },
+      "count": 1
+    }
+  ],
+  "result": {
+    "type": "ammo",
+    "group": "ea:pistol_ammo",
+    "id": "ea:27kolibri",
+    "count": 50
+  },
+  "type": "tacz:gun_smith_table_crafting"
+}

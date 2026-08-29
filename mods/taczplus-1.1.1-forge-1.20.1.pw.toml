@@ -1,0 +1,8 @@
+name = "taczplus-1.1.1-forge-1.20.1"
+filename = "taczplus-1.1.1-forge-1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/taczplus-1.1.1-forge-1.20.1.jar"
+hash-format = "sha256"
+hash = "81deca421d721ce42c509fafb4473b5e8f4e069bed23708e7e69692b7ae8c4d7"

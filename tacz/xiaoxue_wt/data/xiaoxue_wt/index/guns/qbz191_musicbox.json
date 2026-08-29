@@ -1,0 +1,9 @@
+{
+  "name": "xiaoxue_wt.gun.qbz191_musicbox.name",
+  "tooltip": "xiaoxue_wt.gun.qbz191_musicbox.desc",
+  "data": "xiaoxue_wt:qbz191_musicbox_data",
+  "display": "xiaoxue_wt:qbz191_musicbox_display",
+  "type": "rifle",
+  "item_type": "modern_kinetic",
+  "sort": 1
+}

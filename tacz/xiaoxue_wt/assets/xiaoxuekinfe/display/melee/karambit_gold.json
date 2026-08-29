@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/karambit_gold_geo",
+  "animation": "xiaoxuekinfe:melee/karambit_gold",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/karambit_gold_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/karambit_gold_uv",
+  "slot_texture": "xiaoxuekinfe:melee/slot/karambit_gold"
+}

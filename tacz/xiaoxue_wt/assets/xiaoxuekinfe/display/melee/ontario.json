@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/ontario_geo",
+  "animation": "xiaoxuekinfe:melee/ontario",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/ontario_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/ontario",
+  "slot_texture": "xiaoxuekinfe:melee/slot/ontario"
+}

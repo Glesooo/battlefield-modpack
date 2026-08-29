@@ -1,0 +1,8 @@
+name = "InvMove-0.9.3+1.20.1-Forge"
+filename = "InvMove-0.9.3_1.20.1-Forge.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/InvMove-0.9.3_1.20.1-Forge.jar"
+hash-format = "sha256"
+hash = "fed951da0863669dea424fc7f9542e95f2bffe2fd53bef914e254fa9969d7885"

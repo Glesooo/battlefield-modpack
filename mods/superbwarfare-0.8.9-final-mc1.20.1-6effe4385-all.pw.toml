@@ -1,0 +1,8 @@
+name = "superbwarfare-0.8.9-final-mc1.20.1-6effe4385-all"
+filename = "superbwarfare-0.8.9-final-mc1.20.1-6effe4385-all.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/superbwarfare-0.8.9-final-mc1.20.1-6effe4385-all.jar"
+hash-format = "sha256"
+hash = "6eece0df9c927bddee3bd373fe90a2bbcba7157e9408ee0f94d13e04dc638395"

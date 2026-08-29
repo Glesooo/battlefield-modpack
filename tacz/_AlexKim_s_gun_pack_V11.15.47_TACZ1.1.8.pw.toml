@@ -1,0 +1,8 @@
+name = "[AlexKim's_gun_pack]V11.15.47_TACZ1.1.8"
+filename = "_AlexKim_s_gun_pack_V11.15.47_TACZ1.1.8.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/_AlexKim_s_gun_pack_V11.15.47_TACZ1.1.8.zip"
+hash-format = "sha256"
+hash = "00cf0728d2d200ef21a7082fb00587933f2f8c721e77e59f107eaebd7f204612"

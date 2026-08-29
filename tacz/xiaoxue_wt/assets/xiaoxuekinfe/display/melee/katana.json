@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/katana_geo",
+  "animation": "xiaoxuekinfe:melee/katana",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/katana_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/katana",
+  "slot_texture": "xiaoxuekinfe:melee/slot/katana"
+}

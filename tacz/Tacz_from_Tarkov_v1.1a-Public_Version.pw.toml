@@ -1,0 +1,8 @@
+name = "Tacz from Tarkov v1.1a-Public Version"
+filename = "Tacz_from_Tarkov_v1.1a-Public_Version.zip"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Tacz_from_Tarkov_v1.1a-Public_Version.zip"
+hash-format = "sha256"
+hash = "cddc0c60714da7de3b4a82504974ad273e5fe65d6e70c6ba7a8f56eae71e9736"

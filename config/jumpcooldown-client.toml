@@ -1,0 +1,4 @@
+#Ticks between ordinary on-foot jumps (20 = 1 second). Was a fixed 40 (2s); lowered by default.
+#Range: 0 ~ 200
+cooldown_ticks = 10
+

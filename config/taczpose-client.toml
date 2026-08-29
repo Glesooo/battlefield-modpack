@@ -1,0 +1,24 @@
+
+[canted]
+	#Roll (tilt) in degrees when the canted pose is toggled on
+	#Range: -90.0 ~ 90.0
+	roll_deg = 22.0
+	#Range: -2.0 ~ 2.0
+	offset_x = 0.0
+	#Range: -2.0 ~ 2.0
+	offset_y = 0.0
+	#Range: -2.0 ~ 2.0
+	offset_z = 0.0
+
+[aim_viewmodel]
+	#Extra roll in degrees applied while aiming
+	#Range: -90.0 ~ 90.0
+	roll_deg = 0.0
+	#Weapon viewmodel offset while aiming
+	#Range: -2.0 ~ 2.0
+	offset_x = 0.0
+	#Range: -2.0 ~ 2.0
+	offset_y = 0.0
+	#Range: -2.0 ~ 2.0
+	offset_z = 0.0
+

@@ -1,0 +1,25 @@
+
+["Bullet Settings"]
+	#Bullets can destroy blocks if a block resistance table is configured
+	shouldDestroyBlock = true
+	#Global block resistance table for bullet (bullet: block_table)
+	blockResistanceTable = []
+
+["Missile Settings"]
+	#Checks missile jamming every X ticks
+	jammingCheckDelay = 20
+	#Missile jamming entities table
+	jammingEntities = []
+	#Checks missile active radar target every X ticks
+	radarCheckDelay = 5
+
+["Other Settings"]
+	#Default max raytrace distance
+	rayTraceDistance = 128
+	#Enable laser by default
+	defaultLaserState = false
+	#Block aim while reloading by default
+	defaultBlockAimWhileReloading = false
+	#Whether to return the original ammo when switching ammo types while the ammo source is the All Type Creative Ammo Box
+	returnAmmoAllTypeCreativeAmmoBox = false
+

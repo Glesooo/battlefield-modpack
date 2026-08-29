@@ -1,0 +1,8 @@
+name = "tacz_optimization-1.0.2"
+filename = "tacz_optimization-1.0.2.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/tacz_optimization-1.0.2.jar"
+hash-format = "sha256"
+hash = "d84a292529cf66a061faca60ccc3edf6b879abd35c5c911056f00cff423fa0eb"

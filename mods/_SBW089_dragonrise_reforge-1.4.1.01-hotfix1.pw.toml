@@ -1,0 +1,8 @@
+name = "[SBW089]dragonrise_reforge-1.4.1.01-hotfix1"
+filename = "_SBW089_dragonrise_reforge-1.4.1.01-hotfix1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/_SBW089_dragonrise_reforge-1.4.1.01-hotfix1.jar"
+hash-format = "sha256"
+hash = "5370c17edf8eb204845fe73510a4a5043da89905c93fde38ef908a566df68c50"

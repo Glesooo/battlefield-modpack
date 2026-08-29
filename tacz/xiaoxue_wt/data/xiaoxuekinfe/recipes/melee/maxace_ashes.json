@@ -1,0 +1,21 @@
+{
+  "type": "tacz:gun_smith_table_crafting",
+  "materials": [
+    {
+      "item": {
+        "tag": "forge:ingots/iron"
+      },
+      "count": 16
+    },
+    {
+      "item": {
+        "tag": "forge:ingots/gold"
+      },
+      "count": 8
+    }
+  ],
+  "result": {
+    "type": "lr_melee",
+    "id": "xiaoxuekinfe:maxace_ashes"
+  }
+}

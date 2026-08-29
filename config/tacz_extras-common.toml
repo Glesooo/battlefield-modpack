@@ -1,0 +1,51 @@
+
+[bullet_impacts]
+	#Apply the configurable bullet impact sound and particle patch.
+	enabled = true
+	#Play material-aware sounds when TACZ bullets hit blocks.
+	sounds = true
+	#Spawn block fragments when TACZ bullets hit blocks.
+	particles = true
+	#Use splash particles and water impact sounds for water hits.
+	water_effects = true
+	#Volume multiplier for the addon impact sounds.
+	#Range: 0.0 ~ 4.0
+	sound_volume = 1.0
+	#Base impact particle count. Metal hits spawn twice this many sparks.
+	#Range: 0 ~ 64
+	particle_count = 4
+
+[gun_sounds]
+	#Apply fire/silencer multipliers to volume and use the optional distance override.
+	enabled = true
+	#Apply the historical AWP, Glock 17, M1911, SKS Tactical and UMP45 profiles without replacing TACZ gun JSON files.
+	bundled_profiles = true
+	#Base unsuppressed gunshot distance. Set to 0 to use TACZ's own common config value.
+	#Range: 0 ~ 8192
+	fire_distance_override = 512
+
+[target_block]
+	#Reduce the TACZ target block hit sound range.
+	quiet_hit_sound = true
+	#TACZ target sound distance is divided by this value before being used as volume.
+	#Range: 1.0 ~ 1024.0
+	sound_distance_divisor = 64.0
+
+[crawl]
+	#Enable configurable crawl behavior from the historical patches.
+	enabled = true
+	#Allow crawling while the main hand does not contain a TACZ gun.
+	without_gun = true
+	#Cooldown between crawl state changes.
+	#Range: 0 ~ 40
+	cooldown_ticks = 4
+	#Cancel crawling after falling farther than this many blocks.
+	#Range: 0.0 ~ 16.0
+	fall_distance = 0.75
+
+[bolting]
+	#Retry failed client bolt synchronization and keep manual-action state stable.
+	enabled = true
+	#Continue the active server-side bolt operation using the original ItemStack after a weapon swap.
+	preserve_on_gun_swap = true
+

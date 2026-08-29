@@ -1,0 +1,75 @@
+{
+  "pack.ea.eapack.name": "Endless Ammo",
+  "pack.ea.eapack.desc": "Library Pack For Ammo",
+
+  "ea.ammo.10mm.name": "§a10mm Bullet",
+  "ea.ammo.380auto.name": "§a380 ACP Bullet",
+  "ea.ammo.32acp.name": "§a32 ACP Bullet",
+  "ea.ammo.30mauser.name": "§a30 Mauser Bullet",
+  "ea.ammo.40sw.name": "§a40 S&W Bullet",
+  "ea.ammo.9x18.name": "§a9x18mm Makarov Bullet",
+  "ea.ammo.9x21.name": "§a9x21mm Bullet",
+  "ea.ammo.17hmr.name": "§a17 HMR Bullet",
+  "ea.ammo.22lr.name": "§a22LR Bullet",
+  "ea.ammo.22hornet.name": "§a22 Hornet Bullet",
+  "ea.ammo.27kolibri.name": "§a2.7mm Kolibri Bullet",
+
+
+  "ea.ammo.410bore.name": "§9.410 Bore",
+  "ea.ammo.4g.name": "§94 Gauge Bullet",
+  "ea.ammo.10g.name": "§910 Gauge Bullet",
+  "ea.ammo.20g.name": "§920 Gauge Bullet",
+
+
+  "ea.ammo.50beowulf.name": "§b.50 Beowulf Bullet",
+  "ea.ammo.65creedmoor.name": "§b6.5 Creedmoor Bullet",
+  "ea.ammo.68tvcm.name": "§b6.8 TVCM Bullet",
+  "ea.ammo.458socom.name": "§b.458 SOCOM Bullet",
+  "ea.ammo.458hamr.name": "§b.458 HAM'R Bullet",
+  "ea.ammo.300blk.name":"§b300 Blackout Bullet",
+  "ea.ammo.86blk.name":"§b8.6 Blackout Bullet",
+  "ea.ammo.6arc.name":"§b6mm Arc Bullet",
+  "ea.ammo.338arc.name":"§b.338 Arc Bullet",
+
+
+  "ea.ammo.300winmag.name": "§c.300 Winmag Bullet",
+  "ea.ammo.3030win.name": "§c30-30 Win Bullet",
+  "ea.ammo.127x55.name": "§c12.7x55 Bullet",
+  "ea.ammo.127x108.name": "§c12.7x108 Bullet",
+  "ea.ammo.357sig.name": "§c.357 Sig Bullet",
+  "ea.ammo.366mag.name": "§c.366 Magnum Bullet",
+  "ea.ammo.44magnum.name": "§c.44 Magnum Bullet",
+  "ea.ammo.44special.name": "§c.44 Special Bullet",
+  "ea.ammo.408cheytac.name": "§c.408 Cheytac Bullet",
+  "ea.ammo.338norma.name": "§c.338 Norma Magnum Bullet",
+  "ea.ammo.416barrett.name": "§c.416 Barrett Bullet",
+  "ea.ammo.454casull.name": "§c.454 Casull Bullet",
+  "ea.ammo.458winmag.name": "§c.458 Winmag Bullet",
+  "ea.ammo.50gi.name": "§c.50 GI Bullet",
+
+
+  "ea.ammo.792x33.name": "§e7.92x33mm Kurz Bullet",
+  "ea.ammo.366tkm.name": "§e366 TKM Bullet",
+  "ea.ammo.556x30.name": "§e5.56x30mm Bullet",
+  "ea.ammo.9x39.name":"§e9x39mm Bullet",
+  "ea.ammo.602x41.name":"§e6.02x41 Bullet",
+
+  "ea.ammo.75fk.name":"§d7.5FK Bullet",
+  "ea.ammo.58x21.name":"§d5.8x21mm Bullet",
+
+
+  "ea.ammo.145x114.name":"§d14.5x114mm Bullet",
+  "ea.ammo.20x102.name":"§d20x102mm Bullet",
+  "ea.ammo.950jdj.name":"§d.950 JDJ Bullet",
+
+  "ea.pistol_ammo": "Pistol Ammunition",
+  "ea.rifle_ammo": "Rifle Ammunition",
+  "ea.large_ammo": "Large Calibers",
+  "ea.extras": "Huge calibers & Extras",
+  "ea.shotgun_ammo": "Shotgun Ammunition",
+  "ea.converter": "Why are you even using this",
+
+
+  "ea.block.ammobench": "Ammo Bench",
+  "ea.ammobench.desc": "Ammo press kit, it's a 2x1 block, just warning!(required to make ea ammo, only makes ammo)"
+}

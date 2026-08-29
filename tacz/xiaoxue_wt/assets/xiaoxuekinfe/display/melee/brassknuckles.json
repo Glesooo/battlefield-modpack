@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/brassknuckles_geo",
+  "animation": "xiaoxuekinfe:melee/brassknuckles",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/brassknuckles_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/brassknuckles",
+  "slot_texture": "xiaoxuekinfe:melee/slot/brassknuckles"
+}

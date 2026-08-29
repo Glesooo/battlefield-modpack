@@ -1,0 +1,71 @@
+
+#Visual effects — all purely cosmetic, none affect gameplay
+[visuals]
+	#Falling blood-drip particles below fresh heavy wounds
+	dripParticles = true
+	#Red screen-edge vignette scaling with your wound severity
+	vignette = false
+	#Short blood splatters on the screen when taking heavy hits
+	screenSplats = false
+	#Blood briefly flushes across your view after a close, bloody melee kill
+	bloodScreen = true
+	#Hold attack with a still-bloody weapon and aim at a wall to smear/"write" blood on it
+	#(purely visual). Note: in survival, attacking also breaks the block.
+	bloodWriting = true
+	#Blood pools forming on the ground under heavily bleeding entities
+	groundPools = true
+	#Blood splatter decals on nearby blocks for heavy hits
+	wallSplats = true
+	#Weapons look bloody for a while after melee hits (experimental)
+	bloodyWeapons = true
+	#Render blood on the skin's outer overlay layer (hat/jacket/sleeves/pants)
+	bloodOnSkinOverlay = true
+	#Heavily bleeding entities leave fading blood trails on the ground while moving
+	bloodTrails = true
+	#Maximum opacity of the vignette at full wound load
+	#Range: 0.0 ~ 1.0
+	vignetteMaxAlpha = 0.44999998807907104
+	#Scales how intense wounds look (amount/size of generated blood). 1.0 = normal
+	#Range: 0.1 ~ 2.0
+	bloodIntensity = 1.25
+	#How MUCH blood the world gets: scales splatter count, pool size, death bursts and
+	#weapon puddles. 0 = none, 1.0 = realistic, up to 3.0 = very gory. Set in the setup screen too.
+	#Range: 0.0 ~ 3.0
+	bloodAmount = 1.600000023841858
+	#How long blood/decals stay before fading (pools, splatter, trails, drips, scars).
+	#1.0 = normal, lower = clears faster (0.1 = very fast, e.g. regeneration-themed
+	#packs), higher = lingers. Set in the setup screen too.
+	#Range: 0.1 ~ 4.0
+	bloodLifetime = 1.0
+	#Render body wounds on Epic Fight's animated combat models (only used when
+	#Epic Fight is installed). Turn off if wounds look distorted in battle mode —
+	#world blood (pools, splatter, drips) is unaffected.
+	epicFightWounds = true
+	#A small red mist puff when a wound closes from healing (potions/regeneration),
+	#as if the blood evaporates. Off by default.
+	healSmoke = false
+	#Blood-drip particle amount. 1.0 = the classic single drop, higher = bigger/chunkier clusters
+	#Range: 0.5 ~ 3.0
+	dripParticleScale = 1.5
+	#Max distance (blocks) at which wounds and decals are drawn. Lower = better performance with many wounded mobs
+	#Range: 8 ~ 64
+	woundRenderDistance = 48
+	#Bullet-hole decals on blocks shot with TACZ guns (only when TACZ is installed)
+	bulletHoles = true
+	#Maximum number of blood pools rendered at once
+	#Range: 0 ~ 512
+	maxGroundPools = 64
+	#Maximum number of wall splatter decals rendered at once
+	#Range: 0 ~ 1024
+	maxWallSplats = 128
+
+[setup]
+	#True once the first-launch preset screen was completed (reopen anytime with /bloodsetup)
+	setupDone = true
+	#FOR MODPACK CREATORS: ship a preset share code here (e.g. "BBO1:255:45:100:100:24")
+	#to pre-configure the blood look for your players. On first launch — while
+	#setupDone is still false — it is applied automatically and the setup screen is
+	#skipped. Players can still change everything later via /bloodsetup. Leave empty
+	#to show the normal first-launch chooser. Create codes via /bloodsetup -> Create your own.
+	defaultPreset = ""
+

@@ -1,0 +1,38 @@
+{
+  "slot": "ea:ammo/slot/127x55",
+  "shell": {
+    "model": "tacz:shell/308_shell",
+    "texture": "tacz:shell/308_shell"
+  },
+  "tracer_color": "#FF8888",
+  "particle": {
+    "name": "mycelium",
+    "delta": [
+      0,
+      0,
+      0
+    ],
+    "speed": 0.0,
+    "life_time": 50,
+    "count": 25
+  },
+  "transform": {
+    "scale": {
+      "thirdperson": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "ground": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "fixed": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/xmas23_geo",
+  "animation": "xiaoxuekinfe:melee/xmas23",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/xmas23_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/xmas23_uv",
+  "slot_texture": "xiaoxuekinfe:melee/slot/xmas23"
+}

@@ -1,0 +1,8 @@
+name = "coolrain-1.20.1-Forge-1.0.3"
+filename = "coolrain-1.20.1-Forge-1.0.3.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/coolrain-1.20.1-Forge-1.0.3.jar"
+hash-format = "sha256"
+hash = "a8183b429b7a15b876b83256ab7a5038175936f7074f0ff78535016f49b18a2e"

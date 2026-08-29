@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/maxace_firstsnake_geo",
+  "animation": "xiaoxuekinfe:melee/maxace",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/maxace_common_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/maxace_firstsnake",
+  "slot_texture": "xiaoxuekinfe:melee/slot/maxace_firstsnake"
+}

@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/xiaoxue_geo",
+  "animation": "xiaoxuekinfe:melee/xiaoxue",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/xiaoxue_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/xiaoxue",
+  "slot_texture": "xiaoxuekinfe:melee/slot/xiaoxue"
+}

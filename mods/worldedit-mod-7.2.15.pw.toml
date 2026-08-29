@@ -1,0 +1,8 @@
+name = "worldedit-mod-7.2.15"
+filename = "worldedit-mod-7.2.15.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/worldedit-mod-7.2.15.jar"
+hash-format = "sha256"
+hash = "17db6b3e94f52d25426684663e1e1846823cbb7907f1c365ac329e5bc7bfaf2c"

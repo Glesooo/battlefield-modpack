@@ -1,0 +1,15 @@
+{
+  "type": "tacz:gun_smith_table_crafting",
+  "materials": [
+    {
+      "item": {
+        "item": "minecraft:diamond_axe"
+      },
+      "count": 1
+    }
+  ],
+  "result": {
+    "type": "lr_melee",
+    "id": "xiaoxuekinfe:diamond_axe"
+  }
+}

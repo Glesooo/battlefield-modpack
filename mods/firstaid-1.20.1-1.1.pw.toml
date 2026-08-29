@@ -1,0 +1,8 @@
+name = "firstaid-1.20.1-1.1"
+filename = "firstaid-1.20.1-1.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/firstaid-1.20.1-1.1.jar"
+hash-format = "sha256"
+hash = "c2021a688e301f7a44da0ae04163ec8b8f077154e02c48e89063027b0cf33e4a"

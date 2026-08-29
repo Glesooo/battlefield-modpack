@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/firework_geo",
+  "animation": "xiaoxuekinfe:melee/firework",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/firework_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/firework",
+  "slot_texture": "xiaoxuekinfe:melee/slot/firework"
+}

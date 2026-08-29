@@ -1,0 +1,56 @@
+{
+  "model": "maxstuff:gun/kar98_geo",
+  "texture": "maxstuff:gun/uv/kar98",
+  "lod": {
+    "model": "maxstuff:gun/kar98_geo",
+    "texture": "maxstuff:gun/uv/kar98"
+  },
+  "hud": "maxstuff:gun/hud/kar98",
+  "slot": "maxstuff:gun/slot/kar98",
+  "animation": "maxstuff:kar98",
+  "state_machine": "maxstuff:kar98_state_machine",
+  "state_machine_param": {
+    "bolt_shell_ejecting_time": 0.17,
+    "intro_shell_ejecting_time": 0.4
+  },
+  "use_default_animation": "rifle",
+  "transform": {
+    "scale": {
+      "thirdperson": [0.6, 0.6, 0.6],
+      "ground": [0.6, 0.6, 0.6],
+      "fixed": [1.2, 1.2, 1.2]
+    }
+  },
+  "muzzle_flash": {
+    "texture": "tacz:flash/common_muzzle_flash",
+    "scale": 0.75
+  },
+  "iron_zoom": 1.5,
+  "zoom_model_fov": 60,
+  "sounds": {
+    "reload_empty": "maxstuff:kar98/kar98_reload_empty",
+    "inspect": "maxstuff:kar98/kar98_inspect",
+    "inspect_empty": "maxstuff:kar98/kar98_inspect",
+    "draw": "maxstuff:kar98/kar98_draw",
+    "shoot": "maxstuff:kar98/kar98_shoot",
+    "shoot_3p": "maxstuff:kar98/kar98_shoot",
+    "silence": "maxstuff:kar98/kar98_silence",
+    "silence_3p": "maxstuff:kar98/kar98_silence",
+    "bolt": "maxstuff:kar98/kar98_bolt",
+    "put_away": "tacz:ai_awp/awp_put_away",
+    "melee_push": "tacz:melee_stock/melee_stock_02",
+    "melee_stock": "tacz:melee_stock/melee_stock_03"
+  },
+  "offhand_show": {
+    "pos": [-2, 20, 4],
+    "rotate": [0, 0, 45],
+    "scale": [0.5, 0.5, 0.5]
+  },
+  "hotbar_show": {
+    "0": {
+      "pos": [-4, 26, 3],
+      "rotate": [-90, -5, -90],
+      "scale": [0.5, 0.5, 0.5]
+    }
+  }
+}

@@ -1,0 +1,71 @@
+
+[stamina]
+	#Maximum stamina.
+	#Range: 1 ~ 10000
+	max_stamina = 100
+	#Stamina drained per tick while sprinting and actually moving on the ground (20 ticks = 1 second).
+	#Range: 0.0 ~ 100.0
+	sprint_drain_per_tick = 0.45
+	#Stamina cost of a single jump.
+	#Range: 0.0 ~ 10000.0
+	jump_cost = 20.0
+	#Stamina regenerated per tick once regen is active.
+	#Range: 0.0 ~ 100.0
+	regen_per_tick = 0.4
+	#Ticks after you stop draining before regen starts, in the normal case (20 = 1 second).
+	#Range: 0 ~ 600
+	regen_delay_ticks = 20
+	#Longer regen delay used when you actually ran stamina all the way down to zero. Punishes emptying the bar.
+	#Range: 0 ~ 1200
+	exhausted_regen_delay_ticks = 60
+	#After hitting zero, sprint and jump stay locked until stamina climbs back to this value.
+	#Range: 0.0 ~ 10000.0
+	recovery_threshold = 20.0
+
+[panel]
+	#Draw the stance/stamina panel.
+	enabled = true
+	#Panel margin in pixels from the RIGHT screen edge (moved off the left so it clears the chat).
+	#Set by dragging in the HUD editor.
+	#Range: -4000 ~ 4000
+	offset_x = 697
+	#Panel vertical offset in pixels from the BOTTOM screen edge (larger = higher up).
+	#Range: -4000 ~ 4000
+	offset_y = 336
+	#Panel size multiplier. Drop below 1.0 if it feels too big.
+	#Range: 0.4 ~ 3.0
+	scale = 1.05
+
+[hotbar]
+	#Replace the vanilla hotbar with the tactical one. Turning this off restores the vanilla hotbar.
+	enabled = true
+	#Hotbar horizontal offset in pixels from screen center.
+	#Range: -4000 ~ 4000
+	offset_x = 5
+	#Hotbar vertical offset in pixels from the BOTTOM screen edge (larger = higher up).
+	#Defaults high enough to clear the vanilla health/hunger/armor rows, which sit about 39-49px up.
+	#Range: -4000 ~ 4000
+	offset_y = 360
+	#Hotbar size multiplier.
+	#Range: 0.4 ~ 3.0
+	scale = 1.1
+	#Hide the vanilla XP bar, which otherwise sits underneath the tactical hotbar.
+	hide_xp_bar = true
+	#Fade this HUD in and out together with AutoHUD, if AutoHUD is installed.
+	#Off = always visible regardless of what AutoHUD does with the vanilla HUD.
+	follow_autohud = true
+	#How far the noise meter jumps per unit of sound volume. Higher = the meter pegs sooner.
+	#A suppressed shot registers less than a bare one automatically, because TacZ plays a quieter sound for it.
+	#Range: 0.0 ~ 10.0
+	noise_sensitivity = 0.55
+	#How fast the noise meter falls back to zero, per tick.
+	#Range: 0.001 ~ 1.0
+	noise_decay_per_tick = 0.035
+	#Hide the vanilla armor bar (First Aid / the wound silhouette cover defence).
+	hide_armor = true
+	#Hide the vanilla hunger bar while food is full; it comes back the moment you get hungry.
+	hide_hunger_when_full = true
+	#Hide First Aid's own HUD (its green player-model figure), since the stance panel replaces it.
+	#Only applies while the stance panel is enabled.
+	hide_firstaid_hud = true
+

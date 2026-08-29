@@ -1,0 +1,8 @@
+name = "hudelements-1.4.6"
+filename = "hudelements-1.4.6.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/hudelements-1.4.6.jar"
+hash-format = "sha256"
+hash = "3b732d176c920358d58558a52906b7fe257ff07598db7ae374a76871d9ee4e87"

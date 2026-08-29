@@ -1,0 +1,8 @@
+name = "tacz_extras-1.20.1-1.1.1"
+filename = "tacz_extras-1.20.1-1.1.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/tacz_extras-1.20.1-1.1.1.jar"
+hash-format = "sha256"
+hash = "89f4a356809d33821afe757305fecf1f1fd258e2223ddebdf63c586a0af6dcef"

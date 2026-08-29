@@ -1,0 +1,7 @@
+{
+  "model": "xiaoxuekinfe:melee/maxace_ashes_geo",
+  "animation": "xiaoxuekinfe:melee/maxace",
+  "state_machine": "xiaoxuekinfe:melee/state_machine/maxace_common_state_machine",
+  "texture": "xiaoxuekinfe:melee/texture/maxace_ashes",
+  "slot_texture": "xiaoxuekinfe:melee/slot/maxace_ashes"
+}

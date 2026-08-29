@@ -1,0 +1,9 @@
+{
+  "type": "tacz:gun_smith_table_crafting",
+  "materials": [],
+  "result": {
+    "type": "ammo",
+    "id": "xiaoxue_wt:8mm",
+    "count": 60
+  }
+}

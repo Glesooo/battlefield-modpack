@@ -1,0 +1,10 @@
+#Cant angle in degrees, applied around the weapon's own barrel axis.
+#Flip the sign if it leans the wrong way for your gun pack.
+#Range: -90.0 ~ 90.0
+angle = -40.0
+#How long the tilt takes, in milliseconds. Lower = snappier.
+#Range: 0 ~ 2000
+transition_ms = 180
+#true = hold the key to stay canted; false = press once to cant, press again to return.
+hold_mode = false
+

@@ -1,0 +1,27 @@
+{
+  "slot": "ea:ammo/slot/3030win",
+  "shell": {
+    "model": "tacz:shell/50ae_shell",
+    "texture": "tacz:shell/50ae_shell"
+  },
+  "tracer_color": "#FF9999",
+  "transform": {
+    "scale": {
+      "thirdperson": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "ground": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "fixed": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    }
+  }
+}

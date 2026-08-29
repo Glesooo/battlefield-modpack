@@ -1,0 +1,43 @@
+{
+  "tooltip": "xiaoxuekinfe.lr.melee.ontario.desc",
+  "name": "xiaoxuekinfe.lr.melee.ontario.name",
+  "type": "lrtactical:normal",
+  "base_item": "lrtactical:melee",
+  "data": {
+    "draw_time": 4,
+    "put_away_time": 4,
+    "attributes": {
+      "generic.attack_damage": 9,
+      "minecraft:generic.movement_speed": {
+        "amount": 0.05,
+        "operation": "percent"
+      }
+    },
+    "attack": {
+      "attack_left": {
+        "factor": 1,
+        "knockback": 0,
+        "cooldown": 10,
+        "delay": 4,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 4,
+          "max_angle": 110,
+          "exclude_self": true
+        }
+      },
+      "attack_right": {
+        "factor": 1.5,
+        "knockback": 0,
+        "cooldown": 16,
+        "delay": 4,
+        "hitbox": {
+          "type": "cone",
+          "max_range": 4,
+          "max_angle": 60,
+          "exclude_self": true
+        }
+      }
+    }
+  }
+}
