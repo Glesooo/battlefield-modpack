@@ -242,7 +242,7 @@ public partial class MainWindow : Window
         }
         else
         {
-            string details = string.Join(Environment.NewLine, lastLines.TakeLast(6));
+            string details = string.Join(Environment.NewLine, lastLines);
             ShowError($"Апдейтер сообщил о проблеме (код {_process.ExitCode}).", details);
         }
     }
@@ -251,7 +251,7 @@ public partial class MainWindow : Window
     {
         if (string.IsNullOrWhiteSpace(line)) return;
         lastLines.Add(line);
-        if (lastLines.Count > 50) lastLines.RemoveAt(0);
+        if (lastLines.Count > 200) lastLines.RemoveAt(0);
 
         var match = ProgressLine.Match(line);
         Dispatcher.Invoke(() =>

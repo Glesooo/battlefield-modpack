@@ -115,8 +115,13 @@
                     </StackPanel>
 
                     <Border Margin="36,0,36,0" VerticalAlignment="Bottom" Padding="0,0,0,16">
-                        <TextBlock x:Name="CurrentFileText" Text="" FontSize="12"
-                                   Foreground="{StaticResource TextDimBrush}" TextTrimming="CharacterEllipsis" />
+                        <ScrollViewer MaxHeight="150" VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled">
+                            <TextBox x:Name="CurrentFileText" Text="" FontSize="12" FontFamily="Consolas"
+                                     Foreground="{StaticResource TextDimBrush}" Background="Transparent"
+                                     BorderThickness="0" IsReadOnly="True" IsReadOnlyCaretVisible="False"
+                                     TextWrapping="Wrap" />
+                        </ScrollViewer>
                     </Border>
                 </Grid>
 
