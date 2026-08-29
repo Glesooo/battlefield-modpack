@@ -58,6 +58,16 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 <#
+The one place the sanitized name is defined. It is what gets uploaded as the release asset,
+what packwiz records as the metafile's `filename`, and therefore the name the file ends up
+with on a player's disk - so every comparison against a metafile must go through here too.
+#>
+function Get-SafeName {
+    param([System.IO.FileInfo]$File)
+    ($File.BaseName -replace '[^a-zA-Z0-9._-]', '_') + $File.Extension
+}
+
+<#
 Syncs one flat folder of binary files (mods/*.jar, tacz/*.zip) as packwiz url-metafiles
 pointing at the shared release. $MetaFolder controls both where the .toml pointer lands in
 this repo AND where packwiz-installer places the real file on the player's machine (packwiz
@@ -74,8 +84,13 @@ function Sync-BinaryFolder {
     $trackedDir = Join-Path $distRoot $MetaFolder
     New-Item -ItemType Directory -Path $trackedDir -Force | Out-Null
 
-    $liveFiles = @(Get-ChildItem $LiveDir -Filter $FileFilter -File -ErrorAction SilentlyContinue)
-    $liveNames = @($liveFiles.Name)
+    $liveFiles = @(Get-ChildItem -LiteralPath $LiveDir -Filter $FileFilter -File -ErrorAction SilentlyContinue)
+    # Compare against SANITIZED names, never the raw ones: a metafile's `filename` is always the
+    # sanitized form (see $safeName below), so matching it against the live folder's original
+    # names never hits for any mod whose name needed sanitizing - which made this function
+    # re-upload those files on every run AND then delete their freshly-written metafiles in the
+    # stale-entry sweep at the bottom, silently dropping them out of the pack.
+    $liveNames = @($liveFiles | ForEach-Object { (Get-SafeName $_) })
 
     $tracked = @(Get-ChildItem $trackedDir -Filter *.toml -ErrorAction SilentlyContinue | ForEach-Object {
         $toml = Get-Content $_.FullName -Raw
@@ -93,21 +108,22 @@ function Sync-BinaryFolder {
         # nothing - the exact bug this project already hit once with Test-Path (see
         # Libs/README.md history). Every cmdlet below is pinned to -LiteralPath/-Destination
         # rather than relying on positional binding picking the literal-safe parameter.
-        $localHash = (Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash
-        $existing = $tracked | Where-Object { $_.Filename -eq $f.Name } | Select-Object -First 1
-
-        if ($existing -and $existing.Hash -and ($existing.Hash -ieq $localHash)) {
-            continue # unchanged
-        }
-
         # Filesystem-safe name for BOTH the uploaded asset and the metadata file - several
         # jar/zip names in this pack have characters (backtick, brackets, +, spaces) that trip
         # up either `gh release upload`'s own glob expansion (square brackets = a wildcard
         # character class to it, so it just doesn't find the file) or packwiz's slug generator.
         # Uploading a same-content temp copy under the sanitized name sidesteps both, rather
         # than fighting each tool's own quoting/escaping rules.
-        $safeName = ($f.BaseName -replace '[^a-zA-Z0-9._-]', '_')
-        $safeFileName = "$safeName$($f.Extension)"
+        $safeFileName = Get-SafeName $f
+        $safeName = [System.IO.Path]::GetFileNameWithoutExtension($safeFileName)
+
+        $localHash = (Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash
+        $existing = $tracked | Where-Object { $_.Filename -eq $safeFileName } | Select-Object -First 1
+
+        if ($existing -and $existing.Hash -and ($existing.Hash -ieq $localHash)) {
+            continue # unchanged
+        }
+
         $tempCopy = Join-Path ([System.IO.Path]::GetTempPath()) $safeFileName
         Copy-Item -LiteralPath $f.FullName -Destination $tempCopy -Force
 
