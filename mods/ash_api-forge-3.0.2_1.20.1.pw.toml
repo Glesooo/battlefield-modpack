@@ -1,0 +1,8 @@
+name = "ash_api-forge-3.0.2+1.20.1"
+filename = "ash_api-forge-3.0.2_1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/ash_api-forge-3.0.2_1.20.1.jar"
+hash-format = "sha256"
+hash = "e73de2063adddb8fc83baa7bf4afea6df49e36ab52fe92024e7e0a0242a46c8a"

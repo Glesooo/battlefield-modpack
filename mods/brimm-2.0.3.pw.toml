@@ -1,0 +1,8 @@
+name = "brimm-2.0.3"
+filename = "brimm-2.0.3.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/brimm-2.0.3.jar"
+hash-format = "sha256"
+hash = "d5532f27710a3dc271b53a10d33e5238ca97ab8c9e6b077b34c30409d166eca9"

@@ -1,0 +1,8 @@
+name = "betterbloodoverlay-forge-1.20.1-2.2.0"
+filename = "betterbloodoverlay-forge-1.20.1-2.2.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/betterbloodoverlay-forge-1.20.1-2.2.0.jar"
+hash-format = "sha256"
+hash = "19bd7936b4f8042af2d66c8d0ef8ad22fa63e833011ee76bb04d909a31ebbe83"

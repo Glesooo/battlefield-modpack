@@ -1,0 +1,8 @@
+name = "BetterDeath-1.1.3"
+filename = "BetterDeath-1.1.3.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/BetterDeath-1.1.3.jar"
+hash-format = "sha256"
+hash = "a4918b7131c807ddc56f145ad42f8b5ef2e842ba755f44090edfd610e2517544"

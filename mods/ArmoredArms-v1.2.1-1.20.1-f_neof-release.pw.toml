@@ -1,0 +1,8 @@
+name = "ArmoredArms-v1.2.1-1.20.1-f+neof-release"
+filename = "ArmoredArms-v1.2.1-1.20.1-f_neof-release.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/ArmoredArms-v1.2.1-1.20.1-f_neof-release.jar"
+hash-format = "sha256"
+hash = "543eb41a6623bcbd35c64abec3e3ecff798a45d3a1acf200cfc77d340d8df827"

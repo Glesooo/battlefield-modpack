@@ -1,0 +1,8 @@
+name = "Arcana-1.1.4-loader-hybrid"
+filename = "Arcana-1.1.4-loader-hybrid.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/Arcana-1.1.4-loader-hybrid.jar"
+hash-format = "sha256"
+hash = "b0a9ba0cc00de886a0b7162dff5073b9255910e951b5f5a2655c01490eee7dfa"

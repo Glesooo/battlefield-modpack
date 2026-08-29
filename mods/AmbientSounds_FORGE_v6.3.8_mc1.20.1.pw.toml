@@ -1,0 +1,8 @@
+name = "AmbientSounds_FORGE_v6.3.8_mc1.20.1"
+filename = "AmbientSounds_FORGE_v6.3.8_mc1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/AmbientSounds_FORGE_v6.3.8_mc1.20.1.jar"
+hash-format = "sha256"
+hash = "41688a2ba90e5b07beb0e1844cfd0b21a4294b1073de144ae0a7f519b336a18b"

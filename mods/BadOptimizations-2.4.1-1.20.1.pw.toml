@@ -1,0 +1,8 @@
+name = "BadOptimizations-2.4.1-1.20.1"
+filename = "BadOptimizations-2.4.1-1.20.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/BadOptimizations-2.4.1-1.20.1.jar"
+hash-format = "sha256"
+hash = "3da53cdf856757d9ec7df0be86bc23b2c7d67a019b490f8f64317d4d9b77cac8"
