@@ -107,6 +107,10 @@ function Sync-BinaryFolder {
         }
     })
 
+    # Names actually present on the release, used by the skip test below.
+    $releaseAssets = @((gh release view $AssetTag --repo $Repo --json assets | ConvertFrom-Json).assets.name)
+    if ($LASTEXITCODE -ne 0) { throw "gh release view failed - cannot confirm which assets exist" }
+
     foreach ($f in $liveFiles) {
         # -LiteralPath everywhere a real (possibly bracket/backtick-containing) filename is
         # used: PowerShell's own -Path parameters wildcard-expand by default, so e.g.
@@ -126,8 +130,12 @@ function Sync-BinaryFolder {
         $localHash = (Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash
         $existing = $tracked | Where-Object { $_.Filename -eq $safeFileName } | Select-Object -First 1
 
-        if ($existing -and $existing.Hash -and ($existing.Hash -ieq $localHash)) {
-            continue # unchanged
+        # The asset check is not redundant with the hash check: an interrupted run can leave a
+        # metafile behind whose upload never finished, and trusting the metafile alone would
+        # skip that file on every later run, leaving players with a permanent 404.
+        if ($existing -and $existing.Hash -and ($existing.Hash -ieq $localHash) -and
+            ($releaseAssets -contains $safeFileName)) {
+            continue # unchanged and actually present on the release
         }
 
         $tempCopy = Join-Path ([System.IO.Path]::GetTempPath()) $safeFileName
