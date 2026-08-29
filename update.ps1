@@ -3,7 +3,7 @@
 # (PrismLauncher\instances\<YourInstance>\minecraft\BattlefieldUpdater.exe) and double-click
 # it whenever there's an update. It only downloads what actually changed.
 
-$PackUrl = "https://raw.githubusercontent.com/OWNER/REPO/main/pack.toml"
+$PackUrl = "https://raw.githubusercontent.com/Glesooo/battlefield-modpack/main/pack.toml"
 $BootstrapUrl = "https://github.com/packwiz/packwiz-installer-bootstrap/releases/download/v0.0.3/packwiz-installer-bootstrap.jar"
 
 # Always operate next to the exe itself, not whatever directory it happened to be launched
