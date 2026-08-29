@@ -1,0 +1,6 @@
+# Player-facing modpack files are hashed byte-for-byte by packwiz (SHA256 of the exact bytes
+# raw.githubusercontent.com serves). Git's CRLF normalization on checkout/commit silently
+# changes those bytes on Windows, which makes a locally-computed hash disagree with the real
+# committed blob and breaks every download with "Hash invalid!". Disable all text conversion
+# repo-wide so a Windows checkout is always byte-identical to what's committed.
+* -text
