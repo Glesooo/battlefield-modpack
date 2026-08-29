@@ -1318,10 +1318,6 @@ hash = "00ea0561cb74a1687f2886bd246bf161db83fa9853dc93b16fa40c7f5fc6d3da"
 metafile = true
 
 [[files]]
-file = "packwiz-installer-bootstrap.jar"
-hash = "a8fbb24dc604278e97f4688e82d3d91a318b98efc08d5dbfcbcbcab6443d116c"
-
-[[files]]
 file = "tacz/.export-state.json"
 hash = "1819183ee55228a947d38bcf45d4d2f7852be1d8ab98df1700a36eae282ceebd"
 
