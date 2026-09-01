@@ -258,10 +258,21 @@ public partial class MainWindow : Window
         };
 
         _process = new Process { StartInfo = psi, EnableRaisingEvents = true };
+        // Two collections on purpose. `lastLines` is a rolling tail for the "technical details"
+        // box; `problems` keeps EVERY error line for the whole run and is never trimmed.
+        // packwiz-installer prints one progress line per indexed file - this pack has over 7500 -
+        // so a failure early on scrolled out of a 200-line tail long before the run ended, and the
+        // player was told the install succeeded. There are only ever a handful of error lines, so
+        // keeping all of them costs nothing.
         var lastLines = new List<string>();
+        var problems = new List<string>();
+        // stdout and stderr are delivered on separate thread-pool threads; List<T> is not
+        // thread-safe, and a torn Add/RemoveAt here would drop the very line we need (or throw on
+        // a thread where the dispatcher's handler cannot catch it, killing the process).
+        object linesLock = new();
 
-        _process.OutputDataReceived += (_, args) => HandleLine(args.Data, lastLines);
-        _process.ErrorDataReceived += (_, args) => HandleLine(args.Data, lastLines);
+        _process.OutputDataReceived += (_, args) => HandleLine(args.Data, lastLines, problems, linesLock);
+        _process.ErrorDataReceived += (_, args) => HandleLine(args.Data, lastLines, problems, linesLock);
 
         try
         {
@@ -297,12 +308,19 @@ public partial class MainWindow : Window
         }
 
         // Exit code alone is not enough. packwiz-installer reports a per-file download or hash
-        // failure as a logged exception and then asks whether to carry on - so a run can end
-        // with files missing or corrupt while still looking like a success. Treating any error
-        // line as a failure is what stops a broken install from being announced as "Готово!".
-        var problems = lastLines.Where(IsProblemLine).Distinct().Take(5).ToList();
+        // failure as a logged exception and then carries on - so a run can end with files missing
+        // or corrupt while still exiting 0. `problems` was collected as the lines arrived, so an
+        // error on file 100 of 7500 still counts here.
+        List<string> shown;
+        List<string> tail;
+        lock (linesLock)
+        {
+            shown = problems.Distinct().Take(5).ToList();
+            tail = lastLines.ToList();
+        }
+        int problemCount = shown.Count;
 
-        if (_process.ExitCode == 0 && problems.Count == 0)
+        if (_process.ExitCode == 0 && problemCount == 0)
         {
             _finishedOk = true;
             SetStep(3);
@@ -321,21 +339,21 @@ public partial class MainWindow : Window
         {
             // Lead with what actually went wrong; keep the raw tail underneath so a screenshot
             // is still enough to diagnose it without asking the player to scroll.
-            string headline = problems.Count > 0
+            string headline = problemCount > 0
                 ? "Часть файлов не скачалась — сборка обновлена не полностью."
                 : $"Апдейтер сообщил о проблеме (код {_process.ExitCode}).";
 
             var text = new StringBuilder();
-            if (problems.Count > 0)
+            if (problemCount > 0)
             {
                 text.AppendLine("Что произошло:");
-                foreach (string p in problems) text.AppendLine("  • " + p);
+                foreach (string p in shown) text.AppendLine("  • " + p);
                 text.AppendLine();
                 text.AppendLine("Запусти обновление ещё раз — оно продолжит с того же места.");
                 text.AppendLine();
             }
             text.AppendLine("Технические подробности:");
-            text.Append(string.Join(Environment.NewLine, lastLines));
+            text.Append(string.Join(Environment.NewLine, tail));
 
             ShowError(headline, text.ToString());
         }
@@ -353,14 +371,24 @@ public partial class MainWindow : Window
         || line.Contains("Exception", StringComparison.Ordinal)
         || line.Contains("Error:", StringComparison.OrdinalIgnoreCase);
 
-    private void HandleLine(string? line, List<string> lastLines)
+    private void HandleLine(string? line, List<string> lastLines, List<string> problems, object linesLock)
     {
         if (string.IsNullOrWhiteSpace(line)) return;
-        lastLines.Add(line);
-        if (lastLines.Count > 200) lastLines.RemoveAt(0);
+        lock (linesLock)
+        {
+            lastLines.Add(line);
+            if (lastLines.Count > 200) lastLines.RemoveAt(0);
+            // Never trimmed: this is the record the success/failure verdict is read from.
+            // Capped only to survive a pathological run that errors on every one of 7500 files.
+            if (problems.Count < 500 && IsProblemLine(line)) problems.Add(line);
+        }
 
         var match = ProgressLine.Match(line);
-        Dispatcher.Invoke(() =>
+        // InvokeAsync, not Invoke: the reader threads must not block on the UI thread for 7500
+        // lines, and Invoke throws if the dispatcher has begun shutting down - which is exactly
+        // what happens when Cancel kills the process and closes the window while lines are still
+        // buffered. That throw would land on a thread-pool thread, where it kills the process.
+        Dispatcher.InvokeAsync(() =>
         {
             if (match.Success)
             {

@@ -1,8 +1,0 @@
-name = "jumpcooldown-1.1.2"
-filename = "jumpcooldown-1.1.2.jar"
-side = "both"
-
-[download]
-url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/jumpcooldown-1.1.2.jar"
-hash-format = "sha256"
-hash = "dfa6e1ca46e0d51b6c2b3311ef1f01f0fc4b8f57649867612f94d6e12598e3ac"

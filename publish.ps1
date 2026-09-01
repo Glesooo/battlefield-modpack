@@ -124,6 +124,15 @@ function Sync-BinaryFolder {
         }
     })
 
+    # Refuse to read "I found nothing" as "the author deleted everything". The Get-ChildItem above
+    # silences every failure - folder renamed, drive offline, AV lock, OneDrive placeholder - and an
+    # empty result would send the stale sweep at the bottom through every metafile, publish an empty
+    # index and report success. packwiz-installer then deletes those files from every player's game.
+    # Publishing a genuinely empty mods folder is not something anyone does by accident.
+    if ($liveFiles.Count -eq 0 -and $tracked.Count -gt 0) {
+        throw "No $FileFilter files found in $LiveDir, but $($tracked.Count) are currently published. Refusing to publish: this would delete them from every player's install. Check that the folder exists and is readable."
+    }
+
     # Names actually present on the release, used by the skip test below.
     $releaseAssets = @((gh release view $AssetTag --repo $Repo --json assets | ConvertFrom-Json).assets.name)
     if ($LASTEXITCODE -ne 0) { throw "gh release view failed - cannot confirm which assets exist" }
@@ -209,6 +218,16 @@ function Sync-RawFolder {
     if (-not (Test-Path -LiteralPath $SrcDir)) { return }
     New-Item -ItemType Directory -Path $DstDir -Force | Out-Null
 
+    # Same hazard as Sync-BinaryFolder's empty-folder guard, one step earlier: the source existing
+    # is not the same as the source having anything in it. Clearing the destination and copying
+    # nothing publishes an empty config/, which packwiz-installer then deletes from every player.
+    $srcEntries = @(Get-ChildItem -LiteralPath $SrcDir -Force -ErrorAction SilentlyContinue)
+    $dstKept = @(Get-ChildItem -LiteralPath $DstDir -Force -ErrorAction SilentlyContinue |
+        Where-Object { $PreserveExtensions -notcontains $_.Extension })
+    if ($srcEntries.Count -eq 0 -and $dstKept.Count -gt 0) {
+        throw "$SrcDir is empty but $($dstKept.Count) published files come from it. Refusing to publish: this would delete them from every player's install."
+    }
+
     # Clear stale content first so removals on the source side propagate, but never touch
     # files owned by Sync-BinaryFolder. -LiteralPath throughout - see the comment in
     # Sync-BinaryFolder on why (real filenames here aren't guaranteed glob-safe either).
@@ -245,7 +264,22 @@ git add -A
 if ($LASTEXITCODE -ne 0) { Pop-Location; throw "git add failed (exit $LASTEXITCODE)" }
 $pending = git status --porcelain
 if (-not $pending) {
-    Write-Host "Nothing changed - nothing to publish."
+    # "Nothing to commit" is not the same as "GitHub has it". A previous run whose push failed
+    # leaves the commit sitting locally, and every later run then finds nothing to stage and
+    # reports success while players stay on the old pack. Verify the remote before believing it.
+    $localHead = (git rev-parse HEAD).Trim()
+    $remoteHead = ((git ls-remote origin HEAD) -split '\s+')[0]
+    if ($localHead -ne $remoteHead) {
+        Write-Host "Nothing new to commit, but GitHub is behind - pushing the existing commit..."
+        git push
+        if ($LASTEXITCODE -ne 0) { Pop-Location; throw "git push failed (exit $LASTEXITCODE) - players will NOT see the latest commit." }
+        $remoteHead = ((git ls-remote origin HEAD) -split '\s+')[0]
+        if ($localHead -ne $remoteHead) { Pop-Location; throw "Push reported success but GitHub is still on $remoteHead." }
+        Pop-Location
+        Write-Host "Pushed. Players just need to run the updater."
+        return
+    }
+    Write-Host "Nothing changed - nothing to publish (GitHub already has $($localHead.Substring(0,7)))."
     Pop-Location
     return
 }

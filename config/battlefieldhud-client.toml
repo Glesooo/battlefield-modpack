@@ -2,16 +2,16 @@
 [stamina]
 	#Maximum stamina.
 	#Range: 1 ~ 10000
-	max_stamina = 100
+	max_stamina = 115
 	#Stamina drained per tick while sprinting and actually moving on the ground (20 ticks = 1 second).
 	#Range: 0.0 ~ 100.0
 	sprint_drain_per_tick = 0.45
 	#Stamina cost of a single jump.
 	#Range: 0.0 ~ 10000.0
-	jump_cost = 20.0
+	jump_cost = 23.0
 	#Stamina regenerated per tick once regen is active.
 	#Range: 0.0 ~ 100.0
-	regen_per_tick = 0.4
+	regen_per_tick = 0.46
 	#Ticks after you stop draining before regen starts, in the normal case (20 = 1 second).
 	#Range: 0 ~ 600
 	regen_delay_ticks = 20
@@ -20,7 +20,7 @@
 	exhausted_regen_delay_ticks = 60
 	#After hitting zero, sprint and jump stay locked until stamina climbs back to this value.
 	#Range: 0.0 ~ 10000.0
-	recovery_threshold = 20.0
+	recovery_threshold = 23.0
 
 [panel]
 	#Draw the stance/stamina panel.
@@ -28,27 +28,27 @@
 	#Panel margin in pixels from the RIGHT screen edge (moved off the left so it clears the chat).
 	#Set by dragging in the HUD editor.
 	#Range: -4000 ~ 4000
-	offset_x = 697
+	offset_x = 718
 	#Panel vertical offset in pixels from the BOTTOM screen edge (larger = higher up).
 	#Range: -4000 ~ 4000
-	offset_y = 336
+	offset_y = 351
 	#Panel size multiplier. Drop below 1.0 if it feels too big.
 	#Range: 0.4 ~ 3.0
-	scale = 1.05
+	scale = 0.9
 
 [hotbar]
 	#Replace the vanilla hotbar with the tactical one. Turning this off restores the vanilla hotbar.
 	enabled = true
 	#Hotbar horizontal offset in pixels from screen center.
 	#Range: -4000 ~ 4000
-	offset_x = 5
+	offset_x = 4
 	#Hotbar vertical offset in pixels from the BOTTOM screen edge (larger = higher up).
 	#Defaults high enough to clear the vanilla health/hunger/armor rows, which sit about 39-49px up.
 	#Range: -4000 ~ 4000
-	offset_y = 360
+	offset_y = 358
 	#Hotbar size multiplier.
 	#Range: 0.4 ~ 3.0
-	scale = 1.1
+	scale = 1.05
 	#Hide the vanilla XP bar, which otherwise sits underneath the tactical hotbar.
 	hide_xp_bar = true
 	#Fade this HUD in and out together with AutoHUD, if AutoHUD is installed.

@@ -1,0 +1,8 @@
+name = "tacticalfootsteps-1.1.2"
+filename = "tacticalfootsteps-1.1.2.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/tacticalfootsteps-1.1.2.jar"
+hash-format = "sha256"
+hash = "acc89426a50f6bae94d1571af076d0314b538333039b732ab888fbaf5090e31f"

@@ -26,11 +26,7 @@ hash = "cae5ba66971b2f61e0b523c5aeb8b8d4fa806f0bea8a1709860e4fea94426ac9"
 
 [[files]]
 file = "config/battlefieldhud-client.toml"
-hash = "af07b958409d320fcedc4d592b92059b302b27a596e756f22176161916474b11"
-
-[[files]]
-file = "config/battlefieldstamina-client.toml"
-hash = "2483a190d483e36482499e9a1f3935c7a7a161d3b0d703d6aae51a02829a87e5"
+hash = "26cc91df1818357cfe43e9010e3f25559c19cb2729af657e51f0f8c86b4f784e"
 
 [[files]]
 file = "config/betterbloodoverlay_1_20_1-client.toml"
@@ -194,7 +190,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "57a4b895bbd514b571830fd52dc0425c3edaeeb7bffef76ef1f4a5091b11e48c"
+hash = "6354c573a92f6bc7b3f33827bfaaa36ac6a80d44f53253b9968731ddc524ec2c"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -254,11 +250,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "a28c0227b91ca1261a7eb4944922f00762712f5663ebc10e64009de7cad2a0eb"
+hash = "407eb2b0a69d855abc3aa9fc9083535dc18de676ae5e2e73be6d1202eb99a9d9"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "53c9715ccf5160eb671a3d3035b3c90c25162a5f87ab8f20e88c1502a3333a28"
+hash = "a419dce1587b016dacf55dd6fe3ee08d579555f44521338370af84bbd52d42b1"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -323,10 +319,6 @@ hash = "d29dede3f214ee4b1aa03314f92c3f973c21ee6e26d173eba3d01a2083237b6d"
 [[files]]
 file = "config/soundofrain-client.toml"
 hash = "1efee908bf3357f62342ea799f6220c2def389e2756994f2be4d283219d3bb7a"
-
-[[files]]
-file = "config/stamina-client.toml"
-hash = "2483a190d483e36482499e9a1f3935c7a7a161d3b0d703d6aae51a02829a87e5"
 
 [[files]]
 file = "config/superbwarfare-client.toml"
@@ -926,7 +918,7 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "d7d93293ad0171184f9bb841c8e251133731d3847637fc389506d18674edc0f7"
+hash = "0e25694cb482a272697c7a0c9ed76977c8aefca71789f8214a94c88fae1521f9"
 
 [[files]]
 file = "config/yacl.json5"
@@ -1053,8 +1045,8 @@ hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
 metafile = true
 
 [[files]]
-file = "mods/battlefieldcore-1.4.0.pw.toml"
-hash = "e89b505c02d9029e9c6276e37595a29956c7b85b70d31eeed8949d26c2fe4d83"
+file = "mods/battlefieldcore-1.4.1.pw.toml"
+hash = "8f82560dc82fe6811b156ec661759d42e99e15c6d5e816f630153f81d1b0fcbe"
 metafile = true
 
 [[files]]
@@ -1173,8 +1165,8 @@ hash = "a6d17c3c187b67b3e0f8ea85782c322518f22f3e38fc588bf39e51d9478d2d5e"
 metafile = true
 
 [[files]]
-file = "mods/hudelements-1.4.6.pw.toml"
-hash = "782492be4a95b4cdeff30109e119a494ed55565deea5fe11c2cf1d9217a4c39e"
+file = "mods/hudelements-1.4.7.pw.toml"
+hash = "409a52a3710109cf30a2cbab844635d6a929c60a389861f5acbe08c7762bd2df"
 metafile = true
 
 [[files]]
@@ -1193,8 +1185,8 @@ hash = "c1bff9d49c163b6308c0e154be7555b52a3f13d1663749948a5db044f64ebe41"
 metafile = true
 
 [[files]]
-file = "mods/jumpcooldown-1.1.2.pw.toml"
-hash = "ba135f900dc71dab474dd7766c480528cb3f7239618f8999e139061ef17ee17b"
+file = "mods/jumpcooldown-1.1.3.pw.toml"
+hash = "b7e494b35f3d2c5ed3bdaeb62a7e6d449716bb8b6503ddad47b9d407964af76f"
 metafile = true
 
 [[files]]
@@ -1303,8 +1295,8 @@ hash = "e41e8c0bd9c3ebebea6eaf6cf73d9a5bbb606b70e94e8aae826ef799c3810eae"
 metafile = true
 
 [[files]]
-file = "mods/tacticalfootsteps-1.1.1.pw.toml"
-hash = "e06deeb4f59c886740f644475be6c133d97863f0308cd39a69d3d5a8e6da6327"
+file = "mods/tacticalfootsteps-1.1.2.pw.toml"
+hash = "0f9c38524012031e2dbee2ecd423f05b67a8c7d19102e4ee53952b1ca7272e39"
 metafile = true
 
 [[files]]

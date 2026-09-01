@@ -36,7 +36,8 @@
     "com.fullfud.fullfud.client.screen.FpvConfiguratorScreen": true,
     "com.fullfud.fullfud.client.screen.ShahedMonitorScreen": true,
     "com.armormod.client.screen.PlateCarrierScreen": true,
-    "com.armormod.client.codex.ArmorCodexScreen": true
+    "com.armormod.client.codex.ArmorCodexScreen": true,
+    "ichttt.mods.firstaid.client.tutorial.GuiTutorial": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,
