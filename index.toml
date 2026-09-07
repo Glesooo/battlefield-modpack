@@ -26,7 +26,7 @@ hash = "cae5ba66971b2f61e0b523c5aeb8b8d4fa806f0bea8a1709860e4fea94426ac9"
 
 [[files]]
 file = "config/battlefieldhud-client.toml"
-hash = "26cc91df1818357cfe43e9010e3f25559c19cb2729af657e51f0f8c86b4f784e"
+hash = "71b192d0603dc52ac40888e6fd9e0cb7eb264381a17ff1b468cc4a21ce20f535"
 
 [[files]]
 file = "config/betterbloodoverlay_1_20_1-client.toml"
@@ -250,11 +250,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "407eb2b0a69d855abc3aa9fc9083535dc18de676ae5e2e73be6d1202eb99a9d9"
+hash = "02a8a055d2a58cc36b1b37fca7219ca9e87dfade0159871573653b58c67d6c03"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "a419dce1587b016dacf55dd6fe3ee08d579555f44521338370af84bbd52d42b1"
+hash = "3e2a5cb7a1738c60abbf25031518dc7857b3ec7aa9b47d4266fab6d9d358723a"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -342,7 +342,7 @@ hash = "c7dbc36c447cb6119d75375a27e44fe8bfe74f1ca1676ecf0b544bdc208b5165"
 
 [[files]]
 file = "config/tacz-common.toml"
-hash = "2e0fc917f8b5f2e28c686121e2940e51473b244031f63c39f9a2fd05e961959b"
+hash = "c94a99fa43435ecb6b30eacc861350e2a169058702761c27bc5dc6f9b1c83adc"
 
 [[files]]
 file = "config/tacz_extras-client.toml"
@@ -414,7 +414,7 @@ hash = "8c21837d51ad4dcfc8cafe49dec8016b914074326a112c04295d4a94fdcf45ba"
 
 [[files]]
 file = "config/tacztweaks.json"
-hash = "222076261a73ecd00e199a76de15be672189a7b4b317afca25279812e38b347c"
+hash = "ef9782688dd347550e777f67d3e04d4a80e363861158673657354c7c26de86b3"
 
 [[files]]
 file = "config/transition.json"
@@ -918,11 +918,16 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "0e25694cb482a272697c7a0c9ed76977c8aefca71789f8214a94c88fae1521f9"
+hash = "06580cd226812689a3707198c88366529e0e9ae74a7f060142f6ba08dc0b20dc"
 
 [[files]]
 file = "config/yacl.json5"
 hash = "d26a63d3cdf326412ba86dcc2781060bc53ed6c74ac7808e65325452e264e820"
+
+[[files]]
+file = "datapacks/mace-medical-tuning.pw.toml"
+hash = "c656742990c63e04e2261b822a6f5f0056c072cec11d93c422ac25ec7f4c1946"
+metafile = true
 
 [[files]]
 file = "mods/AmbientSounds_FORGE_v6.3.8_mc1.20.1.pw.toml"
@@ -935,11 +940,6 @@ hash = "a1548e151c97fabfe1d05fd1f81f42ef3ec388058bf1d11e4e03dd3c2623f4a4"
 metafile = true
 
 [[files]]
-file = "mods/ArmoredArms-v1.2.1-1.20.1-f_neof-release.pw.toml"
-hash = "e676a788b6d44e3f2e8f80fa574d9026ed156340e07e12c63b6df246eb186f85"
-metafile = true
-
-[[files]]
 file = "mods/BadOptimizations-2.4.1-1.20.1.pw.toml"
 hash = "d1f244e5c9ed1f3268601b27ce6630da8b6523e70f89e61554d6f02c47e53fec"
 metafile = true
@@ -947,11 +947,6 @@ metafile = true
 [[files]]
 file = "mods/BetterDeath-1.1.3.pw.toml"
 hash = "f42fa7d3ae75f81511f4bec51b4e7ff4a18e6083f2b1925ebf2d691eb0b428bf"
-metafile = true
-
-[[files]]
-file = "mods/CAPS_Awim_s_Tactical_Equipment_v3.0_1.20.1.pw.toml"
-hash = "f7b80dfbf102035d7dfac6b19ce34afe364eef0c1a76e1049c47209260579543"
 metafile = true
 
 [[files]]
@@ -972,11 +967,6 @@ metafile = true
 [[files]]
 file = "mods/DeltaForce_Melee_Pack-0.2.0.pw.toml"
 hash = "022cde9bcff46fec37066da50f3a5ee35aeedbaece376f2f5f7ec6dc6f1ba69a"
-metafile = true
-
-[[files]]
-file = "mods/Explosion-Overhaul-0.2.3.0-forge-.pw.toml"
-hash = "907127982cfde3738f63abcd1909dbad6b97a07dae882149b8d720c1abfd9a6b"
 metafile = true
 
 [[files]]
@@ -1005,11 +995,6 @@ hash = "5370165ec00ad86b80d47cf59bf4e2626cddc232718c2091da04217859151dec"
 metafile = true
 
 [[files]]
-file = "mods/MouseTweaks-forge-mc1.20.1-2.25.1.pw.toml"
-hash = "2c939e2a9b54d1d2f974c7a67e834c8ef844dd353e9af61b5c735e891b5dd8b4"
-metafile = true
-
-[[files]]
 file = "mods/PartiCull-forge-1.20.x-v2.0.pw.toml"
 hash = "040992f58758daaf8d92f371d912987177cde4a4b2b82f4c6ddb7d22acb32ab3"
 metafile = true
@@ -1030,11 +1015,6 @@ hash = "1605db6def4b0577e1aa41b9b819d48a7e0f456f33aec8104e1583092957a3d8"
 metafile = true
 
 [[files]]
-file = "mods/_SBW089_dragonrise_reforge-1.4.1.01-hotfix1.pw.toml"
-hash = "21741bcc63c81699358cdd169e1d244c1018a2563b52d5f971bbd4d282d335d4"
-metafile = true
-
-[[files]]
 file = "mods/architectury-9.2.14-forge.pw.toml"
 hash = "25d9fe894de2c7ff7d70e52c900b60a79426520e32c70414471c202a5eb53494"
 metafile = true
@@ -1045,18 +1025,13 @@ hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
 metafile = true
 
 [[files]]
-file = "mods/battlefieldcore-1.4.1.pw.toml"
-hash = "8f82560dc82fe6811b156ec661759d42e99e15c6d5e816f630153f81d1b0fcbe"
+file = "mods/battlefieldcore-1.4.6.pw.toml"
+hash = "2da804a065461249065930a985d4e29e355b7eb9ebb8714fdac8447f5e0dabee"
 metafile = true
 
 [[files]]
 file = "mods/betterbloodoverlay-forge-1.20.1-2.2.0.pw.toml"
 hash = "a3bfd06bfed05862b21c9b0f775e4bb0232f6947a09b8dbffe0a3ee7a026b2c8"
-metafile = true
-
-[[files]]
-file = "mods/brimm-2.0.3.pw.toml"
-hash = "9c39e2416622432ff0e2450d6ee022f5b0b36c0432b984473d213cbf10028b9a"
 metafile = true
 
 [[files]]
@@ -1130,11 +1105,6 @@ hash = "b22420b525a048bae561a08a34c5e201673067178fd56dc68463a504f056723a"
 metafile = true
 
 [[files]]
-file = "mods/fasterblockplacement-1.0.1.pw.toml"
-hash = "53413dbc9c8cd5e490a582d00cf35c29ec17b74368e57432eefb7b71ae2e4c2d"
-metafile = true
-
-[[files]]
 file = "mods/fcp-1.2.1.pw.toml"
 hash = "b25ef8c26fda45f88bc197047d58ab1342de980ab223888cece8acdb1bbc4a6f"
 metafile = true
@@ -1147,6 +1117,11 @@ metafile = true
 [[files]]
 file = "mods/firstaid-1.20.1-1.1.pw.toml"
 hash = "970af1aa09e7da4ba0b4f1e97a593a16553387da47189efb2969447c519a0ae8"
+metafile = true
+
+[[files]]
+file = "mods/foliagevision-1.0.0.pw.toml"
+hash = "4c0c5fd283b18d6afe9895fd16c4b096ba35854eee0246a6de2e9ae55b830300"
 metafile = true
 
 [[files]]
@@ -1165,8 +1140,8 @@ hash = "a6d17c3c187b67b3e0f8ea85782c322518f22f3e38fc588bf39e51d9478d2d5e"
 metafile = true
 
 [[files]]
-file = "mods/hudelements-1.4.7.pw.toml"
-hash = "409a52a3710109cf30a2cbab844635d6a929c60a389861f5acbe08c7762bd2df"
+file = "mods/hudelements-1.4.8.pw.toml"
+hash = "708ca9763f8edeca023967172bbb73058305d6072da9162783d6a29c014a7c8f"
 metafile = true
 
 [[files]]
@@ -1185,8 +1160,8 @@ hash = "c1bff9d49c163b6308c0e154be7555b52a3f13d1663749948a5db044f64ebe41"
 metafile = true
 
 [[files]]
-file = "mods/jumpcooldown-1.1.3.pw.toml"
-hash = "b7e494b35f3d2c5ed3bdaeb62a7e6d449716bb8b6503ddad47b9d407964af76f"
+file = "mods/jumpcooldown-1.1.4.pw.toml"
+hash = "fc048f6eccac2c9e65dc1986a2c3f04e060728363d8a8c8f6f2762dd920bf879"
 metafile = true
 
 [[files]]
@@ -1225,11 +1200,6 @@ hash = "5f524ff515382eda0f942e62b35c40fd0791073ff0372cf3c8a8adf8e17efa48"
 metafile = true
 
 [[files]]
-file = "mods/mvp-1.0.0.pw.toml"
-hash = "f58fa2973e8c4f1ec328febb4d0ebe0b65e14e665cdd709f41a0ab471029a3d4"
-metafile = true
-
-[[files]]
 file = "mods/mzrk-tacz-remoove-recipe-gun-v9.pw.toml"
 hash = "f3f7a826af85e0873c5201456e8c70b05a2e292cd5a54396240c3fb67ed824b4"
 metafile = true
@@ -1262,11 +1232,6 @@ metafile = true
 [[files]]
 file = "mods/rbi-1.20.1-0.2.0.pw.toml"
 hash = "e38b6bd8a4ed3b5f6305fb77e94624e592fff0c8cea964c6cc0eb7a904978b10"
-metafile = true
-
-[[files]]
-file = "mods/shadedwar-2.4.0-BETA.309.pw.toml"
-hash = "8441d67cd7393199a84130f03b66c734ea931ac19e5020d69fa3d8c0212088c8"
 metafile = true
 
 [[files]]

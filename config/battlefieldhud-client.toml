@@ -10,7 +10,7 @@
 	#Range: 0.0 ~ 10000.0
 	jump_cost = 23.0
 	#Stamina regenerated per tick once regen is active.
-	#Range: 0.0 ~ 100.0
+	#Range: 0.001 ~ 100.0
 	regen_per_tick = 0.46
 	#Ticks after you stop draining before regen starts, in the normal case (20 = 1 second).
 	#Range: 0 ~ 600
@@ -28,13 +28,13 @@
 	#Panel margin in pixels from the RIGHT screen edge (moved off the left so it clears the chat).
 	#Set by dragging in the HUD editor.
 	#Range: -4000 ~ 4000
-	offset_x = 718
+	offset_x = 687
 	#Panel vertical offset in pixels from the BOTTOM screen edge (larger = higher up).
 	#Range: -4000 ~ 4000
-	offset_y = 351
+	offset_y = 11
 	#Panel size multiplier. Drop below 1.0 if it feels too big.
 	#Range: 0.4 ~ 3.0
-	scale = 0.9
+	scale = 1.15
 
 [hotbar]
 	#Replace the vanilla hotbar with the tactical one. Turning this off restores the vanilla hotbar.

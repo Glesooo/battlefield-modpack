@@ -25,12 +25,12 @@
   "modifiers": {
     "damage": {
       "addend": 0.0,
-      "multiplier": 0.7,
+      "multiplier": 0.9,
       "function": ""
     },
     "playerDamage": {
       "addend": 0.0,
-      "multiplier": 0.7,
+      "multiplier": 0.9,
       "function": ""
     },
     "headshot": {
@@ -115,12 +115,12 @@
     },
     "aimVerticalRecoil": {
       "addend": 0.0,
-      "multiplier": 2.1,
+      "multiplier": 1.5,
       "function": ""
     },
     "aimHorizontalRecoil": {
       "addend": 0.0,
-      "multiplier": 2.1,
+      "multiplier": 1.5,
       "function": ""
     },
     "crawlVerticalRecoil": {

@@ -200,6 +200,12 @@ Sync-BinaryFolder -LiveDir (Join-Path $InstancePath "mods") -FileFilter "*.jar" 
 # the unpacked subfolders next to them are handled below, as raw files)
 Sync-BinaryFolder -LiveDir (Join-Path $InstancePath "tacz") -FileFilter "*.zip" -MetaFolder "tacz"
 
+# ---------------------------------------------------------------- datapacks (instance-level
+# minecraft/datapacks/*.zip - shipped like gunpacks so packwiz drops them into the player's
+# datapacks/ folder. NOTE: a plain client only auto-loads per-world datapacks, so these apply
+# on a server world or via a global-datapack loader; the folder is tracked regardless.)
+Sync-BinaryFolder -LiveDir (Join-Path $InstancePath "datapacks") -FileFilter "*.zip" -MetaFolder "datapacks"
+
 <#
 Raw-copies a whole tree, replacing the destination outright each time (packwiz then hashes
 whatever it finds and syncs it byte-for-byte to players - "force everyone onto my copy").

@@ -1,0 +1,8 @@
+name = "battlefieldcore-1.4.6"
+filename = "battlefieldcore-1.4.6.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/battlefieldcore-1.4.6.jar"
+hash-format = "sha256"
+hash = "fac0f5c9a1848fa13873a168ff9ac69087aa5325c23f811fad36572eb7bc5e35"
