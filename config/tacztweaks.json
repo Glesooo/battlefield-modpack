@@ -25,12 +25,12 @@
   "modifiers": {
     "damage": {
       "addend": 0.0,
-      "multiplier": 0.9,
+      "multiplier": 0.7,
       "function": ""
     },
     "playerDamage": {
       "addend": 0.0,
-      "multiplier": 0.9,
+      "multiplier": 0.7,
       "function": ""
     },
     "headshot": {

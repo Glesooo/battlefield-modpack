@@ -1,0 +1,25 @@
+
+[foliage_vision]
+	#Draw leaves over the screen while your head is inside a leaf block.
+	enabled = true
+	#Opacity of the leaves at full density, 0..1. Deliberately below 1: the point is to
+	#cost a hidden player their vision, not to blind them - they should still be able to
+	#make out movement through the gaps.
+	#Range: 0.0 ~ 1.0
+	max_coverage = 0.72
+	#How many leaf sprites are drawn at full density.
+	#Range: 1 ~ 64
+	clusters = 14
+	#How fast the effect fades in and out, per tick. Low values keep it from flickering
+	#when you clip the corner of a leaf block while running.
+	#Range: 0.01 ~ 1.0
+	fade_per_tick = 0.12
+	#Fraction of the screen radius kept clearer in the middle, 0..1. Leaves crowd the
+	#edges first, so you keep a usable sight line but lose peripheral awareness - which
+	#is what hiding in a bush should actually cost you.
+	#Range: 0.0 ~ 0.9
+	centre_clearance = 0.34
+	#How far the leaves drift as you look around. 0 pins them to the screen.
+	#Range: 0.0 ~ 4.0
+	sway = 1.0
+

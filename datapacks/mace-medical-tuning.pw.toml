@@ -1,8 +1,0 @@
-name = "mace-medical-tuning"
-filename = "mace-medical-tuning.zip"
-side = "both"
-
-[download]
-url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/mace-medical-tuning.zip"
-hash-format = "sha256"
-hash = "c7d411102b221884f1406b537e70a0bcd46953ccb53b5899a92f6d46137648a0"

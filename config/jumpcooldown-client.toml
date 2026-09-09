@@ -1,4 +1,9 @@
 #Ticks between ordinary on-foot jumps (20 = 1 second). Was a fixed 40 (2s); lowered by default.
 #Range: 0 ~ 200
 cooldown_ticks = 10
+#Ticks between stance changes - stand/crouch/prone (20 = 1 second).
+#Stops crouch-spam and prone-spam being used to dodge aim. Creative mode ignores it.
+#Set to 0 to disable.
+#Range: 0 ~ 200
+pose_cooldown_ticks = 8
 

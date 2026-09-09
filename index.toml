@@ -153,6 +153,10 @@ file = "config/fml.toml"
 hash = "eb6e8b8eda9682889a83d55262ef96cf37153d58fe7f0fa5d5cb1da5d9f7dd9b"
 
 [[files]]
+file = "config/foliagevision-client.toml"
+hash = "6fa178eb9ea2e65225bca5585bdfba5855600e0c31ffdd5feacaecd570e2891b"
+
+[[files]]
 file = "config/forge-client.toml"
 hash = "0b1b3c45343435184c9dde3149b38afcdb97953e287686ecda54385f53ebcddc"
 
@@ -190,7 +194,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "6354c573a92f6bc7b3f33827bfaaa36ac6a80d44f53253b9968731ddc524ec2c"
+hash = "60272329c680045047aaaef1d7802d2d772528bf2ae4e98066dae8e0cda7f096"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -214,7 +218,7 @@ hash = "c94085d83817aa5ab1cf8273413a9aaeba032a791ad9f64311398639877b6b10"
 
 [[files]]
 file = "config/jumpcooldown-client.toml"
-hash = "42017149a8c2a29e082cde79748226fa1cfbb70485a5f8a056f12edff25b2ac6"
+hash = "d70766b79ebddb93c19dcc1cb9605963a7c007893938374c5402b43365a30995"
 
 [[files]]
 file = "config/kiwi-client.yaml"
@@ -250,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "02a8a055d2a58cc36b1b37fca7219ca9e87dfade0159871573653b58c67d6c03"
+hash = "c8f423d1d46b094f70c59b513ce4bb6dd905de6e56c56ef1f3c9c27ad2423c8c"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "3e2a5cb7a1738c60abbf25031518dc7857b3ec7aa9b47d4266fab6d9d358723a"
+hash = "93df8a2eff6c1607d2e6e4b5253ab248ff2cf332f55fa93f609bc9e975d677f5"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -414,7 +418,7 @@ hash = "8c21837d51ad4dcfc8cafe49dec8016b914074326a112c04295d4a94fdcf45ba"
 
 [[files]]
 file = "config/tacztweaks.json"
-hash = "ef9782688dd347550e777f67d3e04d4a80e363861158673657354c7c26de86b3"
+hash = "524ac01dde80a002b2203171c0d92973a8dd37edc111fe85d509ff4bbe65bcfa"
 
 [[files]]
 file = "config/transition.json"
@@ -918,16 +922,11 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "06580cd226812689a3707198c88366529e0e9ae74a7f060142f6ba08dc0b20dc"
+hash = "7a58ac0141b9512addda146532e5016801b62a409b2114a538bd9371611a6ce7"
 
 [[files]]
 file = "config/yacl.json5"
 hash = "d26a63d3cdf326412ba86dcc2781060bc53ed6c74ac7808e65325452e264e820"
-
-[[files]]
-file = "datapacks/mace-medical-tuning.pw.toml"
-hash = "c656742990c63e04e2261b822a6f5f0056c072cec11d93c422ac25ec7f4c1946"
-metafile = true
 
 [[files]]
 file = "mods/AmbientSounds_FORGE_v6.3.8_mc1.20.1.pw.toml"
@@ -1025,8 +1024,8 @@ hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
 metafile = true
 
 [[files]]
-file = "mods/battlefieldcore-1.4.6.pw.toml"
-hash = "2da804a065461249065930a985d4e29e355b7eb9ebb8714fdac8447f5e0dabee"
+file = "mods/battlefieldcore-1.4.7.pw.toml"
+hash = "bc3d58c44ee3d573c5f4823a2c2061e7a2b8f782bc7df4f1ce396e9187a90f57"
 metafile = true
 
 [[files]]
@@ -1181,7 +1180,12 @@ metafile = true
 
 [[files]]
 file = "mods/lrtactical-1.20.1-0.4.3.pw.toml"
-hash = "d7a997c58331765f721b759877fd74faab8a9157789b7d85d5b0a81ab6f1d70b"
+hash = "896b02e793ac9bccf74e998b44c9299f71e6bc31ba8c8894d1d4827fe1dccc62"
+metafile = true
+
+[[files]]
+file = "mods/macemenu-1.0.0.pw.toml"
+hash = "40376f3a61d7f8a8cb79821b27a15dc373af2e2958660f4c3cb2ac0a86ca7502"
 metafile = true
 
 [[files]]
