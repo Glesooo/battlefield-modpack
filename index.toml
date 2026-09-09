@@ -194,7 +194,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "60272329c680045047aaaef1d7802d2d772528bf2ae4e98066dae8e0cda7f096"
+hash = "daba68f104e18d0467810460d492b5e50ee97802b30f83618c214eff80b3d054"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -254,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "c8f423d1d46b094f70c59b513ce4bb6dd905de6e56c56ef1f3c9c27ad2423c8c"
+hash = "42dc07a1fe57323351c2891c6f6be2124e9505348a08aea22d358bbe1f7b6613"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "93df8a2eff6c1607d2e6e4b5253ab248ff2cf332f55fa93f609bc9e975d677f5"
+hash = "4027e9aa947804ef52b524268666fa98269bf05349751f2d1d4452c0cf63e454"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -922,7 +922,7 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "7a58ac0141b9512addda146532e5016801b62a409b2114a538bd9371611a6ce7"
+hash = "c1bf91bbbd42bdf3e5f554e023c4593b19d383ca4258e50d416cb3d94e3a4c9b"
 
 [[files]]
 file = "config/yacl.json5"
@@ -1024,8 +1024,8 @@ hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
 metafile = true
 
 [[files]]
-file = "mods/battlefieldcore-1.4.7.pw.toml"
-hash = "bc3d58c44ee3d573c5f4823a2c2061e7a2b8f782bc7df4f1ce396e9187a90f57"
+file = "mods/battlefieldcore-1.4.8.pw.toml"
+hash = "38791526474fc0ec1fa0ac584fe84bfa814907c723d45936c917873e323d264f"
 metafile = true
 
 [[files]]
@@ -1180,12 +1180,12 @@ metafile = true
 
 [[files]]
 file = "mods/lrtactical-1.20.1-0.4.3.pw.toml"
-hash = "896b02e793ac9bccf74e998b44c9299f71e6bc31ba8c8894d1d4827fe1dccc62"
+hash = "77e1bac82fb0bffa35520baafe5f7f4d915859da951826da670e9daf83dc7544"
 metafile = true
 
 [[files]]
-file = "mods/macemenu-1.0.0.pw.toml"
-hash = "40376f3a61d7f8a8cb79821b27a15dc373af2e2958660f4c3cb2ac0a86ca7502"
+file = "mods/macemenu-1.1.0.pw.toml"
+hash = "56fa78f048575288912cd7c1dd08c7466d0055b36c8d2901ba3b5303b0115868"
 metafile = true
 
 [[files]]

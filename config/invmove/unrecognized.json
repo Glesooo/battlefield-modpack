@@ -39,7 +39,8 @@
     "com.armormod.client.codex.ArmorCodexScreen": true,
     "ichttt.mods.firstaid.client.tutorial.GuiTutorial": true,
     "com.yourname.battlefieldcore.deploy.client.DeployAdminScreen": true,
-    "com.yourname.battlefieldcore.deploy.client.DeployScreen": true
+    "com.yourname.battlefieldcore.deploy.client.DeployScreen": true,
+    "com.tacz.guns.client.gui.GunSmithTableScreen": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,
@@ -64,6 +65,7 @@
     "com.fullfud.fullfud.client.screen.FpvConfiguratorScreen": true,
     "com.armormod.client.screen.PlateCarrierScreen": true,
     "com.armormod.client.codex.ArmorCodexScreen": true,
-    "com.yourname.battlefieldcore.deploy.client.DeployScreen": true
+    "com.yourname.battlefieldcore.deploy.client.DeployScreen": true,
+    "com.tacz.guns.client.gui.GunSmithTableScreen": true
   }
 }
