@@ -254,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "42dc07a1fe57323351c2891c6f6be2124e9505348a08aea22d358bbe1f7b6613"
+hash = "24f68b000160bdbecd0b56cebb74f8e56b019468e23b37ae0d3b908bd3fed35d"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "4027e9aa947804ef52b524268666fa98269bf05349751f2d1d4452c0cf63e454"
+hash = "232775cd723ab4f6aea1c865b34d84207a4a0844dab5d5587a45e53f212a99b2"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -314,7 +314,7 @@ hash = "e26b00784bb6239988759ed1a64551b9f301dc33c5a855d91e976ee4bf40ac8a"
 
 [[files]]
 file = "config/sound_physics_remastered/sound_rates.properties"
-hash = "990872de6f0e1fa7df21ef60e4f0b0c59ab0a0873aa3e7182e5870d97bb6f9fa"
+hash = "42e5678c6c9b22592b36c7eda3fc6e16b51275709a2b0b83ac26632fb4211d4a"
 
 [[files]]
 file = "config/sound_physics_remastered/soundphysics.properties"
@@ -1184,8 +1184,8 @@ hash = "77e1bac82fb0bffa35520baafe5f7f4d915859da951826da670e9daf83dc7544"
 metafile = true
 
 [[files]]
-file = "mods/macemenu-1.1.0.pw.toml"
-hash = "56fa78f048575288912cd7c1dd08c7466d0055b36c8d2901ba3b5303b0115868"
+file = "mods/macemenu-1.3.0.pw.toml"
+hash = "91e145d992604ddcf8a1b8829d6275f3ba19a0e36ed03a6b7907404c28e040da"
 metafile = true
 
 [[files]]
