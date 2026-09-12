@@ -363,13 +363,27 @@ public partial class MainWindow : Window
     /// Lines that mean the pack did not fully install. "Hash invalid!" is the one that bit real
     /// players: every affected file is left missing or stale, but it is only ever logged - the
     /// run can still finish and exit cleanly.
+    ///
+    /// Excludes anything mentioning "packwiz-installer" itself: the bootstrap jar we launch does
+    /// its own self-update check against GitHub's API before touching any pack content, and that
+    /// check has nothing to do with whether the player's mods/configs downloaded correctly. A
+    /// Belarusian player hit exactly this on 2026-09-12 - GitHub rate-limits unauthenticated API
+    /// calls per IP (60/hour), easy to exhaust on a shared/CGNAT IP - got a
+    /// "java.io.IOException: ... 403 ... api.github.com/repos/comp500/packwiz-installer/..." line,
+    /// which matched on "Exception" alone. The bootstrap fell back to its already-cached installer
+    /// and the run completed fine (log tail showed "Modpack is already up to date! Finished
+    /// successfully!"), but this method still flagged it as a failure and scared him with a false
+    /// "part of the files didn't download" dialog. Pack-content problems always name a mod/config
+    /// file or a packwiz hash, never the installer tool's own name, so this exclusion can't hide a
+    /// real failure.
     /// </summary>
     private static bool IsProblemLine(string line) =>
-        line.Contains("Hash invalid", StringComparison.OrdinalIgnoreCase)
+        !line.Contains("packwiz-installer", StringComparison.OrdinalIgnoreCase)
+        && (line.Contains("Hash invalid", StringComparison.OrdinalIgnoreCase)
         || line.Contains("Failed to download", StringComparison.OrdinalIgnoreCase)
         || line.Contains("cancelled", StringComparison.OrdinalIgnoreCase)
         || line.Contains("Exception", StringComparison.Ordinal)
-        || line.Contains("Error:", StringComparison.OrdinalIgnoreCase);
+        || line.Contains("Error:", StringComparison.OrdinalIgnoreCase));
 
     private void HandleLine(string? line, List<string> lastLines, List<string> problems, object linesLock)
     {
