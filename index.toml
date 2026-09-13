@@ -154,7 +154,7 @@ hash = "eb6e8b8eda9682889a83d55262ef96cf37153d58fe7f0fa5d5cb1da5d9f7dd9b"
 
 [[files]]
 file = "config/foliagevision-client.toml"
-hash = "6fa178eb9ea2e65225bca5585bdfba5855600e0c31ffdd5feacaecd570e2891b"
+hash = "4eb7d5b042244beb015d83f516a62d314882d9d55043278733628a1493e5c17f"
 
 [[files]]
 file = "config/forge-client.toml"
@@ -254,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "dbd4ffbb9a051a30e2b86898738202b3394df3c561fa6990ea9b7c9881784a93"
+hash = "433d631887c998aa98a5ad437e2875137fc0f124cb97451383380b92822bdc8a"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "09316080d00f4689d03af5413d22be3a1bce56b8a2967fd85f2f42848fa315e3"
+hash = "ea580eb6cfffe941864722797078b68e28daa084d7838be8979fbb8781aa62b3"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -1114,8 +1114,8 @@ hash = "970af1aa09e7da4ba0b4f1e97a593a16553387da47189efb2969447c519a0ae8"
 metafile = true
 
 [[files]]
-file = "mods/foliagevision-1.0.0.pw.toml"
-hash = "4c0c5fd283b18d6afe9895fd16c4b096ba35854eee0246a6de2e9ae55b830300"
+file = "mods/foliagevision-1.0.1.pw.toml"
+hash = "5bd7b25ca4ad0d4982051e038adb8ac37423084c5ef1af0127693c69831a2ee3"
 metafile = true
 
 [[files]]
@@ -1174,13 +1174,13 @@ hash = "c4b94a86d15b353c46a6832723d247abdaa5a43552d7784860f9820b78dd28f9"
 metafile = true
 
 [[files]]
-file = "mods/lrtactical-1.20.11-0.4.3.pw.toml"
-hash = "01ec0a388fa256c10dd560af13c9f47f452c4373c15b91fbca2f06d3a3046b11"
+file = "mods/lrtactical-1.20.1-0.4.3.pw.toml"
+hash = "1961f5d36e5aa456f10da28a1e51195fdfedc8ffd60678ec856e4252de300153"
 metafile = true
 
 [[files]]
-file = "mods/macemenu-1.3.0.pw.toml"
-hash = "91e145d992604ddcf8a1b8829d6275f3ba19a0e36ed03a6b7907404c28e040da"
+file = "mods/macemenu-1.4.0.pw.toml"
+hash = "d7bf6eb89a40eda4ea42cbb4b023461f94ea3edcaa6d2f110391abf1b62172ed"
 metafile = true
 
 [[files]]

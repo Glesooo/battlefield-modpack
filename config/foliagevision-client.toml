@@ -6,20 +6,20 @@
 	#cost a hidden player their vision, not to blind them - they should still be able to
 	#make out movement through the gaps.
 	#Range: 0.0 ~ 1.0
-	max_coverage = 0.72
+	max_coverage = 1.0
 	#How many leaf sprites are drawn at full density.
 	#Range: 1 ~ 64
-	clusters = 14
+	clusters = 64
 	#How fast the effect fades in and out, per tick. Low values keep it from flickering
 	#when you clip the corner of a leaf block while running.
 	#Range: 0.01 ~ 1.0
-	fade_per_tick = 0.12
+	fade_per_tick = 0.4
 	#Fraction of the screen radius kept clearer in the middle, 0..1. Leaves crowd the
 	#edges first, so you keep a usable sight line but lose peripheral awareness - which
 	#is what hiding in a bush should actually cost you.
 	#Range: 0.0 ~ 0.9
-	centre_clearance = 0.34
+	centre_clearance = 0.1
 	#How far the leaves drift as you look around. 0 pins them to the screen.
 	#Range: 0.0 ~ 4.0
-	sway = 1.0
+	sway = 3.0
 

@@ -1,0 +1,8 @@
+name = "lrtactical-1.20.1-0.4.3"
+filename = "lrtactical-1.20.1-0.4.3.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/lrtactical-1.20.1-0.4.3.jar"
+hash-format = "sha256"
+hash = "4738ac47ca535ae09ca61ce620b3484ebea68bfca3ff9fb2729746277ce43599"

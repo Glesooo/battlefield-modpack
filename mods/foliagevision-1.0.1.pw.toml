@@ -1,0 +1,8 @@
+name = "foliagevision-1.0.1"
+filename = "foliagevision-1.0.1.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/foliagevision-1.0.1.jar"
+hash-format = "sha256"
+hash = "d63a63d12af1f312fbd5fbc00caef50c0baf29f06aac1283fafba9e74436b70e"
