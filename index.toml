@@ -194,7 +194,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "7785f631b820183f1d48760809a8e99e4f0d5df3182aaabc9b13b654c7c087f0"
+hash = "e3a0d69c6b8ea2e3847e940043c301c7edd2bd740b76c333f9ac58b647315c35"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -254,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "f2a29cb9fd719af173a5727072da0ec224e3d9f48a6160734705e63b0566e95c"
+hash = "11a926d4e8fa5dcb2ef58789c0e307311df486ab2868ae0bda5651532361b17b"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "2a652146bedb93bad2d00c9159a33e19d1d8de64e39f79de5102831b03064735"
+hash = "8bb3d39f05f2f0b0a208b309b132cc20b0cbcef2c96824108e9a274f98ac9bb2"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -1179,8 +1179,8 @@ hash = "1961f5d36e5aa456f10da28a1e51195fdfedc8ffd60678ec856e4252de300153"
 metafile = true
 
 [[files]]
-file = "mods/macebuilder-1.1.0.pw.toml"
-hash = "ebd8494e5108f99d9a1a0e47a2aac91f22409616409a14198352dca00f14d848"
+file = "mods/macebuilder-1.3.0.pw.toml"
+hash = "a44511d4add3a8be1e485f0634108ce3e03d990ed1f5bb9e685888dd149f5687"
 metafile = true
 
 [[files]]

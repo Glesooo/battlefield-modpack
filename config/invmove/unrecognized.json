@@ -45,7 +45,10 @@
     "me.shedaniel.clothconfig2.gui.GlobalizedClothConfigScreen": true,
     "net.minecraftforge.client.gui.ModListScreen": true,
     "dev.isxander.yacl3.gui.YACLScreen": true,
-    "com.raiiiden.warborn.client.screen.BackpackScreen": true
+    "com.raiiiden.warborn.client.screen.BackpackScreen": true,
+    "com.yourname.macebuilder.client.BlueprintScreen": true,
+    "com.yourname.macemenu.client.MacePauseScreen": true,
+    "com.yourname.macemenu.client.MaceOptionsScreen": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,
