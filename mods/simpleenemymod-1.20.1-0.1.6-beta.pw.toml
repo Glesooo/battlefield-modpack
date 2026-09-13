@@ -1,0 +1,8 @@
+name = "simpleenemymod-1.20.1-0.1.6-beta"
+filename = "simpleenemymod-1.20.1-0.1.6-beta.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/simpleenemymod-1.20.1-0.1.6-beta.jar"
+hash-format = "sha256"
+hash = "aa97d29dfa1fd2cb7f6cce2b5c6bd96f82ebc6f1edb49521559f6b581552061f"

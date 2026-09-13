@@ -194,7 +194,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "daba68f104e18d0467810460d492b5e50ee97802b30f83618c214eff80b3d054"
+hash = "713a1484da94f14f2dc463cee3e4dd930f05165a6ca5f1edaecc0e9b17cb8a69"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -254,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "24f68b000160bdbecd0b56cebb74f8e56b019468e23b37ae0d3b908bd3fed35d"
+hash = "dbd4ffbb9a051a30e2b86898738202b3394df3c561fa6990ea9b7c9881784a93"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "232775cd723ab4f6aea1c865b34d84207a4a0844dab5d5587a45e53f212a99b2"
+hash = "09316080d00f4689d03af5413d22be3a1bce56b8a2967fd85f2f42848fa315e3"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -1024,8 +1024,8 @@ hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
 metafile = true
 
 [[files]]
-file = "mods/battlefieldcore-1.4.8.pw.toml"
-hash = "38791526474fc0ec1fa0ac584fe84bfa814907c723d45936c917873e323d264f"
+file = "mods/battlefieldcore-1.4.9.pw.toml"
+hash = "e49a3090c75639ff2b52fff3dde55cbceb40b068dab104022dda79edd4b66946"
 metafile = true
 
 [[files]]
@@ -1104,11 +1104,6 @@ hash = "b22420b525a048bae561a08a34c5e201673067178fd56dc68463a504f056723a"
 metafile = true
 
 [[files]]
-file = "mods/fcp-1.2.1.pw.toml"
-hash = "b25ef8c26fda45f88bc197047d58ab1342de980ab223888cece8acdb1bbc4a6f"
-metafile = true
-
-[[files]]
 file = "mods/ferritecore-6.0.1-forge.pw.toml"
 hash = "b535457750d64311a0d0e12ecd6d42fa7b641de8ebc073338de71d8ac512ccea"
 metafile = true
@@ -1179,8 +1174,8 @@ hash = "c4b94a86d15b353c46a6832723d247abdaa5a43552d7784860f9820b78dd28f9"
 metafile = true
 
 [[files]]
-file = "mods/lrtactical-1.20.1-0.4.3.pw.toml"
-hash = "77e1bac82fb0bffa35520baafe5f7f4d915859da951826da670e9daf83dc7544"
+file = "mods/lrtactical-1.20.11-0.4.3.pw.toml"
+hash = "01ec0a388fa256c10dd560af13c9f47f452c4373c15b91fbca2f06d3a3046b11"
 metafile = true
 
 [[files]]
@@ -1244,6 +1239,11 @@ hash = "145a7ec3d070ec5213f1ee3294d858de255d912b7c601d9edc0340e670a0c89f"
 metafile = true
 
 [[files]]
+file = "mods/simpleenemymod-1.20.1-0.1.6-beta.pw.toml"
+hash = "b1731d430e53ad26d6ac76728ca2c5e4059c1600533e9a62457131c4278e8748"
+metafile = true
+
+[[files]]
 file = "mods/snassets_particles-1.0.1.pw.toml"
 hash = "000e6dd2bcf4334db248df83f47ae19fa3e16a65e25a099e4bf094d7f22bad1c"
 metafile = true
@@ -1291,6 +1291,11 @@ metafile = true
 [[files]]
 file = "mods/tacz_presence-1.4.pw.toml"
 hash = "e0e36405d6392ab1eacc7650f476f9e87d51666f787979b939ef8d8eda4798dc"
+metafile = true
+
+[[files]]
+file = "mods/tacz_sewv-0.1.5.pw.toml"
+hash = "01adcb996d5d5b9029cc646b8f1e6ad8c7adb88f5dbb575a1efc2c166721feb8"
 metafile = true
 
 [[files]]

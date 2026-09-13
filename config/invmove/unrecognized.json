@@ -40,7 +40,11 @@
     "ichttt.mods.firstaid.client.tutorial.GuiTutorial": true,
     "com.yourname.battlefieldcore.deploy.client.DeployAdminScreen": true,
     "com.yourname.battlefieldcore.deploy.client.DeployScreen": true,
-    "com.tacz.guns.client.gui.GunSmithTableScreen": true
+    "com.tacz.guns.client.gui.GunSmithTableScreen": true,
+    "frontline.combat.fcp.client.screen.VehicleInventoryScreen": true,
+    "me.shedaniel.clothconfig2.gui.GlobalizedClothConfigScreen": true,
+    "net.minecraftforge.client.gui.ModListScreen": true,
+    "dev.isxander.yacl3.gui.YACLScreen": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,
@@ -66,6 +70,7 @@
     "com.armormod.client.screen.PlateCarrierScreen": true,
     "com.armormod.client.codex.ArmorCodexScreen": true,
     "com.yourname.battlefieldcore.deploy.client.DeployScreen": true,
-    "com.tacz.guns.client.gui.GunSmithTableScreen": true
+    "com.tacz.guns.client.gui.GunSmithTableScreen": true,
+    "frontline.combat.fcp.client.screen.VehicleInventoryScreen": true
   }
 }
