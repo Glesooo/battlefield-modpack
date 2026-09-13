@@ -1,8 +1,0 @@
-name = "macemenu-1.4.0"
-filename = "macemenu-1.4.0.jar"
-side = "both"
-
-[download]
-url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/macemenu-1.4.0.jar"
-hash-format = "sha256"
-hash = "f85b93fe148f4bd04a4e60a9983a22521e96ed15d1194bdaadc2a4368acb0179"

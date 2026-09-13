@@ -44,7 +44,8 @@
     "frontline.combat.fcp.client.screen.VehicleInventoryScreen": true,
     "me.shedaniel.clothconfig2.gui.GlobalizedClothConfigScreen": true,
     "net.minecraftforge.client.gui.ModListScreen": true,
-    "dev.isxander.yacl3.gui.YACLScreen": true
+    "dev.isxander.yacl3.gui.YACLScreen": true,
+    "com.raiiiden.warborn.client.screen.BackpackScreen": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,
@@ -71,6 +72,7 @@
     "com.armormod.client.codex.ArmorCodexScreen": true,
     "com.yourname.battlefieldcore.deploy.client.DeployScreen": true,
     "com.tacz.guns.client.gui.GunSmithTableScreen": true,
-    "frontline.combat.fcp.client.screen.VehicleInventoryScreen": true
+    "frontline.combat.fcp.client.screen.VehicleInventoryScreen": true,
+    "com.raiiiden.warborn.client.screen.BackpackScreen": true
   }
 }
