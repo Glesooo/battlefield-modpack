@@ -1239,11 +1239,6 @@ hash = "145a7ec3d070ec5213f1ee3294d858de255d912b7c601d9edc0340e670a0c89f"
 metafile = true
 
 [[files]]
-file = "mods/simpleenemymod-1.20.1-0.1.6-beta.pw.toml"
-hash = "b1731d430e53ad26d6ac76728ca2c5e4059c1600533e9a62457131c4278e8748"
-metafile = true
-
-[[files]]
 file = "mods/snassets_particles-1.0.1.pw.toml"
 hash = "000e6dd2bcf4334db248df83f47ae19fa3e16a65e25a099e4bf094d7f22bad1c"
 metafile = true
@@ -1291,11 +1286,6 @@ metafile = true
 [[files]]
 file = "mods/tacz_presence-1.4.pw.toml"
 hash = "e0e36405d6392ab1eacc7650f476f9e87d51666f787979b939ef8d8eda4798dc"
-metafile = true
-
-[[files]]
-file = "mods/tacz_sewv-0.1.5.pw.toml"
-hash = "01adcb996d5d5b9029cc646b8f1e6ad8c7adb88f5dbb575a1efc2c166721feb8"
 metafile = true
 
 [[files]]

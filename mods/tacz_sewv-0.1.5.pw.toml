@@ -1,8 +1,0 @@
-name = "tacz_sewv-0.1.5"
-filename = "tacz_sewv-0.1.5.jar"
-side = "both"
-
-[download]
-url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/tacz_sewv-0.1.5.jar"
-hash-format = "sha256"
-hash = "f6303c606affa8e3abb4bc4a6a9d341260520a2288634c0387d8dca255991175"
