@@ -1,0 +1,8 @@
+name = "macebuilder-1.5.0"
+filename = "macebuilder-1.5.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/macebuilder-1.5.0.jar"
+hash-format = "sha256"
+hash = "ff0630cdc92f94ac11583f9e0ea417f144a553f6aaea38b80c9fa614c4246976"

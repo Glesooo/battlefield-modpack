@@ -254,11 +254,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "11a926d4e8fa5dcb2ef58789c0e307311df486ab2868ae0bda5651532361b17b"
+hash = "b320ab0d062e3c9670c31de8ed6ab1e1e47738242b13aec8e6ccc117c0fa2cf1"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "8bb3d39f05f2f0b0a208b309b132cc20b0cbcef2c96824108e9a274f98ac9bb2"
+hash = "dcc3960f2aa158c4afaa584d4f21f189bcc5aa5f48fee07415b0812a1e909773"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -418,7 +418,7 @@ hash = "8c21837d51ad4dcfc8cafe49dec8016b914074326a112c04295d4a94fdcf45ba"
 
 [[files]]
 file = "config/tacztweaks.json"
-hash = "524ac01dde80a002b2203171c0d92973a8dd37edc111fe85d509ff4bbe65bcfa"
+hash = "bcc52d9658f0a31354d8b6dad85ca6f471759d0a6da92529bfe2070e482b53ee"
 
 [[files]]
 file = "config/transition.json"
@@ -922,7 +922,7 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "fc5df1cf596e0fda09698118c22daa100a914fbb877c29403afb27c394c3ed7b"
+hash = "d02ef3f171838bb22c4526b4f1964432401269582a212ff4c8bd422280f31dcc"
 
 [[files]]
 file = "config/yacl.json5"
@@ -1179,8 +1179,8 @@ hash = "1961f5d36e5aa456f10da28a1e51195fdfedc8ffd60678ec856e4252de300153"
 metafile = true
 
 [[files]]
-file = "mods/macebuilder-1.3.0.pw.toml"
-hash = "a44511d4add3a8be1e485f0634108ce3e03d990ed1f5bb9e685888dd149f5687"
+file = "mods/macebuilder-1.5.0.pw.toml"
+hash = "62a3e1195814c4ce6176804db25a1e8cbc99ac862d2196c9b8e7f01e2fe714da"
 metafile = true
 
 [[files]]
