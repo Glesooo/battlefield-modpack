@@ -7,19 +7,19 @@
 	enableStrafeMovement = true
 	#Drag smoothing factor (lower = more inertia).
 	#Range: 0.0 ~ 1.0
-	dragSmoothing = 0.1
+	dragSmoothing = 0.07
 	#Decay factor for motion smoothing.
 	#Range: 0.0 ~ 1.0
 	decayFactor = 0.5
 	#Velocity influence on final position.
 	#Range: 0.0 ~ 1.0
-	momentumFactor = 0.45
+	momentumFactor = 0.65
 	#Roll rotation sensitivity. Negative values invert the movement.
 	#Range: -10.0 ~ 10.0
-	rollSensitivity = 1.2
+	rollSensitivity = 1.8
 	#Maximum roll angle (degrees).
 	#Range: 0.0 ~ 180.0
-	maxTiltAngle = 20.0
+	maxTiltAngle = 26.0
 
 	[client.variableZoom]
 		#How much of a scope's zoom range one scroll notch covers.
@@ -82,24 +82,24 @@
 	[client.hipfire]
 		#Yaw multiplier when hip-firing. Negative values invert the movement.
 		#Range: -10.0 ~ 10.0
-		yawMultiplier = 1.25
+		yawMultiplier = 2.1
 		#Pitch multiplier when hip-firing. Negative values invert the movement.
 		#Range: -10.0 ~ 10.0
-		pitchMultiplier = 1.2
+		pitchMultiplier = 1.9
 		#Roll factor when hip-firing. Negative values invert the movement.
 		#Range: -10.0 ~ 10.0
-		rollFactor = 1.75
+		rollFactor = 2.6
 		#Maximum pitch offset when hip-firing (degrees)
 		#Range: 0.0 ~ 45.0
-		maxHipPitch = 6.0
+		maxHipPitch = 11.0
 		#Maximum yaw offset when hip-firing (degrees)
 		#Range: 0.0 ~ 45.0
-		maxHipYaw = 12.0
+		maxHipYaw = 20.0
 
 	[client.aim]
 		#Yaw multiplier when aiming. Negative values invert the movement.
 		#Range: -10.0 ~ 10.0
-		yawMultiplier = 0.6
+		yawMultiplier = 0.9
 		#Roll factor when aiming. Negative values invert the movement.
 		#Range: -10.0 ~ 10.0
 		rollFactor = 2.75
@@ -113,10 +113,10 @@
 	[client.strafe]
 		#Yaw sway from strafing while hip-firing. Negative values invert the movement.
 		#Range: -40.0 ~ 40.0
-		hipfireYawMultiplier = 0.0
+		hipfireYawMultiplier = 6.0
 		#Roll tilt from strafing while hip-firing. Negative values invert the movement.
 		#Range: -40.0 ~ 40.0
-		hipfireRollMultiplier = 20.0
+		hipfireRollMultiplier = 28.0
 		#Yaw sway from strafing while aiming. Negative values invert the movement.
 		#Range: -40.0 ~ 40.0
 		aimingYawMultiplier = 0.0
@@ -125,10 +125,10 @@
 		aimingRollMultiplier = 20.0
 		#Maximum yaw offset from strafing (degrees)
 		#Range: 0.0 ~ 20.0
-		maxStrafeYaw = 6.0
+		maxStrafeYaw = 9.0
 		#Maximum roll angle from strafing (degrees)
 		#Range: 0.0 ~ 40.0
-		maxStrafeRoll = 20.0
+		maxStrafeRoll = 28.0
 		#Smoothing factor for strafe movement (higher = more responsive, lower = smoother)
 		#Range: 0.01 ~ 1.0
 		strafeSmoothing = 0.15

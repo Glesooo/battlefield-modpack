@@ -69,3 +69,21 @@
 	#Only applies while the stance panel is enabled.
 	hide_firstaid_hud = true
 
+[movement]
+	#Ticks a sprint takes to build up to full speed (20 = 1 second). 0 = instant, like vanilla.
+	#Range: 0 ~ 100
+	sprint_ramp_ticks = 36
+	#Speed of the first stride of a sprint, as a share of full sprint speed. 1.0 = no run-up.
+	#Range: 0.3 ~ 1.0
+	sprint_ramp_start = 0.62
+	#Body-cam-style head motion in first person: step dip and sway, sprint lean, landing knock.
+	camera_motion = true
+	#Strength of that head motion. 1.0 is the default; 0.5 subtler, 2.0 heavy.
+	#Range: 0.0 ~ 3.0
+	camera_motion_intensity = 1.0
+	#Swing the first-person weapon with the step cycle, a beat behind the body.
+	weapon_sway = true
+	#Strength of that weapon swing. 1.0 is the default; 0.5 subtler, 2.0 heavy.
+	#Range: 0.0 ~ 3.0
+	weapon_sway_intensity = 1.0
+

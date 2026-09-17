@@ -1,0 +1,8 @@
+name = "freeaim-1.0.0"
+filename = "freeaim-1.0.0.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/freeaim-1.0.0.jar"
+hash-format = "sha256"
+hash = "df891bf2a7e3ee1ae1093cb391f14e5e575d9839a5c1419f06c1c32b3783bc7f"

@@ -1,0 +1,28 @@
+
+[free_aim]
+	#Master switch. Off = guns point and shoot exactly at the screen centre, like plain TaCZ.
+	enabled = true
+	#How far the barrel can wander left/right of the screen centre, in degrees.
+	#The host also uses this to cap what a client may claim.
+	#Range: 0.0 ~ 30.0
+	max_yaw_degrees = 10.0
+	#How far the barrel can wander up/down, in degrees. Same host-side cap.
+	#Range: 0.0 ~ 30.0
+	max_pitch_degrees = 6.0
+	#Share of every mouse turn the gun lags behind by. 0 = no lag, 1 = the gun stays put while you turn.
+	#Range: 0.0 ~ 1.0
+	drag = 0.45
+	#How fast the gun settles back to the centre once you stop turning (per second).
+	#Lower = the barrel stays off-centre longer.
+	#Range: 0.0 ~ 30.0
+	return_speed = 2.2
+	#How much the barrel swings with your steps while moving. 0 = none.
+	#Range: 0.0 ~ 5.0
+	stride_sway = 1.0
+	#Move TaCZ's crosshair to where the barrel points, so it still shows where shots go.
+	move_crosshair = true
+	#Calibration: flip this if the gun model swings the opposite way to where shots and the crosshair go.
+	invert_model_yaw = false
+	#Calibration: same, for up/down.
+	invert_model_pitch = false
+

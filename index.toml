@@ -26,7 +26,7 @@ hash = "cae5ba66971b2f61e0b523c5aeb8b8d4fa806f0bea8a1709860e4fea94426ac9"
 
 [[files]]
 file = "config/battlefieldhud-client.toml"
-hash = "71b192d0603dc52ac40888e6fd9e0cb7eb264381a17ff1b468cc4a21ce20f535"
+hash = "323fe3b74e0f226b2e656732e18679f22cf532e1a6ae554ec7b25fc35b1dd4fe"
 
 [[files]]
 file = "config/betterbloodoverlay_1_20_1-client.toml"
@@ -173,6 +173,10 @@ file = "config/fracturepoint-common.toml"
 hash = "5038e9e2349a929385e68427a9d64ef6f7cf65641df396c93d0633f138697f0f"
 
 [[files]]
+file = "config/freeaim-common.toml"
+hash = "ca0de243d91a25704dd220c51f6fc14a831c4694e6bfcdd6a802d4e83aea41a4"
+
+[[files]]
 file = "config/fullfud-client.toml"
 hash = "dc99f16b84464cbf853b452aa78831913e3f57694e57732fc75057a76eb5250f"
 
@@ -254,11 +258,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "7ad8dc9dea886525894186d586f8ddf8ed02e2224a997dd67a003c0a7efdb994"
+hash = "423185f6596e2da0839e6169899a7202cd7f2bbb28ad8f53eb664f06b8e37f56"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "b30a5d9b5367b111e7280b87d96c22cefc4f65e1cf810100279eae411d646ec2"
+hash = "b7fbcd47e2380ca4ab23665074f4fd16517de7b94210563591b42ca52823ac5f"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -366,7 +370,7 @@ hash = "8eee8202341fe4afc761b576a35ba908037f4b8c25da2559a928664037006ea1"
 
 [[files]]
 file = "config/taczadditions-client.toml"
-hash = "20efe65f3d0aa8b5f7f8ddfe23e0f72774f030c3e7d955db5c984003c02b6a8a"
+hash = "17d3d6281f0121a77d8ed82eedfb4a7742af86a4a2ccc75e2fd5e5506684d343"
 
 [[files]]
 file = "config/taczadditions-common.toml"
@@ -922,7 +926,7 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "976eda40c30ad32f9fc5bb3fbe4f0fc9100608ed0dbaae9521e2d9a1caa9cad4"
+hash = "152222224f597dee7296b8906c08fc56775969b41a194e2147c61889806d726c"
 
 [[files]]
 file = "config/yacl.json5"
@@ -1024,8 +1028,8 @@ hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
 metafile = true
 
 [[files]]
-file = "mods/battlefieldcore-1.4.10.pw.toml"
-hash = "21ea5d716b81056b2c7c6cc1f6248b4c02151cc3515e163bfeedc29cc731e192"
+file = "mods/battlefieldcore-1.4.11.pw.toml"
+hash = "6cd7f6f2922ef207d2b8caea12b214073713dea6e5db46b3547b938970b99f03"
 metafile = true
 
 [[files]]
@@ -1124,6 +1128,11 @@ hash = "ad52535387466d02231704f0ba161934dba1df7030e00d78cf48321c359d14b1"
 metafile = true
 
 [[files]]
+file = "mods/freeaim-1.0.0.pw.toml"
+hash = "01c09174af5b555f19db21b1e9d60fb1f6188f107278c4362bd1eeff30cc1788"
+metafile = true
+
+[[files]]
 file = "mods/geckolib-forge-1.20.1-4.8.4.pw.toml"
 hash = "c8ee4965fc13f279561cea362310aa4436a4c239d1aced35c5218fea2459695b"
 metafile = true
@@ -1134,8 +1143,8 @@ hash = "a6d17c3c187b67b3e0f8ea85782c322518f22f3e38fc588bf39e51d9478d2d5e"
 metafile = true
 
 [[files]]
-file = "mods/hudelements-1.5.0.pw.toml"
-hash = "51e00caafedd6486eebf146314bc4b3553743ff91a138edefc9ab8e48a6006b3"
+file = "mods/hudelements-1.5.1.pw.toml"
+hash = "fc6938a280b980fe1304bd1eadf13bf12c62fcd588ff544ffbe76282879533a4"
 metafile = true
 
 [[files]]
