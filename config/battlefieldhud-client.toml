@@ -28,10 +28,10 @@
 	#Panel margin in pixels from the RIGHT screen edge (moved off the left so it clears the chat).
 	#Set by dragging in the HUD editor.
 	#Range: -4000 ~ 4000
-	offset_x = 687
+	offset_x = 696
 	#Panel vertical offset in pixels from the BOTTOM screen edge (larger = higher up).
 	#Range: -4000 ~ 4000
-	offset_y = 11
+	offset_y = 319
 	#Panel size multiplier. Drop below 1.0 if it feels too big.
 	#Range: 0.4 ~ 3.0
 	scale = 1.15

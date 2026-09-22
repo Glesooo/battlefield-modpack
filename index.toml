@@ -26,7 +26,7 @@ hash = "cae5ba66971b2f61e0b523c5aeb8b8d4fa806f0bea8a1709860e4fea94426ac9"
 
 [[files]]
 file = "config/battlefieldhud-client.toml"
-hash = "323fe3b74e0f226b2e656732e18679f22cf532e1a6ae554ec7b25fc35b1dd4fe"
+hash = "05ec7c5c5dcaf3198b72ad7731d18a6679ef77e8a6291ac9a4e383177161abf1"
 
 [[files]]
 file = "config/betterbloodoverlay_1_20_1-client.toml"
@@ -258,11 +258,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "423185f6596e2da0839e6169899a7202cd7f2bbb28ad8f53eb664f06b8e37f56"
+hash = "ad3c48085ae9a4736b746765fc148cef5fd597cb2648676d7982c55a04adc2f4"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "b7fbcd47e2380ca4ab23665074f4fd16517de7b94210563591b42ca52823ac5f"
+hash = "cec3b72beb635acdcb3c0caba0895f0eadd0eb38435520b3e82be9e31668d27a"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -926,7 +926,7 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "152222224f597dee7296b8906c08fc56775969b41a194e2147c61889806d726c"
+hash = "bfa66e1f1e9b8ed0892f8ddaae279eca44bcc0d805aef9a2fc20fa51a97f0946"
 
 [[files]]
 file = "config/yacl.json5"
