@@ -1,0 +1,8 @@
+name = "macecore-1.6.5"
+filename = "macecore-1.6.5.jar"
+side = "both"
+
+[download]
+url = "https://github.com/Glesooo/battlefield-modpack/releases/download/mod-files/macecore-1.6.5.jar"
+hash-format = "sha256"
+hash = "7f2e702b906007ef9cbd99fc9a00513ce1d210d2fd2a75c5edcdd454af2266e4"

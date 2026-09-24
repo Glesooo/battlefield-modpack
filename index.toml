@@ -198,7 +198,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "9f32b71da6f4db6fedb20efce3146aa2aef7ed243b308d71ea9f921d9f3ba461"
+hash = "d25cdece434c9d7c452e27abda86f3de74019c7a8a30da8a318e10172d752694"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -258,11 +258,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "1fffc6dca9412ae2c1a651107ff4da09ce3f1bc11b7ee68c057ce6b195d5b730"
+hash = "70935e148a5a2b6b4bdb56e1fddeefb0d39af17cfeadf0a1e9467aa56d1e863b"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "85ca4c24f8d62e0815a63475ae2c047a61ed092ca1757a60b437e2f4f7d7e496"
+hash = "8387451ee661bbc484091cc2bfa4cbe787f857f569a19fbd246f8878326d3266"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -1138,8 +1138,8 @@ hash = "a6d17c3c187b67b3e0f8ea85782c322518f22f3e38fc588bf39e51d9478d2d5e"
 metafile = true
 
 [[files]]
-file = "mods/hudelements-1.5.1.pw.toml"
-hash = "fc6938a280b980fe1304bd1eadf13bf12c62fcd588ff544ffbe76282879533a4"
+file = "mods/hudelements-1.5.2.pw.toml"
+hash = "9b39964510bc8b092e9a9275222b9c0e5bafc51b1bea7c9d56d772b6bec214c5"
 metafile = true
 
 [[files]]
@@ -1188,8 +1188,8 @@ hash = "62a3e1195814c4ce6176804db25a1e8cbc99ac862d2196c9b8e7f01e2fe714da"
 metafile = true
 
 [[files]]
-file = "mods/macecore-1.6.4.pw.toml"
-hash = "d6b254b71c59cf4ae42232474069f745f72ee89b571136b23090762d77be85b4"
+file = "mods/macecore-1.6.5.pw.toml"
+hash = "123c28eccd33ec228319682b62965535bfb5a3e62368c19b9128eb6e76a9bdca"
 metafile = true
 
 [[files]]

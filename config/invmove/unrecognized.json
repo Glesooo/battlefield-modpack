@@ -49,7 +49,9 @@
     "com.yourname.macebuilder.client.BlueprintScreen": true,
     "com.yourname.macemenu.client.MacePauseScreen": true,
     "com.yourname.macemenu.client.MaceOptionsScreen": true,
-    "com.yourname.battlefieldcore.blackmarket.client.BlackMarketScreen": true
+    "com.yourname.battlefieldcore.blackmarket.client.BlackMarketScreen": true,
+    "com.yourname.battlefieldcore.extraction.client.TargetMapScreen": true,
+    "com.yourname.battlefieldcore.deploy.client.AnchorPickScreen": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,
@@ -77,6 +79,8 @@
     "com.yourname.battlefieldcore.deploy.client.DeployScreen": true,
     "com.tacz.guns.client.gui.GunSmithTableScreen": true,
     "frontline.combat.fcp.client.screen.VehicleInventoryScreen": true,
-    "com.raiiiden.warborn.client.screen.BackpackScreen": true
+    "com.raiiiden.warborn.client.screen.BackpackScreen": true,
+    "com.yourname.battlefieldcore.extraction.client.TargetMapScreen": true,
+    "com.yourname.battlefieldcore.deploy.client.AnchorPickScreen": true
   }
 }
