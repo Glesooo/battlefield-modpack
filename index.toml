@@ -1188,8 +1188,8 @@ hash = "62a3e1195814c4ce6176804db25a1e8cbc99ac862d2196c9b8e7f01e2fe714da"
 metafile = true
 
 [[files]]
-file = "mods/macecore-1.6.3.pw.toml"
-hash = "31b5202dd56bbb0e159580a9aaf7fdddb1c96d0e143cb416ed2328edf05a85fe"
+file = "mods/macecore-1.6.4.pw.toml"
+hash = "d6b254b71c59cf4ae42232474069f745f72ee89b571136b23090762d77be85b4"
 metafile = true
 
 [[files]]
