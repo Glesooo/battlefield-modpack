@@ -48,7 +48,8 @@
     "com.raiiiden.warborn.client.screen.BackpackScreen": true,
     "com.yourname.macebuilder.client.BlueprintScreen": true,
     "com.yourname.macemenu.client.MacePauseScreen": true,
-    "com.yourname.macemenu.client.MaceOptionsScreen": true
+    "com.yourname.macemenu.client.MaceOptionsScreen": true,
+    "com.yourname.battlefieldcore.blackmarket.client.BlackMarketScreen": true
   },
   "hideBackground": {
     "com.synarsis.airtacticalarsenal.client.gui.ShahedTabletScreen": true,

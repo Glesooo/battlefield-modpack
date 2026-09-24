@@ -198,7 +198,7 @@ hash = "b4306cfc19619ad78fad885566aabd12e642956c1bd8a11b533b5f37cd451621"
 
 [[files]]
 file = "config/invmove/unrecognized.json"
-hash = "e3a0d69c6b8ea2e3847e940043c301c7edd2bd740b76c333f9ac58b647315c35"
+hash = "9f32b71da6f4db6fedb20efce3146aa2aef7ed243b308d71ea9f921d9f3ba461"
 
 [[files]]
 file = "config/invmove/vanilla.json"
@@ -258,11 +258,11 @@ hash = "cc9db08ca3f44714cf14117fb1772eed88c9cc3272fea6d17e657292c8799fe0"
 
 [[files]]
 file = "config/oculus.properties"
-hash = "ad3c48085ae9a4736b746765fc148cef5fd597cb2648676d7982c55a04adc2f4"
+hash = "1fffc6dca9412ae2c1a651107ff4da09ce3f1bc11b7ee68c057ce6b195d5b730"
 
 [[files]]
 file = "config/packetfixer.properties"
-hash = "cec3b72beb635acdcb3c0caba0895f0eadd0eb38435520b3e82be9e31668d27a"
+hash = "85ca4c24f8d62e0815a63475ae2c047a61ed092ca1757a60b437e2f4f7d7e496"
 
 [[files]]
 file = "config/particull-client.toml"
@@ -926,7 +926,7 @@ hash = "9757a6208de6780c7d86d61a75e997848a30a7e759f5e2f3e29d08ab7aa6383f"
 
 [[files]]
 file = "config/worldedit/worldedit.properties"
-hash = "bfa66e1f1e9b8ed0892f8ddaae279eca44bcc0d805aef9a2fc20fa51a97f0946"
+hash = "b6e1b827f0ac1e212731da220b26e67565e7541b4ae7cc667c7a703e1cd91bcc"
 
 [[files]]
 file = "config/yacl.json5"
@@ -1025,11 +1025,6 @@ metafile = true
 [[files]]
 file = "mods/ash_api-forge-3.0.2_1.20.1.pw.toml"
 hash = "72ca408e75199423bb91d44fa1abe9839b576f7029a5ba730d9ac5a4b98c0723"
-metafile = true
-
-[[files]]
-file = "mods/battlefieldcore-1.4.11.pw.toml"
-hash = "6cd7f6f2922ef207d2b8caea12b214073713dea6e5db46b3547b938970b99f03"
 metafile = true
 
 [[files]]
@@ -1190,6 +1185,11 @@ metafile = true
 [[files]]
 file = "mods/macebuilder-1.5.0.pw.toml"
 hash = "62a3e1195814c4ce6176804db25a1e8cbc99ac862d2196c9b8e7f01e2fe714da"
+metafile = true
+
+[[files]]
+file = "mods/macecore-1.6.3.pw.toml"
+hash = "31b5202dd56bbb0e159580a9aaf7fdddb1c96d0e143cb416ed2328edf05a85fe"
 metafile = true
 
 [[files]]
