@@ -14,3 +14,6 @@ packwiz-installer-bootstrap.jar
 # GUI updater source (.NET project) - never part of the pack itself, the built exe is a
 # GitHub Release asset instead (see README).
 gui/**
+launcher/**
+tools/**
+manifest.json

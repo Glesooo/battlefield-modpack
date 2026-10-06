@@ -1,0 +1,176 @@
+<Window x:Class="MaceLauncher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="M.A.C.E" Width="1120" Height="640"
+        WindowStyle="None" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen"
+        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}" FontFamily="Segoe UI"
+        Closing="Window_Closing">
+    <Grid>
+        <Image Source="Assets/background.jpg" Stretch="UniformToFill" />
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#D90A0C0F" Offset="0" />
+                    <GradientStop Color="#590A0C0F" Offset="0.45" />
+                    <GradientStop Color="#000A0C0F" Offset="0.75" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#A60A0C0F" Offset="0" />
+                    <GradientStop Color="#000A0C0F" Offset="0.16" />
+                    <GradientStop Color="#000A0C0F" Offset="0.55" />
+                    <GradientStop Color="#F00A0C0F" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="34" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="Transparent" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <TextBlock Text="M.A.C.E  ·  LAUNCHER" FontFamily="{StaticResource HeadFont}" FontSize="11"
+                           Foreground="{StaticResource TextFaintBrush}" Margin="16,0" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="—" Style="{StaticResource ChromeButton}" Click="Minimize_Click" />
+                    <Button Content="✕" Style="{StaticResource ChromeButton}" Click="Close_Click" />
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Margin="56,30,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="M.A.C.E" FontFamily="{StaticResource HeadFont}" FontWeight="Bold" FontSize="84">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.7" />
+                    </TextBlock.Effect>
+                </TextBlock>
+                <Rectangle Height="4" Fill="{StaticResource AccentBrush}" Margin="3,0,0,0" />
+            </StackPanel>
+
+            <Border Grid.Row="2" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource EdgeBrush}"
+                    BorderThickness="0,1,0,0" Padding="40,22,40,26">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="240" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <TextBlock Text="НИК" FontFamily="{StaticResource HeadFont}" FontSize="12"
+                                   Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6" />
+                        <Grid>
+                            <TextBox x:Name="NickBox" Style="{StaticResource NickBox}" Height="48" MaxLength="16"
+                                     KeyDown="NickBox_KeyDown" />
+                            <TextBlock Text="Введите ник" FontFamily="{StaticResource HeadFont}" FontSize="20"
+                                       Foreground="{StaticResource TextFaintBrush}" Margin="14,0,0,0"
+                                       VerticalAlignment="Center" IsHitTestVisible="False">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=NickBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button Content="Папка игры" Style="{StaticResource LinkButton}" Click="OpenFolder_Click"
+                                    Margin="0,0,20,0" />
+                            <Button x:Name="VerifyButton" Content="Проверить файлы" Style="{StaticResource LinkButton}"
+                                    Click="Verify_Click" Margin="0,0,20,0" />
+                            <Button x:Name="SettingsButton" Content="Настройки" Style="{StaticResource LinkButton}"
+                                    Click="Settings_Click" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="36,0" VerticalAlignment="Center">
+                        <Grid>
+                            <TextBlock x:Name="StageText" Text="Готов к запуску" FontFamily="{StaticResource HeadFont}"
+                                       FontSize="16" TextTrimming="CharacterEllipsis" Margin="0,0,60,0" />
+                            <TextBlock x:Name="PercentText" HorizontalAlignment="Right" FontFamily="{StaticResource HeadFont}"
+                                       FontSize="16" Foreground="{StaticResource AccentBrightBrush}" />
+                        </Grid>
+                        <ProgressBar x:Name="Progress" Style="{StaticResource AccentProgress}" Maximum="1" Margin="0,10,0,8" />
+                        <TextBlock x:Name="DetailText" FontSize="12" Foreground="{StaticResource TextFaintBrush}"
+                                   TextTrimming="CharacterEllipsis" />
+                    </StackPanel>
+
+                    <Button x:Name="PlayButton" Grid.Column="2" Content="ИГРАТЬ" Style="{StaticResource PlayButton}"
+                            Height="64" VerticalAlignment="Center" Click="Play_Click" />
+                </Grid>
+            </Border>
+
+            <TextBlock x:Name="VersionText" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                       Margin="0,0,12,6" FontSize="10" Foreground="{StaticResource TextFaintBrush}" />
+        </Grid>
+
+        <Grid x:Name="SettingsPanel" Visibility="Collapsed" Margin="0,34,0,0" Background="#EB0A0C0F">
+            <Border Width="620" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource EdgeBrush}" BorderThickness="1"
+                    Padding="36,26,36,28">
+                <StackPanel>
+                    <TextBlock Text="НАСТРОЙКИ" FontFamily="{StaticResource HeadFont}" FontWeight="Bold" FontSize="30" />
+                    <Rectangle Height="3" Width="120" HorizontalAlignment="Left" Fill="{StaticResource AccentBrush}"
+                               Margin="0,6,0,20" />
+
+                    <Grid>
+                        <TextBlock Text="ПАМЯТЬ ДЛЯ ИГРЫ" Style="{StaticResource SettingLabel}" VerticalAlignment="Bottom" />
+                        <TextBlock x:Name="MemoryValue" HorizontalAlignment="Right" FontFamily="{StaticResource HeadFont}"
+                                   FontSize="16" Foreground="{StaticResource AccentBrightBrush}" />
+                    </Grid>
+                    <Slider x:Name="MemorySlider" Style="{StaticResource AccentSlider}" Margin="0,4,0,2"
+                            ValueChanged="MemorySlider_ValueChanged" />
+                    <TextBlock x:Name="MemoryHint" Style="{StaticResource SettingHint}" />
+
+                    <TextBlock Text="ЭКРАН" Style="{StaticResource SettingLabel}" Margin="0,20,0,8" />
+                    <CheckBox x:Name="FullScreenBox" Content="Запускать игру на весь экран"
+                              Style="{StaticResource SettingCheck}" Checked="FullScreenBox_Changed"
+                              Unchecked="FullScreenBox_Changed" />
+                    <StackPanel x:Name="WindowSizeRow" Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="Размер окна" FontSize="14" VerticalAlignment="Center" Margin="0,0,12,0" />
+                        <TextBox x:Name="WidthBox" Style="{StaticResource FieldBox}" Width="74" MaxLength="4" />
+                        <TextBlock Text="×" FontSize="14" VerticalAlignment="Center" Margin="8,0" />
+                        <TextBox x:Name="HeightBox" Style="{StaticResource FieldBox}" Width="74" MaxLength="4" />
+                        <TextBlock Text="пусто — стандартное 854×480" Style="{StaticResource SettingHint}"
+                                   VerticalAlignment="Center" Margin="12,0,0,0" />
+                    </StackPanel>
+
+                    <TextBlock Text="ДОПОЛНИТЕЛЬНЫЕ ПАРАМЕТРЫ JAVA" Style="{StaticResource SettingLabel}" Margin="0,20,0,6" />
+                    <TextBox x:Name="JavaBox" Style="{StaticResource FieldBox}" MaxLength="400" />
+                    <TextBlock Text="Для опытных: параметры через пробел, каждый начинается с «-». Обычно поле пустое."
+                               Style="{StaticResource SettingHint}" Margin="0,4,0,0" />
+
+                    <StackPanel Orientation="Horizontal" Margin="0,18,0,0">
+                        <Button Content="Папка шейдеров" Tag="shaderpacks" Style="{StaticResource LinkButton}"
+                                Click="OpenSubfolder_Click" Margin="0,0,20,0" />
+                        <Button Content="Журналы игры" Tag="logs" Style="{StaticResource LinkButton}"
+                                Click="OpenSubfolder_Click" Margin="0,0,20,0" />
+                        <Button Content="Журнал лаунчера" Style="{StaticResource LinkButton}" Click="OpenLauncherLog_Click" />
+                    </StackPanel>
+
+                    <TextBlock x:Name="SettingsError" Foreground="{StaticResource ErrorBrush}" FontSize="12"
+                               TextWrapping="Wrap" Margin="0,14,0,0" MinHeight="16" />
+                    <Grid Margin="0,8,0,0">
+                        <Button x:Name="SettingsDefaults" Content="По умолчанию" Style="{StaticResource LinkButton}"
+                                HorizontalAlignment="Left" VerticalAlignment="Center" Click="SettingsDefaults_Click" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button x:Name="SettingsCancel" Content="ОТМЕНА" Style="{StaticResource GhostButton}"
+                                    Width="130" Height="40" Margin="0,0,12,0" Click="SettingsCancel_Click" />
+                            <Button x:Name="SettingsSave" Content="СОХРАНИТЬ" Style="{StaticResource PlayButton}"
+                                    FontSize="16" Width="160" Height="40" Click="SettingsSave_Click" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

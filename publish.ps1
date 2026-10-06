@@ -34,6 +34,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+throw "publish.ps1 is retired: the pack is published by tools\make_manifest.py and tools\upload_pack.py."
 $packwiz = "$env:USERPROFILE\go\bin\packwiz.exe"
 $distRoot = $PSScriptRoot
 
