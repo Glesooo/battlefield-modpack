@@ -10,6 +10,7 @@ public sealed record LauncherPaths(string Root)
     public string Removed => Path.Combine(Root, "removed");
     public string Cache => Path.Combine(Root, "cache");
     public string Settings => Path.Combine(Root, "launcher.json");
+    public string Secret => Path.Combine(Root, "secret.bin");
     public string Index => Path.Combine(Root, "files.json");
     public string Log => Path.Combine(Root, "launcher.log");
 

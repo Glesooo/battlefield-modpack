@@ -4,6 +4,13 @@ namespace MaceLauncher;
 
 public static class Cli
 {
+    private const string KnownPrivateKey =
+        "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgEMqQI6AEPuvrDXeK+TGZ7WsKTLYJ2DoyYY/ut8BacByhRANCAATCOLuACFvx" +
+        "FsoNuQM8cU2r9lxDPQ2B0vHYYrIzXu6/N4A64T8lB9WarQWFmtLmZtw9lHFwMmNvbPpDF32Z1V0v";
+    private const string KnownPublicKey =
+        "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwji7gAhb8RbKDbkDPHFNq/ZcQz0NgdLx2GKyM17uvzeAOuE/JQfVmq0FhZrS5mbcPZRxcDJj" +
+        "b2z6Qxd9mdVdLw==";
+
     public static async Task<int> RunAsync(string[] args)
     {
         var paths = Paths(args);
@@ -46,9 +53,22 @@ public static class Cli
         var settings = LauncherSettings.Load(paths.Settings);
         var nick = Value(args, "--nick") ?? settings.Nick;
         if (!OfflineProfile.IsValidNick(nick)) throw new ArgumentException($"Неверный ник: {nick}");
+        var key = Key(args, paths, nick);
         var server = Value(args, "--join");
-        if (printOnly) await game.BuildAsync(version, nick, settings, CancellationToken.None, server);
-        else await game.StartAsync(version, nick, settings, CancellationToken.None, server);
+        if (printOnly) await game.BuildAsync(version, nick, key, settings, CancellationToken.None, server);
+        else await game.StartAsync(version, nick, key, settings, CancellationToken.None, server);
+    }
+
+    private static NickKey? Key(string[] args, LauncherPaths paths, string nick)
+    {
+        var password = Value(args, "--password");
+        if (password == null)
+        {
+            var saved = NickKey.Load(paths.Secret);
+            return saved?.IsFor(nick) == true ? saved : null;
+        }
+        if (!NickKey.IsValidPassword(password)) throw new ArgumentException("Пароль слишком короткий");
+        return NickKey.Derive(nick, password);
     }
 
     public static LauncherPaths Paths(string[] args) => new(Value(args, "--dir") ?? LauncherPaths.DefaultRoot);
@@ -80,6 +100,7 @@ public static class Cli
         {
         }
         Check(Rejects(() => paths.InInstance("")), "instance root not rejected");
+        CheckNickKey(Check);
 
         var sha = new string('a', 64);
         var valid = $$$"""
@@ -113,6 +134,28 @@ public static class Cli
 
         Log.Info(failures.Count == 0 ? "selftest: ok" : "selftest FAILED: " + string.Join(", ", failures));
         return failures.Count == 0 ? 0 : 1;
+    }
+
+    private static void CheckNickKey(Action<bool, string> check)
+    {
+        var key = NickKey.Derive("gleso", "correct horse");
+        check(key.PrivateKey == KnownPrivateKey && key.PublicKey == KnownPublicKey, "nick key known answer");
+        check(NickKey.Derive("GLESO", "correct horse").PublicKey == key.PublicKey, "nick key depends on the nick's case");
+        check(NickKey.Derive("gleso", "correct horsf").PublicKey != key.PublicKey, "nick key ignores the password");
+        check(NickKey.Derive("glesa", "correct horse").PublicKey != key.PublicKey, "nick key ignores the nick");
+        check(key.IsFor("Gleso") && !key.IsFor("Glesa"), "nick key owner");
+        check(NickKey.IsValidPassword("123456") && !NickKey.IsValidPassword("12345"), "password length rule");
+
+        var file = Path.Combine(Path.GetTempPath(), $"mace-selftest-{Environment.ProcessId}.bin");
+        key.Save(file);
+        var saved = NickKey.Load(file);
+        check(saved?.PrivateKey == key.PrivateKey && saved.PublicKey == key.PublicKey && saved.IsFor("gleso"),
+            "nick key storage");
+        check(!System.Text.Encoding.Latin1.GetString(File.ReadAllBytes(file)).Contains(key.PublicKey),
+            "nick key stored in the open");
+        File.WriteAllText(file, "junk");
+        check(NickKey.Load(file) == null, "damaged nick key file accepted");
+        File.Delete(file);
     }
 
     private static bool Rejects(Action action)

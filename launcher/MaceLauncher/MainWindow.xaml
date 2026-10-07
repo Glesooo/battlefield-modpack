@@ -66,7 +66,7 @@
                                    Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6" />
                         <Grid>
                             <TextBox x:Name="NickBox" Style="{StaticResource NickBox}" Height="48" MaxLength="16"
-                                     KeyDown="NickBox_KeyDown" />
+                                     KeyDown="NickBox_KeyDown" TextChanged="NickBox_TextChanged" />
                             <TextBlock Text="Введите ник" FontFamily="{StaticResource HeadFont}" FontSize="20"
                                        Foreground="{StaticResource TextFaintBrush}" Margin="14,0,0,0"
                                        VerticalAlignment="Center" IsHitTestVisible="False">
@@ -82,6 +82,31 @@
                                 </TextBlock.Style>
                             </TextBlock>
                         </Grid>
+                        <StackPanel x:Name="PasswordEntry" Margin="0,12,0,0">
+                            <TextBlock Text="ПАРОЛЬ" Style="{StaticResource SettingLabel}" Margin="0,0,0,6" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <PasswordBox x:Name="PasswordField" Style="{StaticResource SecretBox}" MaxLength="64"
+                                             KeyDown="NickBox_KeyDown" />
+                                <TextBox x:Name="PasswordText" Style="{StaticResource FieldBox}" MaxLength="64"
+                                         Visibility="Collapsed" KeyDown="NickBox_KeyDown" />
+                                <CheckBox x:Name="ShowPasswordBox" Grid.Column="1" Content="Показать"
+                                          Style="{StaticResource SettingCheck}" FontSize="12" Margin="12,0,0,0"
+                                          VerticalAlignment="Center" Checked="ShowPasswordBox_Changed"
+                                          Unchecked="ShowPasswordBox_Changed" />
+                            </Grid>
+                            <TextBlock Text="Закрепляет ник за вами на сервере. Забыли пароль — его сбросит администратор."
+                                       Style="{StaticResource SettingHint}" FontSize="11" Margin="0,5,0,0" />
+                        </StackPanel>
+                        <StackPanel x:Name="PasswordSaved" Orientation="Horizontal" Margin="0,12,0,0" Visibility="Collapsed">
+                            <TextBlock Text="Пароль сохранён на этом ПК" FontSize="12" Foreground="{StaticResource OkBrush}"
+                                       Margin="0,0,14,0" />
+                            <Button x:Name="PasswordReset" Content="Ввести заново" Style="{StaticResource LinkButton}"
+                                    Click="PasswordReset_Click" />
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                             <Button Content="Папка игры" Style="{StaticResource LinkButton}" Click="OpenFolder_Click"
                                     Margin="0,0,20,0" />

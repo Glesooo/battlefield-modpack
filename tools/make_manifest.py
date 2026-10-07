@@ -18,7 +18,7 @@ PACK = {
 BINARY_FOLDERS = {"mods": "*.jar", "tacz": "*.zip", "resourcepacks": "*.zip", "shaderpacks": "*.zip"}
 
 CONFIG_EXCLUDED = [
-    "battlefieldcore-admin.toml", "battlefieldhud-client.toml", "embeddium-options.json",
+    "battlefieldcore-admin.toml", "battlefieldcore-auth.toml", "battlefieldhud-client.toml", "embeddium-options.json",
     "embeddium-fingerprint.json", "oculus.properties", "fml.toml", "e4mc/*",
 ]
 CONFIG_MANAGED_CLIENT = ["jumpcooldown-client.toml", "foliagevision-client.toml", "casingsounds-client.toml"]

@@ -135,6 +135,33 @@
                 <Setter Property="Padding" Value="9,0" />
             </Style>
 
+            <Style x:Key="SecretBox" TargetType="PasswordBox">
+                <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+                <Setter Property="Background" Value="{StaticResource FieldBrush}" />
+                <Setter Property="BorderBrush" Value="{StaticResource EdgeBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CaretBrush" Value="{StaticResource AccentBrush}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Height" Value="32" />
+                <Setter Property="Padding" Value="9,0" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="PasswordBox">
+                            <Border x:Name="Frame" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="2">
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter TargetName="Frame" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="SettingLabel" TargetType="TextBlock">
                 <Setter Property="FontFamily" Value="{StaticResource HeadFont}" />
                 <Setter Property="FontSize" Value="12" />

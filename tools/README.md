@@ -56,6 +56,8 @@ python tools\make_manifest.py
 - `config\battlefieldcore-admin.toml`: в нём был пароль `/adm`. С версии MACE Core 1.7.1 команды `/adm` нет
   и файл больше не создаётся, но в старой папке игры он мог остаться. Скрипт проверяет перед записью, что
   файл не попал в архив, и падает, если попал.
+- `config\battlefieldcore-auth.toml`: режим проверки пароля на ник. Действует только копия на сервере,
+  у игрока мод сам создаёт файл со значением «выключено».
 - Настройки графики: `embeddium-options.json`, `embeddium-fingerprint.json`, `oculus.properties`, `fml.toml`.
   Игрок получает стандартные.
 - `config\e4mc`: мод для игры через чужой ПК, игрокам не нужен.

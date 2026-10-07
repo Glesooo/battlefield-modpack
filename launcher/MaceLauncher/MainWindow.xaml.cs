@@ -14,6 +14,7 @@ public partial class MainWindow : Window
     private readonly LauncherPaths paths;
     private readonly IReadOnlyList<string> sources;
     private readonly LauncherSettings settings;
+    private NickKey? key;
     private CancellationTokenSource? work;
     private bool closeRequested;
 
@@ -24,9 +25,13 @@ public partial class MainWindow : Window
         InitializeComponent();
         Log.Open(paths.Log);
         settings = LauncherSettings.Load(paths.Settings);
+        key = NickKey.Load(paths.Secret);
         NickBox.Text = settings.Nick;
+        ShowPasswordState();
         VersionText.Text = "v" + LauncherInfo.Version;
     }
+
+    private string TypedPassword => ShowPasswordBox.IsChecked == true ? PasswordText.Text : PasswordField.Password;
 
     private async void Play_Click(object sender, RoutedEventArgs e) => await RunAsync(launch: true, verifyAll: false);
 
@@ -35,6 +40,42 @@ public partial class MainWindow : Window
     private void NickBox_KeyDown(object sender, KeyEventArgs e)
     {
         if (e.Key == Key.Enter && PlayButton.IsEnabled) Play_Click(sender, e);
+    }
+
+    private void NickBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e) => ShowPasswordState();
+
+    private bool HasKey(string nick) => key?.IsFor(nick) == true;
+
+    private void ShowPasswordState()
+    {
+        var saved = HasKey(NickBox.Text.Trim());
+        PasswordSaved.Visibility = saved ? Visibility.Visible : Visibility.Collapsed;
+        PasswordEntry.Visibility = saved ? Visibility.Collapsed : Visibility.Visible;
+    }
+
+    private void PasswordReset_Click(object sender, RoutedEventArgs e)
+    {
+        key = null;
+        ShowPasswordState();
+    }
+
+    private void ShowPasswordBox_Changed(object sender, RoutedEventArgs e)
+    {
+        var shown = ShowPasswordBox.IsChecked == true;
+        if (shown) PasswordText.Text = PasswordField.Password;
+        else PasswordField.Password = PasswordText.Text;
+        PasswordText.Visibility = shown ? Visibility.Visible : Visibility.Collapsed;
+        PasswordField.Visibility = shown ? Visibility.Collapsed : Visibility.Visible;
+    }
+
+    private async Task RememberKeyAsync(string nick, string password, CancellationToken token)
+    {
+        ShowProgress("Подготовка ключа ника", "", 0);
+        key = await Task.Run(() => NickKey.Derive(nick, password), token);
+        key.Save(paths.Secret);
+        PasswordField.Clear();
+        PasswordText.Clear();
+        ShowPasswordState();
     }
 
     private void OpenFolder_Click(object sender, RoutedEventArgs e) => OpenFolder(paths.Instance);
@@ -133,6 +174,12 @@ public partial class MainWindow : Window
             ShowStatus("Ник: от 3 до 16 символов — латинские буквы, цифры и _", "ErrorBrush");
             return;
         }
+        var password = TypedPassword;
+        if (launch && !HasKey(nick) && !NickKey.IsValidPassword(password))
+        {
+            ShowStatus($"Пароль: не короче {NickKey.ShortestPassword} символов", "ErrorBrush");
+            return;
+        }
         var source = new CancellationTokenSource();
         var token = source.Token;
         work = source;
@@ -142,6 +189,7 @@ public partial class MainWindow : Window
         {
             settings.Nick = nick;
             settings.Save(paths.Settings);
+            if (launch && !HasKey(nick)) await RememberKeyAsync(nick, password, token);
             using var http = LauncherInfo.CreateHttp();
             var progress = new Progress<LauncherProgress>(p => ShowProgress(p.Stage, p.Detail, p.Fraction));
             var sync = new PackSync(paths, http, sources);
@@ -157,7 +205,7 @@ public partial class MainWindow : Window
             }
             var game = new Game(paths, http);
             var version = await Task.Run(() => game.InstallAsync(manifest, progress, token), token);
-            var process = await Task.Run(() => game.StartAsync(version, nick, settings, token), token);
+            var process = await Task.Run(() => game.StartAsync(version, nick, key, settings, token), token);
             work = null;
             ShowStatus("Игра запускается…", "TextBrush");
             if (await Task.Run(() => process.WaitForExit(EarlyExitMs)) && process.ExitCode != 0)
@@ -228,6 +276,8 @@ public partial class MainWindow : Window
         VerifyButton.IsEnabled = !busy;
         SettingsButton.IsEnabled = !busy;
         NickBox.IsEnabled = !busy;
+        PasswordEntry.IsEnabled = !busy;
+        PasswordSaved.IsEnabled = !busy;
     }
 
     private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

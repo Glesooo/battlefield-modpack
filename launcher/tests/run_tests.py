@@ -5,6 +5,11 @@ TEST = HERE.parents[2] / "LauncherTest"
 ROOT, SOURCE = TEST / "root", TEST / "source"
 INST = ROOT / "instance"
 SETTINGS = ROOT / "launcher.json"
+SECRET = ROOT / "secret.bin"
+KEY_LINE = "ключ ника: "
+PUBLIC_KEY = ("MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwji7gAhb8RbKDbkDPHFNq/ZcQz0NgdLx2GKyM17uvzeAOuE/JQfVmq0FhZrS5mbcPZRxcDJj"
+              "b2z6Qxd9mdVdLw==")
+PRIVATE_KEY_START = "MIGHAgEAMBMG"
 EXE = pathlib.Path(os.environ.get("MACE_EXE") or HERE.parent / "MaceLauncher/bin/Debug/net8.0-windows/win-x64/MACE.exe")
 PART = ".mace-part"
 SMALL, LARGE, LOCKED = "mods/BetterDeath-1.1.3.jar", "mods/tacz-1.20.1-1.1.8-hotfix.jar", "mods/disablef5-1.2.jar"
@@ -41,7 +46,9 @@ def check(name, ok):
     results.append((name, bool(ok)))
     print(("OK   " if ok else "FAIL ") + name)
     if not ok:
-        print("\n".join("       " + line[:240] for line in last_log.splitlines()[-8:]))
+        lines = last_log.splitlines()
+        shown = [line for line in lines[:-8] if "ОШИБКА" in line] + lines[-8:]
+        print("\n".join("       " + line[:240] for line in shown))
 
 
 def removed_entries():
@@ -129,13 +136,23 @@ def fallback():
     check("falls back to the next source", code == 0 and "source_bad" in log and "скачано 0 " in log)
 
 
+def nick_key(log):
+    return [line.split(KEY_LINE, 1)[1] for line in log.splitlines() if KEY_LINE in line]
+
+
 def launch():
     SETTINGS.unlink(missing_ok=True)
+    SECRET.unlink(missing_ok=True)
     code, log = run("--selftest")
     check("self-test", code == 0 and "selftest: ok" in log)
     code, log = run("--print-launch", "--nick", "Gleso")
     check("launch command built", code == 0 and "--username Gleso" in log and "--uuid 9cfa60c82fc135eeb837cb98cd12c0d3" in log
-          and "-Xmx4000m" in log and "-Xss1024k" in log)
+          and "-Xmx4000m" in log and "-Xss1024k" in log and nick_key(log) == ["нет"])
+    code, log = run("--print-launch", "--nick", "gleso", "--password", "correct horse")
+    check("password becomes the nick key; password and private key stay out of the log", code == 0
+          and nick_key(log) == [PUBLIC_KEY] and "correct horse" not in log and PRIVATE_KEY_START not in log)
+    code, log = run("--print-launch", "--nick", "Gleso", "--password", "12345")
+    check("short password is refused", code == 1 and "Пароль слишком короткий" in log)
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -265,13 +282,25 @@ def window():
     empty.mkdir(exist_ok=True)
     report.unlink(missing_ok=True)
     SETTINGS.unlink(missing_ok=True)
+    SECRET.unlink(missing_ok=True)
     subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(HERE / "ui_test.ps1"),
                     str(EXE), str(ROOT), str(SOURCE), str(empty), str(report), str(TEST / "settings.png")])
     ui = json.loads(report.read_text(encoding="utf-8")) if report.exists() else {}
     first_run = (ROOT / "launcher.old.log").read_text(encoding="utf-8")
     saved = json.loads(SETTINGS.read_text(encoding="utf-8")) if SETTINGS.exists() else {}
+    stored = nick_key(run("--print-launch", "--nick", "tester_1")[1])
+    typed = nick_key(run("--print-launch", "--nick", "Tester_1", "--password", "secret-pass")[1])
     code, log = run("--print-launch", "--nick", "Gleso")
     SETTINGS.unlink(missing_ok=True)
+    SECRET.unlink(missing_ok=True)
+    check("password: an empty one is refused before any work", str(ui.get("password")).startswith("Пароль:"))
+    check("password: the box can show what was typed", ui.get("shown") == "secret-pass")
+    check("password: after ИГРАТЬ the key is kept and the field is gone", ui.get("saved")
+          and str(ui.get("afterPlay")).startswith("Не удалось получить manifest.json"))
+    check("password: the kept key is the one the password gives, in any case of the nick",
+          len(stored) == 1 and stored == typed and stored != ["нет"])
+    check("password: the kept key is not used for another nick", nick_key(log) == ["нет"])
+    check("password: it can be entered again", ui.get("reset"))
     check("settings: a wrong Java parameter is refused", str(ui.get("settingsError")).startswith("Каждый параметр Java"))
     check("settings: the defaults button restores the values", ui.get("defaultsShown"))
     check("settings are saved and used for the launch", ui.get("settingsClosed") and saved.get("MaxMemoryMb") == 3500

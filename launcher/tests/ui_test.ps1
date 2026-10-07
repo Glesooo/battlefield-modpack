@@ -112,6 +112,26 @@ if ($nick.Current.Value -eq "ab") {
     $report.nick = Status $app
 }
 
+$nick.SetValue("Tester_1")
+Click (Element $app "PlayButton")
+Wait-Until { (Status $app) -ne $report.nick } 10 | Out-Null
+$report.password = Status $app
+(Element $app "PasswordField").GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern).SetValue("secret-pass")
+$show = (Element $app "ShowPasswordBox").GetCurrentPattern([System.Windows.Automation.TogglePattern]::Pattern)
+$show.Toggle()
+Wait-Until { (Element $app "PasswordText") -ne $null } 5 | Out-Null
+$report.shown = (Element $app "PasswordText").GetCurrentPattern([System.Windows.Automation.ValuePattern]::Pattern).Current.Value
+$show.Toggle()
+Wait-Until { (Element $app "PasswordField") -ne $null } 5 | Out-Null
+Click (Element $app "PlayButton")
+Wait-Until { (Element $app "PasswordReset") -ne $null } 30 | Out-Null
+Wait-Until { -not (Busy $app) } 30 | Out-Null
+$report.saved = ((Element $app "PasswordReset") -ne $null) -and ((Element $app "PasswordField") -eq $null)
+$report.afterPlay = Status $app
+if ($shot) { Save-Shot $app ($shot -replace '\.png$', '_password.png') }
+Click (Element $app "PasswordReset")
+$report.reset = Wait-Until { (Element $app "PasswordField") -ne $null } 5
+
 $second = Open-Launcher $empty
 $labels = New-Object System.Windows.Automation.PropertyCondition($auto::ClassNameProperty, "Static")
 $report.second = -join ($auto::FromHandle($second.MainWindowHandle).FindAll($scope, $labels) | ForEach-Object { $_.Current.Name })

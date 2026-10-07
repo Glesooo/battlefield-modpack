@@ -2,6 +2,7 @@ using System.Diagnostics;
 using CmlLib.Core;
 using CmlLib.Core.Auth;
 using CmlLib.Core.Installer.Forge;
+using CmlLib.Core.Installer.Forge.Versions;
 using CmlLib.Core.Installers;
 using CmlLib.Core.ProcessBuilder;
 
@@ -25,12 +26,11 @@ public sealed class Game(LauncherPaths paths, HttpClient http)
         var output = new Queue<string>();
         try
         {
-            var version = await new ForgeInstaller(launcher, http).Install(manifest.Minecraft, manifest.Forge, new ForgeInstallOptions
+            var version = await InstallForgeAsync(launcher, manifest, new ForgeInstallOptions
             {
                 FileProgress = files,
                 ByteProgress = bytes,
                 InstallerOutput = new Progress<string>(line => Remember(output, line)),
-                SkipIfAlreadyInstalled = true,
                 CancellationToken = ct,
             });
             Log.Info($"игра установлена: {version}");
@@ -43,17 +43,50 @@ public sealed class Game(LauncherPaths paths, HttpClient http)
         }
     }
 
-    public async Task<Process> StartAsync(string version, string nick, LauncherSettings settings, CancellationToken ct,
-        string? server = null)
+    private async Task<string> InstallForgeAsync(MinecraftLauncher launcher, PackManifest manifest, ForgeInstallOptions options)
     {
-        var process = await BuildAsync(version, nick, settings, ct, server);
+        var ct = options.CancellationToken;
+        var expected = $"{manifest.Minecraft}-forge-{manifest.Forge}";
+        if (await IsInstalledAsync(launcher, expected, ct)) return expected;
+
+        var forge = (await new ForgeVersionLoader(http).GetForgeVersions(manifest.Minecraft))
+            .FirstOrDefault(v => v.ForgeVersionName == manifest.Forge)
+            ?? throw new InvalidOperationException($"Forge {manifest.Forge} для Minecraft {manifest.Minecraft} не найден.");
+        var installer = new ForgeInstallerVersionMapper().CreateInstaller(forge);
+        if (await IsInstalledAsync(launcher, installer.VersionName, ct)) return installer.VersionName;
+
+        var minecraft = await launcher.GetVersionAsync(manifest.Minecraft, ct);
+        options.JavaPath = launcher.GetJavaPath(minecraft)
+            ?? throw new InvalidOperationException("Не найдена Java для установки Forge.");
+        await installer.Install(launcher.MinecraftPath, launcher.GameInstaller, options);
+        await launcher.GetAllVersionsAsync(ct);
+        return installer.VersionName;
+    }
+
+    private static async Task<bool> IsInstalledAsync(MinecraftLauncher launcher, string version, CancellationToken ct)
+    {
+        try
+        {
+            await launcher.GetVersionAsync(version, ct);
+            return true;
+        }
+        catch (KeyNotFoundException)
+        {
+            return false;
+        }
+    }
+
+    public async Task<Process> StartAsync(string version, string nick, NickKey? key, LauncherSettings settings,
+        CancellationToken ct, string? server = null)
+    {
+        var process = await BuildAsync(version, nick, key, settings, ct, server);
         process.Start();
         Log.Info($"игра запущена, PID {process.Id}");
         return process;
     }
 
-    public async Task<Process> BuildAsync(string version, string nick, LauncherSettings settings, CancellationToken ct,
-        string? server = null)
+    public async Task<Process> BuildAsync(string version, string nick, NickKey? key, LauncherSettings settings,
+        CancellationToken ct, string? server = null)
     {
         var session = MSession.CreateOfflineSession(nick);
         session.UUID = OfflineProfile.Uuid(nick);
@@ -74,6 +107,13 @@ public sealed class Game(LauncherPaths paths, HttpClient http)
         if (server != null) options.ServerIp = server;
         var process = await CreateLauncher().InstallAndBuildProcessAsync(version, options, ct);
         Log.Info($"команда запуска: {process.StartInfo.FileName} {process.StartInfo.Arguments}");
+        Log.Info("ключ ника: " + (key?.PublicKey ?? "нет"));
+        if (key != null)
+        {
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.Environment[NickKey.PrivateVariable] = key.PrivateKey;
+            process.StartInfo.Environment[NickKey.PublicVariable] = key.PublicKey;
+        }
         return process;
     }
 
