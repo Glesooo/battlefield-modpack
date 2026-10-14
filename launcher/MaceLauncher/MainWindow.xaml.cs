@@ -10,6 +10,7 @@ namespace MaceLauncher;
 public partial class MainWindow : Window
 {
     private const int EarlyExitMs = 10_000;
+    private static readonly TimeSpan UpdateCheckTimeout = TimeSpan.FromSeconds(5);
 
     private readonly LauncherPaths paths;
     private readonly IReadOnlyList<string> sources;
@@ -29,6 +30,45 @@ public partial class MainWindow : Window
         NickBox.Text = settings.Nick;
         ShowPasswordState();
         VersionText.Text = "v" + LauncherInfo.Version;
+        Loaded += async (_, _) => await UpdateLauncherAsync();
+    }
+
+    private async Task UpdateLauncherAsync()
+    {
+        var source = new CancellationTokenSource();
+        work = source;
+        SetBusy(true);
+        var restart = false;
+        try
+        {
+            using var http = LauncherInfo.CreateHttp();
+            source.CancelAfter(UpdateCheckTimeout);
+            var manifest = await new PackSync(paths, http, sources).LoadManifestAsync(source.Token);
+            source.CancelAfter(Timeout.InfiniteTimeSpan);
+            if (!SelfUpdate.IsNewer(manifest)) return;
+            var version = manifest.Launcher!.Version;
+            ShowProgress("Обновление лаунчера", "версия " + version, 0);
+            var downloader = new Downloader(http, sources.Concat(manifest.Sources));
+            await SelfUpdate.InstallAsync(manifest, downloader, fraction => ShowProgress("Обновление лаунчера", "версия " + version, fraction),
+                source.Token);
+            restart = true;
+        }
+        catch (Exception ex) when (ex is IOException or HttpRequestException or InvalidDataException or UnauthorizedAccessException
+                                   or OperationCanceledException)
+        {
+            Log.Info("обновление лаунчера: " + ex.Message);
+            if (ex is UnauthorizedAccessException) ShowStatus("Лаунчер не смог обновиться: нет прав на его папку", "ErrorBrush");
+        }
+        finally
+        {
+            work = null;
+            source.Dispose();
+            SetBusy(false);
+        }
+        if (!restart) return;
+        ((App)Application.Current).ReleaseSingleInstance();
+        SelfUpdate.Restart(Environment.GetCommandLineArgs().Skip(1));
+        Close();
     }
 
     private string TypedPassword => ShowPasswordBox.IsChecked == true ? PasswordText.Text : PasswordField.Password;
@@ -110,7 +150,7 @@ public partial class MainWindow : Window
         WidthBox.Text = shown.WindowWidth > 0 ? shown.WindowWidth.ToString() : "";
         HeightBox.Text = shown.WindowHeight > 0 ? shown.WindowHeight.ToString() : "";
         JavaBox.Text = shown.JavaArguments;
-        SettingsError.Text = "";
+        ShowSettingsMessage("", "ErrorBrush");
     }
 
     private void MemorySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) =>
@@ -131,14 +171,14 @@ public partial class MainWindow : Window
     {
         if (!TryReadWindowSize(out var width, out var height))
         {
-            SettingsError.Text = $"Размер окна: два числа не меньше {LauncherSettings.SmallestWidth}×" +
-                                 $"{LauncherSettings.SmallestHeight} или оба поля пустые.";
+            ShowSettingsMessage($"Размер окна: два числа не меньше {LauncherSettings.SmallestWidth}×" +
+                                $"{LauncherSettings.SmallestHeight} или оба поля пустые.", "ErrorBrush");
             return;
         }
         var java = JavaBox.Text.Trim();
         if (LauncherSettings.SplitArguments(java).Any(argument => !argument.StartsWith('-')))
         {
-            SettingsError.Text = "Каждый параметр Java должен начинаться с «-».";
+            ShowSettingsMessage("Каждый параметр Java должен начинаться с «-».", "ErrorBrush");
             return;
         }
         settings.MaxMemoryMb = (int)MemorySlider.Value;
@@ -152,7 +192,7 @@ public partial class MainWindow : Window
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            SettingsError.Text = "Не удалось сохранить настройки: " + ex.Message;
+            ShowSettingsMessage("Не удалось сохранить настройки: " + ex.Message, "ErrorBrush");
             return;
         }
         SettingsPanel.Visibility = Visibility.Collapsed;
@@ -197,6 +237,7 @@ public partial class MainWindow : Window
             var manifest = await Task.Run(() => sync.LoadManifestAsync(token), token);
             var report = await Task.Run(() => sync.RunAsync(manifest, verifyAll, progress, token), token);
             if (report.Moved.Count > 0) ReportRemoved(report.Moved);
+            if (launch && !settings.MigrationOffered) OfferMigration(manifest);
             if (!launch)
             {
                 work = null;
@@ -241,6 +282,54 @@ public partial class MainWindow : Window
         OperationCanceledException => "Сервер не отвечает. Проверьте интернет и попробуйте снова.",
         _ => ex.Message + " Подробности в launcher.log",
     };
+
+    private void OfferMigration(PackManifest manifest)
+    {
+        settings.MigrationOffered = true;
+        settings.Save(paths.Settings);
+        var old = Migration.FindOldFolder(paths);
+        if (old == null) return;
+        var answer = MessageBox.Show(this,
+            $"Нашлась прежняя папка игры:{Environment.NewLine}{old}{Environment.NewLine}{Environment.NewLine}" +
+            "Перенести оттуда управление, свои настройки графики и модов и свои шейдеры?",
+            "M.A.C.E", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        if (answer == MessageBoxResult.Yes) Migration.Copy(old, paths, manifest);
+    }
+
+    private async void Import_Click(object sender, RoutedEventArgs e)
+    {
+        var dialog = new Microsoft.Win32.OpenFolderDialog { Title = "Прежняя папка игры: в ней лежат options.txt и папка mods" };
+        if (dialog.ShowDialog(this) != true) return;
+        var folder = Migration.ResolveGameFolder(dialog.FolderName);
+        if (folder == null)
+        {
+            ShowSettingsMessage("В этой папке нет игры: нужны options.txt и папка mods.", "ErrorBrush");
+            return;
+        }
+        ImportButton.IsEnabled = false;
+        try
+        {
+            using var http = LauncherInfo.CreateHttp();
+            var manifest = await new PackSync(paths, http, sources).LoadManifestAsync(CancellationToken.None);
+            var report = await Task.Run(() => Migration.Copy(folder, paths, manifest));
+            ShowSettingsMessage($"Перенесено: настроек {report.Settings}, шейдеров {report.Shaders}.", "OkBrush");
+        }
+        catch (Exception ex) when (ex is IOException or HttpRequestException or InvalidDataException or UnauthorizedAccessException)
+        {
+            Log.Info("перенос настроек: " + ex);
+            ShowSettingsMessage("Не удалось перенести: " + ex.Message, "ErrorBrush");
+        }
+        finally
+        {
+            ImportButton.IsEnabled = true;
+        }
+    }
+
+    private void ShowSettingsMessage(string text, string brush)
+    {
+        SettingsError.Text = text;
+        SettingsError.Foreground = (Brush)FindResource(brush);
+    }
 
     private void ReportRemoved(IReadOnlyList<string> moved)
     {

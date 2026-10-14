@@ -36,6 +36,22 @@ public static class Cli
         PackManifest manifest)
     {
         var progress = new StageLogger();
+        if (args.Contains("--self-update"))
+        {
+            if (SelfUpdate.IsNewer(manifest))
+            {
+                await SelfUpdate.InstallAsync(manifest, new Downloader(http, Sources(args).Concat(manifest.Sources)), null,
+                    CancellationToken.None);
+            }
+            else
+            {
+                Log.Info($"лаунчер {LauncherInfo.Version} не старше списка сборки");
+            }
+        }
+        if (Value(args, "--import") is { } import)
+        {
+            Migration.Copy(Migration.ResolveGameFolder(import) ?? throw new ArgumentException($"Нет игры в {import}"), paths, manifest);
+        }
         if (args.Contains("--sync"))
         {
             var report = await sync.RunAsync(manifest, args.Contains("--verify"), progress, CancellationToken.None);
@@ -126,7 +142,12 @@ public static class Cli
             ["missing bundle"] = valid.Replace("\"bundle\"", "\"bundl\""),
             ["bad checksum"] = valid.Replace(sha, "xyz"),
             ["newer format"] = valid.Replace("\"format\":1", "\"format\":2"),
+            ["launcher asset escape"] = valid.Replace("\"bundle\"", $"\"launcher\":{{\"version\":\"2.0.0\",\"size\":1,\"sha256\":\"{sha}\",\"asset\":\"../MACE.exe\"}},\"bundle\""),
+            ["launcher version"] = valid.Replace("\"bundle\"", $"\"launcher\":{{\"version\":\"2.0\",\"size\":1,\"sha256\":\"{sha}\",\"asset\":\"0123456789abcdef-MACE.exe\"}},\"bundle\""),
         };
+        var withLauncher = valid.Replace("\"bundle\"", $"\"launcher\":{{\"version\":\"2.0.0\",\"size\":1,\"sha256\":\"{sha}\",\"asset\":\"0123456789abcdef-MACE.exe\"}},\"bundle\"");
+        Check(!Rejects(() => PackManifest.Parse(withLauncher)) && SelfUpdate.IsNewer(PackManifest.Parse(withLauncher)),
+            "valid launcher release rejected or not newer");
         foreach (var (name, json) in broken)
         {
             Check(Rejects(() => PackManifest.Parse(json)), name + " not rejected");

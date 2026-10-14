@@ -1,6 +1,7 @@
-import hashlib, http.server, json, os, pathlib, shutil, stat, subprocess, sys, threading, time
+import hashlib, http.server, json, os, pathlib, re, shutil, stat, subprocess, sys, threading, time
 
 HERE = pathlib.Path(__file__).resolve().parent
+VERSION = re.search(r"<Version>(.+?)</Version>", (HERE.parent / "MaceLauncher/MaceLauncher.csproj").read_text()).group(1)
 TEST = HERE.parents[2] / "LauncherTest"
 ROOT, SOURCE = TEST / "root", TEST / "source"
 INST = ROOT / "instance"
@@ -220,7 +221,7 @@ def web():
           and sha(INST / CONFIG) == configs[CONFIG] and asked("good", SMALL) == [(None, 200)]
           and asked("good", LARGE) == [(f"bytes={3 * CHUNK}-", 206)]
           and ("good", manifest["bundle"]["asset"], None, 200) in {r[:4] for r in requests})
-    check("launcher names itself in requests", {agent for *_, agent in requests} == {"MACE-Launcher/0.1.0"})
+    check("launcher names itself in requests", {agent for *_, agent in requests} == {f"MACE-Launcher/{VERSION}"})
 
     fresh(LARGE)
     code, log = run("--sync", sources=at("cut", "good"))
@@ -309,11 +310,79 @@ def window():
     check("window opens ready", ui.get("ready") == "Готов к запуску")
     check("file check from the window", ui.get("busy") and ui.get("idle") and ui.get("verified") == "Файлы сборки в порядке")
     check("closing the window during work stops it and exits", ui.get("closedDuringWork")
-          and first_run.count("сборка M.A.C.E") == 2 and first_run.count("скачать 0 файлов") == 1)
+          and first_run.count("сборка M.A.C.E") == 3 and first_run.count("скачать 0 файлов") == 1)
     check("unreachable source shows an error", str(ui.get("error")).startswith("Не удалось получить manifest.json"))
     check("short nick is refused before any work", str(ui.get("nick")).startswith("Ник:"))
     check("second copy refuses to start", ui.get("second") == "Лаунчер M.A.C.E уже запущен." and ui.get("secondExited")
           and ui.get("firstAlive") and ui.get("firstExited"))
+
+
+def self_update():
+    folder, source = TEST / "self_update", TEST / "source_self_update"
+    shutil.rmtree(folder, ignore_errors=True)
+    shutil.copytree(EXE.parent, folder)
+    source.mkdir(exist_ok=True)
+    exe, old = folder / EXE.name, folder / (EXE.name + ".old")
+    fresh = b"MACE launcher 99.0.0 test build"
+    digest = hashlib.sha256(fresh).hexdigest()
+    asset = digest[:16] + "-MACE.exe"
+
+    def offer(version, content):
+        (source / asset).write_bytes(content)
+        release = {"version": version, "size": len(fresh), "sha256": digest, "asset": asset}
+        (source / "manifest.json").write_text(json.dumps(dict(manifest, launcher=release, sources=[])), encoding="utf-8")
+        shutil.copy2(EXE, exe)
+        global last_log
+        code = subprocess.run([str(exe), "--headless", "--dir", str(ROOT), "--source", str(source), "--self-update"]).returncode
+        last_log = (ROOT / "launcher.log").read_text(encoding="utf-8")
+        return code, last_log
+
+    original = sha(EXE)
+    code, log = offer(VERSION, fresh)
+    check("a launcher of the same version is left alone", code == 0 and sha(exe) == original and not old.exists()
+          and "не старше списка сборки" in log)
+    code, log = offer("99.0.0", fresh[::-1])
+    check("a damaged download does not replace the launcher", code == 1 and sha(exe) == original
+          and not (folder / (EXE.name + ".new")).exists() and "контрольная сумма не совпала" in log)
+    code, log = offer("99.0.0", fresh)
+    check("a newer launcher replaces the file, the old one is put aside", code == 0 and exe.read_bytes() == fresh
+          and sha(old) == original and "лаунчер обновлён до 99.0.0" in log)
+    shutil.copy2(EXE, exe)
+    code = subprocess.run([str(exe), "--headless", "--dir", str(ROOT), "--selftest"]).returncode
+    check("the old file is deleted at the next start", code == 0 and not old.exists())
+    shutil.rmtree(folder, ignore_errors=True)
+
+
+def migration():
+    old = TEST / "old_game"
+    shutil.rmtree(old, ignore_errors=True)
+    personal = next(f["path"] for f in manifest["bundle"]["files"] if f["mode"] == "first_install" and f["path"].startswith("config/"))
+    rule = next(f["path"] for f in manifest["bundle"]["files"] if f["mode"] == "managed")
+    pack_shader = next(path for path in expected if path.startswith("shaderpacks/"))
+    old_files = {"options.txt": "key_key.jump:key.keyboard.v\n", "config/battlefieldhud-client.toml": "[panel]\n",
+                 personal: "player value\n", rule: "player rule\n", pack_shader: "old copy", "shaderpacks/MyShader.zip": "shader",
+                 "shaderpacks/MyFolderShader/shaders.properties": "x"}
+    for relative, text in old_files.items():
+        (old / relative).parent.mkdir(parents=True, exist_ok=True)
+        (old / relative).write_text(text, encoding="utf-8")
+    (old / "mods").mkdir()
+    touched = ["options.txt", "config/battlefieldhud-client.toml", personal]
+    backup = {relative: (INST / relative).read_bytes() for relative in touched if (INST / relative).exists()}
+    rule_before, shader_before = sha(INST / rule), sha(INST / pack_shader)
+    code, log = run("--import", str(old.parent / "old_game"))
+    taken = all((INST / relative).read_text(encoding="utf-8") == old_files[relative] for relative in touched)
+    check("settings, key bindings and the HUD layout come over from the old folder", code == 0 and taken
+          and "перенос из" in log)
+    check("rule configs of the old folder are not taken", sha(INST / rule) == rule_before)
+    check("own shaders are added, the pack's shaders are kept", (INST / "shaderpacks/MyShader.zip").exists()
+          and (INST / "shaderpacks/MyFolderShader/shaders.properties").exists() and sha(INST / pack_shader) == shader_before)
+    for relative in touched:
+        (INST / relative).unlink(missing_ok=True)
+        if relative in backup:
+            (INST / relative).write_bytes(backup[relative])
+    (INST / "shaderpacks/MyShader.zip").unlink()
+    shutil.rmtree(INST / "shaderpacks/MyFolderShader")
+    shutil.rmtree(old)
 
 
 SECTIONS = {
@@ -325,6 +394,8 @@ SECTIONS = {
     "F": ("self-test and launch command", launch),
     "G": ("downloads over HTTP", web),
     "H": ("window", window),
+    "I": ("self-update", self_update),
+    "J": ("settings from the old game folder", migration),
 }
 
 for key in [arg.upper() for arg in sys.argv[1:]] or SECTIONS:

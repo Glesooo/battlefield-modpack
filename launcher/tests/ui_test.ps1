@@ -28,6 +28,7 @@ function Wait-Until($condition, $seconds) {
 function Open-Launcher($from) {
     $process = Start-Process $exe -ArgumentList "--dir `"$root`" --source `"$from`"" -PassThru
     Wait-Until { $process.Refresh(); $process.MainWindowHandle -ne 0 } 20 | Out-Null
+    Wait-Until { $play = Element $process "PlayButton"; $play -eq $null -or $play.Current.IsEnabled } 30 | Out-Null
     $process
 }
 

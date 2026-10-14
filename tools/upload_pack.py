@@ -1,9 +1,10 @@
 import argparse, json, os, pathlib, shutil, subprocess, sys
 
-from make_manifest import REPO, STAGE, binary_files, bundle_members, file_sha256, sha256
+from make_manifest import REPO, STAGE, LAUNCHER_EXE, binary_files, bundle_members, file_sha256, launcher_release, sha256
 
 SLUG, TAG = "Glesooo/battlefield-modpack", "pack"
 MANIFEST = "manifest.json"
+DOWNLOAD = "MACE.exe"
 BATCH = 20
 
 
@@ -18,13 +19,15 @@ def pack():
     manifest = json.loads((REPO / MANIFEST).read_text(encoding="utf-8"))
     files, sources = binary_files()
     members = [{"path": path, "sha256": sha256(data), "mode": mode} for path, data, mode in bundle_members()]
+    launcher, launcher_sources = launcher_release()
     bundle = STAGE / manifest["bundle"]["asset"]
-    fresh = (files == manifest["files"] and members == manifest["bundle"]["files"]
+    fresh = (files == manifest["files"] and members == manifest["bundle"]["files"] and launcher == manifest.get("launcher")
              and bundle.is_file() and file_sha256(bundle) == manifest["bundle"]["sha256"])
     if not fresh:
-        sys.exit("the game folder changed since make_manifest.py ran: run it again and look at what changed")
+        sys.exit("the game folder or the launcher changed since make_manifest.py ran: run it again and look at what changed")
     sources[bundle.name] = str(bundle)
-    sizes = {entry["asset"]: entry["size"] for entry in manifest["files"] + [manifest["bundle"]]}
+    sources.update(launcher_sources)
+    sizes = {entry["asset"]: entry["size"] for entry in manifest["files"] + [manifest["bundle"], launcher]}
     return manifest["revision"], {asset: (pathlib.Path(path), sizes[asset]) for asset, path in sources.items()}
 
 
@@ -69,7 +72,7 @@ def main():
     online = released()
     known = online or {}
     missing = {asset: entry for asset, entry in assets.items() if known.get(asset) != entry[1]}
-    obsolete = sorted(set(known) - set(assets) - {MANIFEST})
+    obsolete = sorted(set(known) - set(assets) - {MANIFEST, DOWNLOAD})
     size = sum(entry[1] for entry in missing.values()) / 2 ** 20
     print(f"revision {revision}, release {TAG} {'exists' if online is not None else 'does not exist yet'}: "
           f"to upload {len(missing)} files ({size:.1f} MB), already there {len(assets) - len(missing)}, "
@@ -89,6 +92,11 @@ def main():
     absent = [asset for asset, entry in assets.items() if online.get(asset) != entry[1]]
     if absent:
         sys.exit(f"not in the release after upload, {MANIFEST} left untouched: {', '.join(absent)}")
+    if known.get(DOWNLOAD) != LAUNCHER_EXE.stat().st_size or any(path == LAUNCHER_EXE for path, _ in missing.values()):
+        download = STAGE / "upload" / DOWNLOAD
+        shutil.copy2(LAUNCHER_EXE, download)
+        gh("release", "upload", TAG, str(download), "--clobber")
+        print(f"{DOWNLOAD} for the download link updated")
     gh("release", "upload", TAG, str(REPO / MANIFEST), "--clobber")
     if args.prune:
         for name in obsolete:

@@ -1,7 +1,0 @@
-{
-  "name": "daffas_arsenal.attachment.knife_skill.name",
-  "display": "daffas_arsenal:knife_skill_display",
-  "data": "daffas_arsenal:knife_skill_data",
-  "tooltip": "daffas_arsenal.attachment.knife_skill.desc",
-  "type": "muzzle"
-}

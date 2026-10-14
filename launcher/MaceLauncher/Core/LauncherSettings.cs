@@ -20,6 +20,7 @@ public sealed class LauncherSettings
     public int WindowWidth { get; set; }
     public int WindowHeight { get; set; }
     public string JavaArguments { get; set; } = "";
+    public bool MigrationOffered { get; set; }
 
     public static int SystemMemoryMb => (int)(GC.GetGCMemoryInfo().TotalAvailableMemoryBytes / 1048576);
 

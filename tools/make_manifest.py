@@ -4,6 +4,8 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 WORK = REPO.parent
 INSTANCE = pathlib.Path(os.path.expandvars(r"%APPDATA%/PrismLauncher/instances/M.A.C.E/minecraft"))
 STAGE = WORK / "PackStage"
+LAUNCHER_PROJECT = REPO / "launcher/MaceLauncher/MaceLauncher.csproj"
+LAUNCHER_EXE = REPO / "launcher/MaceLauncher/bin/Release/net8.0-windows/win-x64/publish/MACE.exe"
 
 PACK = {
     "format": 1,
@@ -18,10 +20,11 @@ PACK = {
 BINARY_FOLDERS = {"mods": "*.jar", "tacz": "*.zip", "resourcepacks": "*.zip", "shaderpacks": "*.zip"}
 
 CONFIG_EXCLUDED = [
-    "battlefieldcore-admin.toml", "battlefieldcore-auth.toml", "battlefieldhud-client.toml", "embeddium-options.json",
-    "embeddium-fingerprint.json", "oculus.properties", "fml.toml", "e4mc/*",
+    "battlefieldcore-admin.toml", "battlefieldcore-auth.toml", "battlefieldcore-pack.toml", "mace-pack-manifest.json",
+    "battlefieldhud-client.toml", "embeddium-options.json", "embeddium-fingerprint.json", "oculus.properties", "fml.toml",
+    "e4mc/*", "jumpcooldown-client.toml", "foliagevision-client.toml", "battlefieldhud-rules.toml", "freeaim-common.toml",
 ]
-CONFIG_MANAGED_CLIENT = ["jumpcooldown-client.toml", "foliagevision-client.toml", "casingsounds-client.toml"]
+CONFIG_MANAGED_CLIENT = ["casingsounds-client.toml"]
 CONFIG_FIRST_INSTALL = [
     "*-client.toml", "*-client.json", "*-client.yaml", "viewmodel.json", "cameraoverhaul.toml", "autohud.json5",
     "invnaut_inventory.json", "chatanimation.json", "notenoughanimations.json", "sound_physics_remastered/*",
@@ -72,6 +75,16 @@ def binary_files():
                             "asset": asset})
             sources[asset] = str(path)
     return entries, sources
+
+
+def launcher_release():
+    if not LAUNCHER_EXE.is_file():
+        sys.exit(f"{LAUNCHER_EXE} is missing: run dotnet publish -c Release in launcher/MaceLauncher first")
+    version = re.search(r"<Version>(\d+\.\d+\.\d+)</Version>", LAUNCHER_PROJECT.read_text(encoding="utf-8")).group(1)
+    digest = file_sha256(LAUNCHER_EXE)
+    asset = asset_name(digest, LAUNCHER_EXE.name)
+    entry = {"version": version, "size": LAUNCHER_EXE.stat().st_size, "sha256": digest, "asset": asset}
+    return entry, {asset: str(LAUNCHER_EXE)}
 
 
 def default_options():
@@ -142,7 +155,9 @@ def main():
     files, sources = binary_files()
     bundle_path, bundle = write_bundle(bundle_members())
     sources[bundle["asset"]] = str(bundle_path)
-    body = {**PACK, "files": files, "bundle": bundle}
+    launcher, launcher_sources = launcher_release()
+    sources.update(launcher_sources)
+    body = {**PACK, "files": files, "bundle": bundle, "launcher": launcher}
     revision = sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode("utf-8"))[:12]
     manifest = {"revision": revision, **body}
     verify(manifest, sources, bundle_path)
@@ -159,6 +174,7 @@ def main():
     modes = [e["mode"] for e in bundle["files"]]
     print(f"{'bundle':14} {len(modes):4} files {bundle['size'] / 2 ** 20:8.1f} MB "
           f"(managed {modes.count('managed')}, first install {modes.count('first_install')})")
+    print(f"{'launcher':14} {launcher['version']:>9} {launcher['size'] / 2 ** 20:8.1f} MB")
     print(f"revision {revision} -> {args.out}")
 
 

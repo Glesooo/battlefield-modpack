@@ -181,6 +181,9 @@
                                 Click="OpenSubfolder_Click" Margin="0,0,20,0" />
                         <Button Content="Журнал лаунчера" Style="{StaticResource LinkButton}" Click="OpenLauncherLog_Click" />
                     </StackPanel>
+                    <Button x:Name="ImportButton" Content="Перенести настройки из прежней папки игры…"
+                            Style="{StaticResource LinkButton}" HorizontalAlignment="Left" Margin="0,10,0,0"
+                            Click="Import_Click" />
 
                     <TextBlock x:Name="SettingsError" Foreground="{StaticResource ErrorBrush}" FontSize="12"
                                TextWrapping="Wrap" Margin="0,14,0,0" MinHeight="16" />

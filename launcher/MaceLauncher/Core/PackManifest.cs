@@ -13,7 +13,8 @@ public sealed record PackManifest(
     IReadOnlyList<string> Sources,
     IReadOnlyDictionary<string, string> Folders,
     IReadOnlyList<PackFile> Files,
-    PackBundle Bundle)
+    PackBundle Bundle,
+    LauncherRelease? Launcher)
 {
     public const int SupportedFormat = 1;
     public const string Strict = "strict";
@@ -42,6 +43,8 @@ public sealed record PackFile(string Path, long Size, string Sha256, string Asse
 public sealed record PackBundle(string Asset, long Size, string Sha256, IReadOnlyList<BundleFile> Files);
 
 public sealed record BundleFile(string Path, string Sha256, string Mode);
+
+public sealed record LauncherRelease(string Version, long Size, string Sha256, string Asset);
 
 public sealed record SyncReport(int Downloaded, long Bytes, IReadOnlyList<string> Moved, int ConfigsWritten);
 
@@ -78,6 +81,11 @@ public static partial class ManifestRules
             Require(IsSafePath(file.Path) && IsSha(file.Sha256), $"конфиг {file.Path}");
             Require(file.Mode is PackManifest.Managed or PackManifest.FirstInstall, $"режим конфига {file.Path}");
         }
+        if (manifest.Launcher is { } launcher)
+        {
+            Require(LauncherVersion().IsMatch(launcher.Version ?? "") && launcher.Size > 0
+                && IsAsset(launcher.Asset) && IsSha(launcher.Sha256), "лаунчер");
+        }
     }
 
     private static void Require([System.Diagnostics.CodeAnalysis.DoesNotReturnIf(false)] bool ok, string what)
@@ -104,4 +112,7 @@ public static partial class ManifestRules
 
     [GeneratedRegex(@"^[A-Za-z0-9_-]+\z")]
     private static partial Regex Folder();
+
+    [GeneratedRegex(@"^\d{1,4}\.\d{1,4}\.\d{1,4}\z")]
+    private static partial Regex LauncherVersion();
 }

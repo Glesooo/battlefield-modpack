@@ -14,6 +14,7 @@ public partial class App : Application
     {
         base.OnStartup(e);
         DispatcherUnhandledException += OnUnhandled;
+        SelfUpdate.CleanUp();
 
         var screenshot = Array.IndexOf(e.Args, "--screenshot");
         if (screenshot >= 0 && screenshot + 1 < e.Args.Length)
@@ -35,6 +36,13 @@ public partial class App : Application
             return;
         }
         new MainWindow(Cli.Paths(e.Args), Cli.Sources(e.Args)).Show();
+    }
+
+    public void ReleaseSingleInstance()
+    {
+        single?.ReleaseMutex();
+        single?.Dispose();
+        single = null;
     }
 
     private static void OnUnhandled(object sender, DispatcherUnhandledExceptionEventArgs e)
