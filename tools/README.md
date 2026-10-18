@@ -70,6 +70,8 @@ python tools\make_manifest.py
 - Настройки графики: `embeddium-options.json`, `embeddium-fingerprint.json`, `oculus.properties`, `fml.toml`.
   Игрок получает стандартные.
 - `config\e4mc`: мод для игры через чужой ПК, игрокам не нужен.
+- `config\battlefieldcore-voice.toml`: язык озвучки бойцов, который игрок выбирает кнопкой в меню паузы. Мод
+  создаёт файл сам (русская озвучка); в режиме `managed` лаунчер сбрасывал бы выбор при каждом запуске.
 
 ### Стартовый options.txt
 

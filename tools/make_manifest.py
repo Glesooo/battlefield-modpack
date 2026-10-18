@@ -23,6 +23,7 @@ CONFIG_EXCLUDED = [
     "battlefieldcore-admin.toml", "battlefieldcore-auth.toml", "battlefieldcore-pack.toml", "mace-pack-manifest.json",
     "battlefieldhud-client.toml", "embeddium-options.json", "embeddium-fingerprint.json", "oculus.properties", "fml.toml",
     "e4mc/*", "jumpcooldown-client.toml", "foliagevision-client.toml", "battlefieldhud-rules.toml", "freeaim-common.toml",
+    "battlefieldcore-voice.toml",
 ]
 CONFIG_MANAGED_CLIENT = ["casingsounds-client.toml"]
 CONFIG_FIRST_INSTALL = [
